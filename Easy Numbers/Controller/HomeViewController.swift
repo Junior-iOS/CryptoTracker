@@ -21,6 +21,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         setup()
+        NJAnalytics.shared.trackEvent(name: "Analytics_DidLoad")
     }
 
     private func setup() {

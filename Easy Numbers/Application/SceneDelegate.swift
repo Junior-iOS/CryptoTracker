@@ -2,10 +2,11 @@
 //  SceneDelegate.swift
 //  Easy Numbers
 //
-//  Created by Junior Silva on 11/05/23.
+//  Created by NJ Development on 11/05/23.
 //
 
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,6 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = UINavigationController(rootViewController: HomeViewController())
         window.makeKeyAndVisible()
         self.window = window
+        
+        FirebaseApp.configure()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
