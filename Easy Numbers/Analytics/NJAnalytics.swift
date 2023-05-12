@@ -14,7 +14,11 @@ final class NJAnalytics {
     static let shared = NJAnalytics()
     private init(){}
     
-    func trackEvent(name: String, parameters: [String: Any]? = nil) {
-        Analytics.logEvent(name, parameters: parameters)
+    enum Event: String {
+        case didLoad = "Analytics_DidLoad"
+    }
+    
+    func trackEvent(name: Event, parameters: [String: Any]? = nil) {
+        Analytics.logEvent(name.rawValue, parameters: parameters)
     }
 }

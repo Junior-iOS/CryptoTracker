@@ -22,6 +22,7 @@
 		14460B582A0DEF0D00C4DA54 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 14460B572A0DEF0D00C4DA54 /* SDWebImage */; };
 		14460B5A2A0DEF5900C4DA54 /* NJAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B592A0DEF5900C4DA54 /* NJAnalytics.swift */; };
 		14460B5C2A0DF03F00C4DA54 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14460B5B2A0DF03F00C4DA54 /* GoogleService-Info.plist */; };
+		14460B5E2A0ECDAA00C4DA54 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B5D2A0ECDAA00C4DA54 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		14460B4E2A0D38AA00C4DA54 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		14460B592A0DEF5900C4DA54 /* NJAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NJAnalytics.swift; sourceTree = "<group>"; };
 		14460B5B2A0DF03F00C4DA54 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		14460B5D2A0ECDAA00C4DA54 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		14460B3F2A0C954200C4DA54 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				14460B5D2A0ECDAA00C4DA54 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				14460B2E2A0C949900C4DA54 /* HomeViewController.swift in Sources */,
 				14460B5A2A0DEF5900C4DA54 /* NJAnalytics.swift in Sources */,
 				14460B4B2A0C95EB00C4DA54 /* Extension+UIViewController.swift in Sources */,
+				14460B5E2A0ECDAA00C4DA54 /* HomeViewModel.swift in Sources */,
 				14460B2A2A0C949900C4DA54 /* AppDelegate.swift in Sources */,
 				14460B492A0C95EB00C4DA54 /* Extension+View.swift in Sources */,
 				14460B2C2A0C949900C4DA54 /* SceneDelegate.swift in Sources */,
