@@ -146,8 +146,8 @@ private extension HomeView {
 extension UIView {
     func setGradientColor() {
         let gradientLayer: CAGradientLayer = CAGradientLayer()
-        let firstColor: UIColor = .systemGreen
-        let secondColor: UIColor = UIColor(red: 0.00, green: 0.35, blue: 0.00, alpha: 1.00)
+        let firstColor: UIColor = UIColor(red: 0.12, green: 0.12, blue: 0.12, alpha: 1.00)
+        let secondColor: UIColor = UIColor(red: 0.22, green: 0.22, blue: 0.22, alpha: 1.00)
         gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)

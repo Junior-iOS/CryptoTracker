@@ -40,7 +40,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-//        NJAnalytics.shared.trackEvent(name: .didLoad)
+        NJAnalytics.shared.trackEvent(name: .didLoad)
     }
     
     override func viewDidLayoutSubviews() {
@@ -88,6 +88,12 @@ class HomeViewController: UIViewController {
 // MARK: - HomeView Delegate
 extension HomeViewController: HomeViewDelegate {
     func didPressGenerateButton(_ sender: UIButton) {
-        print(sender.tag)
+        switch sender.tag {
+        case 0: NJAnalytics.shared.trackEvent(name: .megasena)
+        case 1: NJAnalytics.shared.trackEvent(name: .lotofacil)
+        case 2: NJAnalytics.shared.trackEvent(name: .quina)
+        case 3: NJAnalytics.shared.trackEvent(name: .lotomania)
+        default: break
+        }
     }
 }

@@ -17,12 +17,10 @@
 		14460B4B2A0C95EB00C4DA54 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B462A0C95EB00C4DA54 /* Extension+UIViewController.swift */; };
 		14460B4C2A0C95EB00C4DA54 /* Extension+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B472A0C95EB00C4DA54 /* Extension+UITableView.swift */; };
 		14460B4F2A0D38AA00C4DA54 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B4E2A0D38AA00C4DA54 /* HomeView.swift */; };
-		14460B532A0DEEE600C4DA54 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 14460B522A0DEEE600C4DA54 /* FirebaseAnalytics */; };
-		14460B552A0DEEE600C4DA54 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 14460B542A0DEEE600C4DA54 /* FirebaseAnalyticsSwift */; };
-		14460B582A0DEF0D00C4DA54 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 14460B572A0DEF0D00C4DA54 /* SDWebImage */; };
 		14460B5A2A0DEF5900C4DA54 /* NJAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B592A0DEF5900C4DA54 /* NJAnalytics.swift */; };
 		14460B5C2A0DF03F00C4DA54 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14460B5B2A0DF03F00C4DA54 /* GoogleService-Info.plist */; };
 		14460B5E2A0ECDAA00C4DA54 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B5D2A0ECDAA00C4DA54 /* HomeViewModel.swift */; };
+		C94D4105FD075E374BB325B3 /* Pods_Easy_Numbers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2A81708FC34ED629B7F91F /* Pods_Easy_Numbers.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +39,9 @@
 		14460B592A0DEF5900C4DA54 /* NJAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NJAnalytics.swift; sourceTree = "<group>"; };
 		14460B5B2A0DF03F00C4DA54 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		14460B5D2A0ECDAA00C4DA54 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		3B2A81708FC34ED629B7F91F /* Pods_Easy_Numbers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Easy_Numbers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC6F3ED9AE680961C7239802 /* Pods-Easy Numbers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy Numbers.release.xcconfig"; path = "Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers.release.xcconfig"; sourceTree = "<group>"; };
+		DC9E49AAACFE80164EE1590F /* Pods-Easy Numbers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy Numbers.debug.xcconfig"; path = "Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,9 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14460B582A0DEF0D00C4DA54 /* SDWebImage in Frameworks */,
-				14460B552A0DEEE600C4DA54 /* FirebaseAnalyticsSwift in Frameworks */,
-				14460B532A0DEEE600C4DA54 /* FirebaseAnalytics in Frameworks */,
+				C94D4105FD075E374BB325B3 /* Pods_Easy_Numbers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +61,8 @@
 			children = (
 				14460B282A0C949900C4DA54 /* Easy Numbers */,
 				14460B272A0C949800C4DA54 /* Products */,
+				BC5265F804A3629EE1E49444 /* Pods */,
+				311F0A74123F781BFBD947D5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -158,6 +159,23 @@
 			path = Analytics;
 			sourceTree = "<group>";
 		};
+		311F0A74123F781BFBD947D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B2A81708FC34ED629B7F91F /* Pods_Easy_Numbers.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC5265F804A3629EE1E49444 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DC9E49AAACFE80164EE1590F /* Pods-Easy Numbers.debug.xcconfig */,
+				DC6F3ED9AE680961C7239802 /* Pods-Easy Numbers.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -165,20 +183,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 14460B3A2A0C949B00C4DA54 /* Build configuration list for PBXNativeTarget "Easy Numbers" */;
 			buildPhases = (
+				B3010D7FEF4F1BFE93609099 /* [CP] Check Pods Manifest.lock */,
 				14460B222A0C949800C4DA54 /* Sources */,
 				14460B232A0C949800C4DA54 /* Frameworks */,
 				14460B242A0C949800C4DA54 /* Resources */,
+				14460B5F2A0F339400C4DA54 /* ShellScript */,
+				B1B1482F98EDC4D1016101A3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Easy Numbers";
-			packageProductDependencies = (
-				14460B522A0DEEE600C4DA54 /* FirebaseAnalytics */,
-				14460B542A0DEEE600C4DA54 /* FirebaseAnalyticsSwift */,
-				14460B572A0DEF0D00C4DA54 /* SDWebImage */,
-			);
 			productName = "Easy Numbers";
 			productReference = 14460B262A0C949800C4DA54 /* Easy Numbers.app */;
 			productType = "com.apple.product-type.application";
@@ -208,8 +224,6 @@
 			);
 			mainGroup = 14460B1D2A0C949800C4DA54;
 			packageReferences = (
-				14460B512A0DEEE600C4DA54 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				14460B562A0DEF0D00C4DA54 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 14460B272A0C949800C4DA54 /* Products */;
 			projectDirPath = "";
@@ -232,6 +246,65 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		14460B5F2A0F339400C4DA54 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
+		B1B1482F98EDC4D1016101A3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3010D7FEF4F1BFE93609099 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Easy Numbers-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		14460B222A0C949800C4DA54 /* Sources */ = {
@@ -381,6 +454,7 @@
 		};
 		14460B3B2A0C949B00C4DA54 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC9E49AAACFE80164EE1590F /* Pods-Easy Numbers.debug.xcconfig */;
 			buildSettings = {
 				APP_NAME = "Easy Numbers";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -412,6 +486,7 @@
 		};
 		14460B3C2A0C949B00C4DA54 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC6F3ED9AE680961C7239802 /* Pods-Easy Numbers.release.xcconfig */;
 			buildSettings = {
 				APP_NAME = "Easy Numbers";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -463,43 +538,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		14460B512A0DEEE600C4DA54 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
-			};
-		};
-		14460B562A0DEF0D00C4DA54 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		14460B522A0DEEE600C4DA54 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 14460B512A0DEEE600C4DA54 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		14460B542A0DEEE600C4DA54 /* FirebaseAnalyticsSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 14460B512A0DEEE600C4DA54 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsSwift;
-		};
-		14460B572A0DEF0D00C4DA54 /* SDWebImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 14460B562A0DEF0D00C4DA54 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImage;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 14460B1E2A0C949800C4DA54 /* Project object */;
 }

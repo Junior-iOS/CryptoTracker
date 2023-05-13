@@ -7,7 +7,6 @@
 
 import Foundation
 import FirebaseAnalytics
-import FirebaseAnalyticsSwift
 import UIKit
 
 final class NJAnalytics {
@@ -16,6 +15,12 @@ final class NJAnalytics {
     
     enum Event: String {
         case didLoad = "Analytics_DidLoad"
+        case didSave = "Analytics_DidSave"
+        case didCopy = "Analytics_DidCopy"
+        case megasena = "Analytics_Megasena"
+        case lotofacil = "Analytics_Lotofacil"
+        case quina = "Analytics_Quina"
+        case lotomania = "Analytics_Lotomania"
     }
     
     func trackEvent(name: Event, parameters: [String: Any]? = nil) {
