@@ -22,7 +22,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gradient Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Gk3-sj-6lZ">
-                                <rect key="frame" x="0.0" y="361" width="393.00000000000006" height="130"/>
+                                <rect key="frame" x="0.0" y="361" width="393" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="pno-2p-HEK"/>
                                 </constraints>

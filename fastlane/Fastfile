@@ -16,12 +16,12 @@ platform :ios do
             strDevPortal << "#{team['name']} (#{team['teamId']})||"
         end
 
-        UI.message "* App Store Connect Team ID:"
-        strClientTunes = ""
-        clientTunes.teams.each do |team|
-            UI.message "#{team['contentProvider']['name']} (#{team['contentProvider']['contentProviderId']})"
-            strClientTunes << "#{team['contentProvider']['name']} (#{team['contentProvider']['contentProviderId']})||"
-        end
+        # UI.message "* App Store Connect Team ID:"
+        # strClientTunes = ""
+        # clientTunes.teams.each do |team|
+        #     UI.message "#{team['contentProvider']['name']} (#{team['contentProvider']['contentProviderId']})"
+        #     strClientTunes << "#{team['contentProvider']['name']} (#{team['contentProvider']['contentProviderId']})||"
+        # end
     end
     
     lane :create_keys do
@@ -62,11 +62,11 @@ platform :ios do
 
         #match(type: "appstore", readonly: true)
 
-        # cocoapods <- remover se houver podfile
+        cocoapods
         
         build_app(
-            #workspace: ENV["WORKSPACE"],
-            project: ENV["WORKSPACE"],
+            workspace: ENV["WORKSPACE"],
+            #project: ENV["WORKSPACE"],
             scheme: ENV["SCHEME"],
             export_options: {
                 method: "app-store",
