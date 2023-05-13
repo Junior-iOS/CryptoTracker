@@ -2,12 +2,31 @@
 //  HomeView.swift
 //  Easy Numbers
 //
-//  Created by Junior Silva on 11/05/23.
+//  Created by NJ Development on 11/05/23.
 //
 
 import UIKit
 
+protocol HomeViewDelegate: AnyObject {
+    func didPressGenerateButton(_ sender: UIButton)
+}
+
+enum GameType: String {
+    case megasena = "Megasena"
+    case lotofacil = "LotoFácil"
+    case quina = "Quina"
+    case lotomania = "LotoMania"
+    case unknown = ""
+}
+
 class HomeView: UIView {
+    
+    private lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        return view
+    }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -61,30 +80,21 @@ class HomeView: UIView {
         return button
     }()
     
-    private lazy var btnMyGames: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Meus jogos", for: .normal)
-        button.addTarget(self, action: #selector(myGamesPressed), for: .touchUpInside)
-        button.backgroundColor = .systemBlue
-        button.titleLabel?.textColor = .white
-        return button
-    }()
-    
-    private lazy var games = [btnMegaSena, btnLotoFacil, btnQuina, btnLotoMania, btnMyGames]
+    private lazy var games = [btnMegaSena, btnLotoFacil, btnQuina, btnLotoMania]
     
     private lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: games)
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.distribution = .fillEqually
         stack.axis = .vertical
-        stack.spacing = 16
+        stack.spacing = 8
         return stack
     }()
+    
+    weak var delegate: HomeViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         addComponents()
     }
     
@@ -92,26 +102,56 @@ class HomeView: UIView {
     required init?(coder: NSCoder) {
         nil
     }
-
+    
+    private func setViewsRoundCorners() {
+        games.forEach({
+            $0.layer.cornerRadius = 10
+            $0.clipsToBounds = true
+        })
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setViewsRoundCorners()
+    }
 }
 
 // MARK: - PRIVATE METHODS
 private extension HomeView {
     @objc func generatePressed(_ sender: UIButton) {
-//        delegate?.generateButtonPressed(sender)
-    }
-    
-    @objc func myGamesPressed(_ sender: UIButton) {
-//        let vc = SavedGamesViewController()
-//
-//        if loadedGames != nil && loadedIcons != nil {
-//            guard let loadedGames = loadedGames, let loadedIcons = loadedIcons else { return }
-//            vc.game = Game(icons: loadedIcons, loadedGames: loadedGames)
-//        }
-//        delegate?.savedGamesPressed(vc)
+        delegate?.didPressGenerateButton(sender)
     }
     
     func addComponents() {
+        addSubview(contentView)
+        contentView.addSubview(stackView)
         
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            btnMegaSena.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+}
+
+extension UIView {
+    func setGradientColor() {
+        let gradientLayer: CAGradientLayer = CAGradientLayer()
+        let firstColor: UIColor = UIColor(red: 0.12, green: 0.12, blue: 0.12, alpha: 1.00)
+        let secondColor: UIColor = UIColor(red: 0.22, green: 0.22, blue: 0.22, alpha: 1.00)
+        gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        gradientLayer.locations = [0, 0.5, 1]
+        gradientLayer.frame = self.bounds
+        self.layer.insertSublayer(gradientLayer, at: 0)
     }
 }
