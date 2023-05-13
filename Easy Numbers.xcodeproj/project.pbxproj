@@ -20,6 +20,7 @@
 		14460B5A2A0DEF5900C4DA54 /* NJAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B592A0DEF5900C4DA54 /* NJAnalytics.swift */; };
 		14460B5C2A0DF03F00C4DA54 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14460B5B2A0DF03F00C4DA54 /* GoogleService-Info.plist */; };
 		14460B5E2A0ECDAA00C4DA54 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B5D2A0ECDAA00C4DA54 /* HomeViewModel.swift */; };
+		14460B612A0F60D400C4DA54 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B602A0F60D400C4DA54 /* InfoViewController.swift */; };
 		C94D4105FD075E374BB325B3 /* Pods_Easy_Numbers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2A81708FC34ED629B7F91F /* Pods_Easy_Numbers.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		14460B592A0DEF5900C4DA54 /* NJAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NJAnalytics.swift; sourceTree = "<group>"; };
 		14460B5B2A0DF03F00C4DA54 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		14460B5D2A0ECDAA00C4DA54 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		14460B602A0F60D400C4DA54 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		3B2A81708FC34ED629B7F91F /* Pods_Easy_Numbers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Easy_Numbers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6F3ED9AE680961C7239802 /* Pods-Easy Numbers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy Numbers.release.xcconfig"; path = "Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers.release.xcconfig"; sourceTree = "<group>"; };
 		DC9E49AAACFE80164EE1590F /* Pods-Easy Numbers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy Numbers.debug.xcconfig"; path = "Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers.debug.xcconfig"; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				14460B2D2A0C949900C4DA54 /* HomeViewController.swift */,
+				14460B602A0F60D400C4DA54 /* InfoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14460B2E2A0C949900C4DA54 /* HomeViewController.swift in Sources */,
+				14460B612A0F60D400C4DA54 /* InfoViewController.swift in Sources */,
 				14460B5A2A0DEF5900C4DA54 /* NJAnalytics.swift in Sources */,
 				14460B4B2A0C95EB00C4DA54 /* Extension+UIViewController.swift in Sources */,
 				14460B5E2A0ECDAA00C4DA54 /* HomeViewModel.swift in Sources */,
@@ -466,6 +470,7 @@
 				INFOPLIST_FILE = "Easy Numbers/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -498,6 +503,7 @@
 				INFOPLIST_FILE = "Easy Numbers/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (

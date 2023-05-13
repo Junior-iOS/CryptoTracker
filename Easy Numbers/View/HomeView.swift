@@ -96,7 +96,6 @@ class HomeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addComponents()
-        setViewsRoundCorners()
     }
     
     @available(*, unavailable)

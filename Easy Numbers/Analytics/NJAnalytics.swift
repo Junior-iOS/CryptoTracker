@@ -17,6 +17,7 @@ final class NJAnalytics {
         case didLoad = "Analytics_DidLoad"
         case didSave = "Analytics_DidSave"
         case didCopy = "Analytics_DidCopy"
+        case info = "Analytics_Info"
         case megasena = "Analytics_Megasena"
         case lotofacil = "Analytics_Lotofacil"
         case quina = "Analytics_Quina"
