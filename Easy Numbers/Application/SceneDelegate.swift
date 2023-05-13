@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  Easy Numbers
 //
-//  Created by Junior Silva on 11/05/23.
+//  Created by NJ Development on 11/05/23.
 //
 
 import UIKit
