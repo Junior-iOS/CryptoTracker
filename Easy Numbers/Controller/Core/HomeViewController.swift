@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
     
     // MARK: - Properties
     private lazy var btnMyGames: UIButton = {
@@ -28,6 +28,7 @@ class HomeViewController: UIViewController {
     private let screenWidth = UIScreen.main.bounds.width
     
     private var myGames: [Int] = []
+    private var backButtonBackgroundColor = UIColor.white
     
     // MARK: - Init & Life Cycle
     init(viewModel: HomeViewModel = HomeViewModel()) {
@@ -42,12 +43,8 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNeedsStatusBarAppearanceUpdate()
+        navigationController?.navigationBar.tintColor = .white
         btnMyGames.isHidden = UserDefaults.standard.bool(forKey: "hasSavedGames") ? false : true
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .darkContent
     }
 
     override func viewDidLoad() {
@@ -57,9 +54,15 @@ class HomeViewController: UIViewController {
         NJAnalytics.shared.trackEvent(name: .didLoad)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        view.setGradientColor()
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.tintColor = backButtonBackgroundColor
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        view.willRemoveSubview(homeView)
+        view.willRemoveSubview(btnMyGames)
     }
 
     // MARK: - Methods
@@ -108,7 +111,9 @@ class HomeViewController: UIViewController {
     }
     
     @objc func didPressInfo() {
-        viewModel.didPressInfo()
+        let infoVC = InfoViewController()
+        navigationController?.present(infoVC, animated: true)
+        
         NJAnalytics.shared.trackEvent(name: .info)
     }
 }
@@ -119,19 +124,25 @@ extension HomeViewController: HomeViewDelegate {
         switch sender.tag {
         case 0:
             myGames = viewModel.generate(game: .megasena)
+            backButtonBackgroundColor = UIColor(red: 52/255, green: 125/255, blue: 57/255, alpha: 1)
             NJAnalytics.shared.trackEvent(name: .megasena)
         case 1:
             myGames = viewModel.generate(game: .lotofacil)
+            backButtonBackgroundColor = .systemPurple
             NJAnalytics.shared.trackEvent(name: .lotofacil)
         case 2:
             myGames = viewModel.generate(game: .quina)
+            backButtonBackgroundColor = UIColor(red: 25/255, green: 72/255, blue: 152/255, alpha: 1)
             NJAnalytics.shared.trackEvent(name: .quina)
         case 3:
             myGames = viewModel.generate(game: .lotomania)
+            backButtonBackgroundColor = .systemOrange
             NJAnalytics.shared.trackEvent(name: .lotomania)
         default: break
         }
         
-        print(myGames)
+        let gameVC = GameViewController()
+        gameVC.game = myGames
+        navigationController?.pushViewController(gameVC, animated: true)
     }
 }

@@ -7,10 +7,12 @@
 
 import UIKit
 
+// MARK: - Protocols
 protocol HomeViewDelegate: AnyObject {
     func didPressGenerateButton(_ sender: UIButton)
 }
 
+// MARK: - Enum
 enum GameType: String {
     case megasena = "Megasena"
     case lotofacil = "LotoFácil"
@@ -21,6 +23,7 @@ enum GameType: String {
 
 class HomeView: UIView {
     
+    // MARK: - Properties
     private lazy var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -93,6 +96,7 @@ class HomeView: UIView {
     
     weak var delegate: HomeViewDelegate?
 
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         addComponents()
@@ -103,6 +107,7 @@ class HomeView: UIView {
         nil
     }
     
+    // MARK: - Methods
     private func setViewsRoundCorners() {
         games.forEach({
             $0.layer.cornerRadius = 10
@@ -139,19 +144,5 @@ private extension HomeView {
             
             btnMegaSena.heightAnchor.constraint(equalToConstant: 50)
         ])
-    }
-}
-
-extension UIView {
-    func setGradientColor() {
-        let gradientLayer: CAGradientLayer = CAGradientLayer()
-        let firstColor: UIColor = UIColor(red: 0.12, green: 0.12, blue: 0.12, alpha: 1.00)
-        let secondColor: UIColor = UIColor(red: 0.22, green: 0.22, blue: 0.22, alpha: 1.00)
-        gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
-        gradientLayer.locations = [0, 0.5, 1]
-        gradientLayer.frame = self.bounds
-        self.layer.insertSublayer(gradientLayer, at: 0)
     }
 }

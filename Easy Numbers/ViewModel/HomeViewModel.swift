@@ -10,18 +10,10 @@ import UIKit
 
 final class HomeViewModel {
     
-    var result: [Int]? {
-        didSet {
-//            collectionView.reloadData()
-        }
-    }
+    var result: [Int]?
     
     func didPressMySavedGames() {
         print("didPressMySavedGames")
-    }
-    
-    func didPressInfo() {
-        print("didPressInfo")
     }
     
     func generate(game: GameType) -> [Int] {
