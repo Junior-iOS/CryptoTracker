@@ -9,5 +9,6 @@ target 'Easy Numbers' do
 
   pod 'Firebase/Core'
   pod 'Firebase/Crashlytics'
+  pod 'SwiftLint'
 
 end

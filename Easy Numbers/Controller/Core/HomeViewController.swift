@@ -8,7 +8,6 @@
 import UIKit
 
 class HomeViewController: BaseViewController {
-    
     // MARK: - Properties
     private lazy var btnMyGames: UIButton = {
         let button = UIButton()
@@ -20,27 +19,28 @@ class HomeViewController: BaseViewController {
         button.layer.cornerRadius = 10
         return button
     }()
-    
+
     private let homeView = HomeView()
     private var viewModel = HomeViewModel()
-    
+
     private let device = UIDevice.current.userInterfaceIdiom
     private let screenWidth = UIScreen.main.bounds.width
-    
+
     private var myGames: [Int] = []
+    private var gameTitle = ""
     private var backButtonBackgroundColor = UIColor.white
-    
+
     // MARK: - Init & Life Cycle
     init(viewModel: HomeViewModel = HomeViewModel()) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         nil
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.tintColor = .white
@@ -53,12 +53,12 @@ class HomeViewController: BaseViewController {
         setup()
         NJAnalytics.shared.trackEvent(name: .didLoad)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.tintColor = backButtonBackgroundColor
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         view.willRemoveSubview(homeView)
@@ -70,35 +70,35 @@ class HomeViewController: BaseViewController {
         navigationController?.navigationBar.tintColor = .white
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-        
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle.fill"), style: .done, target: self, action: #selector(didPressInfo))
     }
-    
+
     private func setup() {
         view.backgroundColor = .systemBackground
         navigationItem.title = Bundle.main.appName
         homeView.delegate = self
-        
+
         addComponents()
     }
-    
+
     private func addComponents() {
         view.addSubviews(homeView, btnMyGames)
         homeView.translatesAutoresizingMaskIntoConstraints = false
         let homeWidth = device == .phone ? screenWidth - 40 : screenWidth / 2
-        
+
         NSLayoutConstraint.activate([
             homeView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             homeView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
             homeView.widthAnchor.constraint(equalToConstant: homeWidth),
-            
+
             btnMyGames.centerXAnchor.constraint(equalTo: homeView.centerXAnchor),
             btnMyGames.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
             btnMyGames.widthAnchor.constraint(equalTo: homeView.widthAnchor),
             btnMyGames.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
+
     @objc func myGamesPressed(_ sender: UIButton) {
 //        let vc = SavedGamesViewController()
 //
@@ -109,11 +109,11 @@ class HomeViewController: BaseViewController {
         viewModel.didPressMySavedGames()
         NJAnalytics.shared.trackEvent(name: .didSave)
     }
-    
+
     @objc func didPressInfo() {
         let infoVC = InfoViewController()
         navigationController?.present(infoVC, animated: true)
-        
+
         NJAnalytics.shared.trackEvent(name: .info)
     }
 }
@@ -124,25 +124,33 @@ extension HomeViewController: HomeViewDelegate {
         switch sender.tag {
         case 0:
             myGames = viewModel.generate(game: .megasena)
-            backButtonBackgroundColor = UIColor(red: 52/255, green: 125/255, blue: 57/255, alpha: 1)
+            gameTitle = GameType.megasena.rawValue
+            backButtonBackgroundColor = UIColor(red: 52 / 255, green: 125 / 255, blue: 57 / 255, alpha: 1)
             NJAnalytics.shared.trackEvent(name: .megasena)
+
         case 1:
             myGames = viewModel.generate(game: .lotofacil)
+            gameTitle = GameType.lotofacil.rawValue
             backButtonBackgroundColor = .systemPurple
             NJAnalytics.shared.trackEvent(name: .lotofacil)
+
         case 2:
             myGames = viewModel.generate(game: .quina)
-            backButtonBackgroundColor = UIColor(red: 25/255, green: 72/255, blue: 152/255, alpha: 1)
+            gameTitle = GameType.quina.rawValue
+            backButtonBackgroundColor = UIColor(red: 25 / 255, green: 72 / 255, blue: 152 / 255, alpha: 1)
             NJAnalytics.shared.trackEvent(name: .quina)
+
         case 3:
             myGames = viewModel.generate(game: .lotomania)
+            gameTitle = GameType.lotomania.rawValue
             backButtonBackgroundColor = .systemOrange
             NJAnalytics.shared.trackEvent(name: .lotomania)
         default: break
         }
-        
+
         let gameVC = GameViewController()
         gameVC.game = myGames
+        gameVC.gameTitle = gameTitle
         navigationController?.pushViewController(gameVC, animated: true)
     }
 }

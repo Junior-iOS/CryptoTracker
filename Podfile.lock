@@ -105,10 +105,12 @@ PODS:
   - PromisesObjC (2.2.0)
   - PromisesSwift (2.2.0):
     - PromisesObjC (= 2.2.0)
+  - SwiftLint (0.51.0)
 
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/Crashlytics
+  - SwiftLint
 
 SPEC REPOS:
   trunk:
@@ -126,6 +128,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - PromisesSwift
+    - SwiftLint
 
 SPEC CHECKSUMS:
   Firebase: bd152f0f3d278c4060c5c71359db08ebcfd5a3e2
@@ -142,7 +145,8 @@ SPEC CHECKSUMS:
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   PromisesSwift: cf9eb58666a43bbe007302226e510b16c1e10959
+  SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
 
-PODFILE CHECKSUM: 527ef013f0b06c2c0094766c6b5e6c0f374e2e09
+PODFILE CHECKSUM: b448b51e9ad1aae015f6bc3d89bb4b759f5fe2df
 
 COCOAPODS: 1.12.1

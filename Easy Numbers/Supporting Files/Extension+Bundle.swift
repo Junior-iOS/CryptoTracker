@@ -9,6 +9,6 @@ import Foundation
 
 extension Bundle {
     var appName: String {
-        return self.object(forInfoDictionaryKey: "APP_NAME") as! String
+        self.object(forInfoDictionaryKey: "APP_NAME") as! String
     }
 }

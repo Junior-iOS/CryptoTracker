@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 open class BaseViewController: UIViewController {
-    open override func viewDidLayoutSubviews() {
+    override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         view.setGradientColor()
     }

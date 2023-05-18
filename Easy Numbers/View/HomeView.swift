@@ -22,7 +22,6 @@ enum GameType: String {
 }
 
 class HomeView: UIView {
-    
     // MARK: - Properties
     private lazy var contentView: UIView = {
         let view = UIView()
@@ -30,7 +29,7 @@ class HomeView: UIView {
         view.clipsToBounds = true
         return view
     }()
-    
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -38,18 +37,18 @@ class HomeView: UIView {
         label.text = "Escolha seu jogo"
         return label
     }()
-    
+
     private lazy var btnMegaSena: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(GameType.megasena.rawValue, for: .normal)
         button.addTarget(self, action: #selector(generatePressed), for: .touchUpInside)
-        button.backgroundColor = UIColor(red: 52/255, green: 125/255, blue: 57/255, alpha: 1)
+        button.backgroundColor = UIColor(red: 52 / 255, green: 125 / 255, blue: 57 / 255, alpha: 1)
         button.titleLabel?.textColor = .white
         button.tag = 0
         return button
     }()
-    
+
     private lazy var btnLotoFacil: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -60,18 +59,18 @@ class HomeView: UIView {
         button.tag = 1
         return button
     }()
-    
+
     private lazy var btnQuina: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(GameType.quina.rawValue, for: .normal)
         button.addTarget(self, action: #selector(generatePressed), for: .touchUpInside)
-        button.backgroundColor = UIColor(red: 25/255, green: 72/255, blue: 152/255, alpha: 1)
+        button.backgroundColor = UIColor(red: 25 / 255, green: 72 / 255, blue: 152 / 255, alpha: 1)
         button.titleLabel?.textColor = .white
         button.tag = 2
         return button
     }()
-    
+
     private lazy var btnLotoMania: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -82,9 +81,9 @@ class HomeView: UIView {
         button.tag = 3
         return button
     }()
-    
+
     private lazy var games = [btnMegaSena, btnLotoFacil, btnQuina, btnLotoMania]
-    
+
     private lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: games)
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -93,7 +92,7 @@ class HomeView: UIView {
         stack.spacing = 8
         return stack
     }()
-    
+
     weak var delegate: HomeViewDelegate?
 
     // MARK: - Init
@@ -101,12 +100,12 @@ class HomeView: UIView {
         super.init(frame: frame)
         addComponents()
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         nil
     }
-    
+
     // MARK: - Methods
     private func setViewsRoundCorners() {
         games.forEach({
@@ -114,7 +113,7 @@ class HomeView: UIView {
             $0.clipsToBounds = true
         })
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         setViewsRoundCorners()
@@ -126,22 +125,22 @@ private extension HomeView {
     @objc func generatePressed(_ sender: UIButton) {
         delegate?.didPressGenerateButton(sender)
     }
-    
+
     func addComponents() {
         addSubview(contentView)
         contentView.addSubview(stackView)
-        
+
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            
+
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
+
             btnMegaSena.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
