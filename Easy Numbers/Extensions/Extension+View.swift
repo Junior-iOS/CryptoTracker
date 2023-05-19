@@ -29,3 +29,9 @@ extension UIView {
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
 }
+
+extension Array {
+    var isNotEmpty: Bool {
+        return !isEmpty
+    }
+}

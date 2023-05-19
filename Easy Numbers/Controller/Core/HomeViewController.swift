@@ -17,6 +17,7 @@ class HomeViewController: BaseViewController {
         button.backgroundColor = .systemBlue
         button.titleLabel?.textColor = .black
         button.layer.cornerRadius = 10
+        button.isHidden = true
         return button
     }()
 
@@ -44,7 +45,9 @@ class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.tintColor = .white
-        btnMyGames.isHidden = UserDefaults.standard.bool(forKey: "hasSavedGames") ? false : true
+        
+        guard let savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") else { return }
+        btnMyGames.isHidden = savedGames.isNotEmpty ? false : true
     }
 
     override func viewDidLoad() {
