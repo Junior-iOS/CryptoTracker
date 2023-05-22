@@ -8,12 +8,11 @@
 import UIKit
 
 class GameViewController: BaseViewController {
-   
     // MARK: - Properties
     private lazy var gameView = GameView(frame: .zero, game: game ?? [])
     private let viewModel = GameViewModel()
     private let homeViewModel = HomeViewModel()
-    
+
     var game: [Int]?
     var gameTitle: String?
     var savedGames = [String]()
@@ -23,10 +22,10 @@ class GameViewController: BaseViewController {
         super.loadView()
         self.view = gameView
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") ?? []
     }
 
@@ -34,16 +33,16 @@ class GameViewController: BaseViewController {
         super.viewDidLoad()
         setup()
     }
-    
+
     // MARK: - Private methods
     private func setup() {
         navigationItem.title = gameTitle
         view.backgroundColor = .systemBackground
-        
+
         gameView.delegate = self
         viewModel.delegate = self
         viewModel.isSavedButtonHidden()
-        
+
         setRightBarButton()
     }
 
@@ -52,19 +51,20 @@ class GameViewController: BaseViewController {
         guard let game else { return }
         self.gameView.setGame(game)
     }
-    
+
     private func setRightBarButton() {
         let saveButton = UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(saveGame))
         navigationItem.rightBarButtonItems = [saveButton]
     }
-    
+
     @objc private func saveGame() {
         guard let result = game else { return }
         self.savedGames.append("\(result)")
-        
+        self.savedGames.removeDuplicates()
+
         UserDefaults.standard.set(savedGames, forKey: "SavedGames")
         viewModel.isSavedButtonHidden()
-        
+
 //        btnCheckSavedGames.isHidden = false
 //
 //        if loadedGames == nil && loadedIcons == nil {
@@ -90,6 +90,20 @@ class GameViewController: BaseViewController {
     }
 }
 
+
+extension Array where Element: Hashable {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [Element: Bool]()
+        return filter {
+            addedDict.updateValue(true, forKey: $0) == nil
+        }
+    }
+    
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
+    }
+}
+
 // MARK: - GameView Delegate
 extension GameViewController: GameViewDelegate {
     func didPressGenerateGameAgain() {
@@ -102,7 +116,7 @@ extension GameViewController: GameViewDelegate {
         default: break
         }
     }
-    
+
     func didPressCopyGame() {
         guard let result = game, let title = gameTitle else { return }
 

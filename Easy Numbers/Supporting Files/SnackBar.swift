@@ -7,14 +7,14 @@
 
 import Foundation
 import UIKit
-//import MaterialComponents.MaterialSnackbar
+// import MaterialComponents.MaterialSnackbar
 //
-//enum GameCopySave: String {
+// enum GameCopySave: String {
 //    case copy = "Jogo copiado"
 //    case save = "Jogo salvo"
-//}
+// }
 //
-//final class GameSnackBar: NSObject {
+// final class GameSnackBar: NSObject {
 //    static func show(contextView: UIViewController, message: GameCopySave) {
 //        let mdcMessage = MDCSnackbarMessage()
 //        mdcMessage.text = message.rawValue
@@ -29,4 +29,4 @@ import UIKit
 //            MDCSnackbarManager.default.snackbarMessageViewBackgroundColor = UIColor.systemCyan
 //        }
 //    }
-//}
+// }

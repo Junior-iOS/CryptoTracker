@@ -45,7 +45,7 @@ class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.tintColor = .white
-        
+
         guard let savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") else { return }
         btnMyGames.isHidden = savedGames.isNotEmpty ? false : true
     }

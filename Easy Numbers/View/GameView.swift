@@ -34,7 +34,7 @@ class GameView: UIView {
         button.clipsToBounds = true
         return button
     }()
-    
+
     lazy var savedGamesButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +45,7 @@ class GameView: UIView {
         button.clipsToBounds = true
         return button
     }()
-    
+
     private lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [generateButton, savedGamesButton])
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -56,14 +56,14 @@ class GameView: UIView {
     }()
 
     weak var delegate: GameViewDelegate?
-    
+
     private let device = UIDevice.current.userInterfaceIdiom
     private let screenWidth = UIScreen.main.bounds.width
-    
+
     private let kLabelMargin: CGFloat = 20
     private let kButtonMargin: CGFloat = 40
     private let kButtonHeight: CGFloat = 50
-    
+
     private var savedGames: [String]?
 
     init(frame: CGRect, game: [Int]) {
@@ -84,7 +84,7 @@ class GameView: UIView {
                 .replacingOccurrences(of: "]", with: "")
                 .replacingOccurrences(of: ",", with: " ")
         }
-        
+
         gameLabel.textAlignment = game.count == 15 || game.count == 50 ? .justified : .center
     }
 
@@ -100,17 +100,15 @@ class GameView: UIView {
 
             stackView.centerXAnchor.constraint(equalTo: gameLabel.centerXAnchor),
             stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -kButtonMargin),
-            
+
             generateButton.widthAnchor.constraint(equalToConstant: widthAnchor),
             generateButton.heightAnchor.constraint(equalToConstant: kButtonHeight)
         ])
     }
-    
+
     @objc private func didPressSavedGamesButton() {
         savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames")
-        for game in savedGames ?? [] {
-            print(game)
-        }
+        
 //        NJAnalytics.shared.trackEvent(name: .generateAgain)
 //        delegate?.didPressGenerateGameAgain()
     }

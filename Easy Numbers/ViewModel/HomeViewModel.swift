@@ -40,9 +40,9 @@ final class HomeViewModel {
     }
 
     private func generateNumbers(total: Int, universe: Int) -> [Int] {
-        guard let result = result else { return [] }
+        guard let result else { return [] }
         var myGame: [Int] = result
-        
+
         while myGame.count < total {
             let randomNumber = Int.random(in: 1...universe)
             if !myGame.contains(randomNumber) {

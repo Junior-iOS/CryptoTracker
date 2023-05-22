@@ -13,13 +13,11 @@ protocol GameViewModelDelegate: AnyObject {
 }
 
 final class GameViewModel: NSObject {
-    
     weak var delegate: GameViewModelDelegate?
     var savedGames: [String]?
-    
+
     func isSavedButtonHidden() {
         savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames")
         delegate?.hideSavedGamesButton(savedGames ?? [])
     }
-    
 }
