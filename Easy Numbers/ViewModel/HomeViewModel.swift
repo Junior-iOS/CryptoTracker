@@ -11,14 +11,16 @@ import UIKit
 final class HomeViewModel {
     var result: [Int]?
 
-    func didPressMySavedGames() {
-        print("didPressMySavedGames")
+    func route(from viewController: UIViewController, with savedGames: [String]) {
+        let vc = SavedGamesViewController()
+        vc.savedGames = savedGames
+        viewController.navigationController?.pushViewController(vc, animated: true)
     }
 
-    func generate(game: GameType) -> [Int] {
+    func generate(_ gameType: GameType) -> [Int] {
         result = []
 
-        switch game {
+        switch gameType {
         case .megasena:
             result = generateNumbers(total: 6, universe: 60)
 

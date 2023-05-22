@@ -109,7 +109,8 @@ class HomeViewController: BaseViewController {
 //            guard let loadedGames = loadedGames, let loadedIcons = loadedIcons else { return }
 //            vc.game = Game(icons: loadedIcons, loadedGames: loadedGames)
 //        }
-        viewModel.didPressMySavedGames()
+        guard let savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") else { return }
+        viewModel.route(from: self, with: savedGames)
         NJAnalytics.shared.trackEvent(name: .didSave)
     }
 
@@ -126,25 +127,25 @@ extension HomeViewController: HomeViewDelegate {
     func didPressGenerateButton(_ sender: UIButton) {
         switch sender.tag {
         case 0:
-            myGames = viewModel.generate(game: .megasena)
+            myGames = viewModel.generate(.megasena)
             gameTitle = GameType.megasena.rawValue
             backButtonBackgroundColor = UIColor(red: 52 / 255, green: 125 / 255, blue: 57 / 255, alpha: 1)
             NJAnalytics.shared.trackEvent(name: .megasena)
 
         case 1:
-            myGames = viewModel.generate(game: .lotofacil)
+            myGames = viewModel.generate(.lotofacil)
             gameTitle = GameType.lotofacil.rawValue
             backButtonBackgroundColor = .systemPurple
             NJAnalytics.shared.trackEvent(name: .lotofacil)
 
         case 2:
-            myGames = viewModel.generate(game: .quina)
+            myGames = viewModel.generate(.quina)
             gameTitle = GameType.quina.rawValue
             backButtonBackgroundColor = UIColor(red: 25 / 255, green: 72 / 255, blue: 152 / 255, alpha: 1)
             NJAnalytics.shared.trackEvent(name: .quina)
 
         case 3:
-            myGames = viewModel.generate(game: .lotomania)
+            myGames = viewModel.generate(.lotomania)
             gameTitle = GameType.lotomania.rawValue
             backButtonBackgroundColor = .systemOrange
             NJAnalytics.shared.trackEvent(name: .lotomania)

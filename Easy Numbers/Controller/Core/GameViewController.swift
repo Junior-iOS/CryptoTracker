@@ -10,7 +10,7 @@ import UIKit
 class GameViewController: BaseViewController {
     // MARK: - Properties
     private lazy var gameView = GameView(frame: .zero, game: game ?? [])
-    private let viewModel = GameViewModel()
+    private let viewModel: GameViewModel
     private let homeViewModel = HomeViewModel()
 
     var game: [Int]?
@@ -33,6 +33,16 @@ class GameViewController: BaseViewController {
         super.viewDidLoad()
         setup()
     }
+    
+    init(viewModel: GameViewModel = GameViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        nil
+    }
 
     // MARK: - Private methods
     private func setup() {
@@ -47,7 +57,7 @@ class GameViewController: BaseViewController {
     }
 
     private func generateGame(_ type: GameType) {
-        self.game = homeViewModel.generate(game: type)
+        self.game = homeViewModel.generate(type)
         guard let game else { return }
         self.gameView.setGame(game)
     }
@@ -125,6 +135,10 @@ extension GameViewController: GameViewDelegate {
             .replacingOccurrences(of: "[", with: "")
             .replacingOccurrences(of: "]", with: "")
             .replacingOccurrences(of: ",", with: " ")
+    }
+    
+    func didPressSavedGames(_ savedGames: [String]) {
+        viewModel.route(from: self, with: savedGames)
     }
 }
 

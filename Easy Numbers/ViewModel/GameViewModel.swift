@@ -20,4 +20,10 @@ final class GameViewModel: NSObject {
         savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames")
         delegate?.hideSavedGamesButton(savedGames ?? [])
     }
+    
+    func route(from viewController: UIViewController, with savedGames: [String]) {
+        let vc = SavedGamesViewController()
+        vc.savedGames = savedGames
+        viewController.navigationController?.pushViewController(vc, animated: true)
+    }
 }
