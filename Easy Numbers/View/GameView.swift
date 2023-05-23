@@ -80,10 +80,7 @@ class GameView: UIView {
 
     func setGame(_ game: [Int]) {
         DispatchQueue.main.async {
-            self.gameLabel.text = "\(game)"
-                .replacingOccurrences(of: "[", with: "")
-                .replacingOccurrences(of: "]", with: "")
-                .replacingOccurrences(of: ",", with: " ")
+            self.gameLabel.text = "\(game)".removeBrackets()
         }
 
         gameLabel.textAlignment = game.count == 15 || game.count == 50 ? .justified : .center

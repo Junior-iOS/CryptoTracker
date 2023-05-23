@@ -131,10 +131,7 @@ extension GameViewController: GameViewDelegate {
         guard let result = game, let title = gameTitle else { return }
 
         let pasteboard = UIPasteboard.general
-        pasteboard.string = "\(String(describing: title)) 🤞🏻\n\(result)"
-            .replacingOccurrences(of: "[", with: "")
-            .replacingOccurrences(of: "]", with: "")
-            .replacingOccurrences(of: ",", with: " ")
+        pasteboard.string = "\(String(describing: title)) 🤞🏻\n\(result)".removeBrackets()
     }
     
     func didPressSavedGames(_ savedGames: [String]) {

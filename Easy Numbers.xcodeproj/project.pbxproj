@@ -27,6 +27,9 @@
 		14888E792A1B339600359431 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14888E782A1B339500359431 /* Game.swift */; };
 		14888E7B2A1B41C500359431 /* SavedGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */; };
 		149D53802A16BFD900DC71F0 /* SnackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D537F2A16BFD900DC71F0 /* SnackBar.swift */; };
+		14C663FB2A1C67EC005E4E46 /* SavedGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C663FA2A1C67EC005E4E46 /* SavedGamesView.swift */; };
+		14C663FE2A1C6872005E4E46 /* SavedGamesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C663FD2A1C6872005E4E46 /* SavedGamesTableViewCell.swift */; };
+		14C664022A1D3A71005E4E46 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C664012A1D3A71005E4E46 /* Extension+String.swift */; };
 		14FB0E972A16C79400AD91E9 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB0E962A16C79400AD91E9 /* GameViewModel.swift */; };
 		C94D4105FD075E374BB325B3 /* Pods_Easy_Numbers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2A81708FC34ED629B7F91F /* Pods_Easy_Numbers.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +57,9 @@
 		14888E782A1B339500359431 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGamesViewController.swift; sourceTree = "<group>"; };
 		149D537F2A16BFD900DC71F0 /* SnackBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackBar.swift; sourceTree = "<group>"; };
+		14C663FA2A1C67EC005E4E46 /* SavedGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGamesView.swift; sourceTree = "<group>"; };
+		14C663FD2A1C6872005E4E46 /* SavedGamesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGamesTableViewCell.swift; sourceTree = "<group>"; };
+		14C664012A1D3A71005E4E46 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		14FB0E962A16C79400AD91E9 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		3B2A81708FC34ED629B7F91F /* Pods_Easy_Numbers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Easy_Numbers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6F3ED9AE680961C7239802 /* Pods-Easy Numbers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy Numbers.release.xcconfig"; path = "Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +144,8 @@
 			children = (
 				14460B4E2A0D38AA00C4DA54 /* HomeView.swift */,
 				14460B662A153C0D00C4DA54 /* GameView.swift */,
+				14C663FA2A1C67EC005E4E46 /* SavedGamesView.swift */,
+				14C663FD2A1C6872005E4E46 /* SavedGamesTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -157,6 +165,7 @@
 				14460B472A0C95EB00C4DA54 /* Extension+UITableView.swift */,
 				14460B462A0C95EB00C4DA54 /* Extension+UIViewController.swift */,
 				14460B442A0C95EB00C4DA54 /* Extension+View.swift */,
+				14C664012A1D3A71005E4E46 /* Extension+String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -374,6 +383,9 @@
 				14460B2C2A0C949900C4DA54 /* SceneDelegate.swift in Sources */,
 				14460B4F2A0D38AA00C4DA54 /* HomeView.swift in Sources */,
 				14888E792A1B339600359431 /* Game.swift in Sources */,
+				14C663FE2A1C6872005E4E46 /* SavedGamesTableViewCell.swift in Sources */,
+				14C663FB2A1C67EC005E4E46 /* SavedGamesView.swift in Sources */,
+				14C664022A1D3A71005E4E46 /* Extension+String.swift in Sources */,
 				14460B482A0C95EB00C4DA54 /* Extension+Bundle.swift in Sources */,
 				14460B672A153C0D00C4DA54 /* GameView.swift in Sources */,
 				14460B4C2A0C95EB00C4DA54 /* Extension+UITableView.swift in Sources */,
