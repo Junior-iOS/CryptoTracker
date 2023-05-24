@@ -10,6 +10,7 @@ import UIKit
 class SavedGamesViewController: BaseViewController {
     
     // MARK: - Properties
+    private let viewModel: SavedGamesViewModel
     private let savedGamesView = SavedGamesView()
     var savedGames: [String] = []
     
@@ -22,6 +23,16 @@ class SavedGamesViewController: BaseViewController {
         super.viewDidLoad()
         setupNavButtons()
         tableViewSetup()
+    }
+    
+    init(viewModel: SavedGamesViewModel = SavedGamesViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        nil
     }
     
     private func tableViewSetup() {
@@ -65,20 +76,15 @@ class SavedGamesViewController: BaseViewController {
     }
     
     @objc func share() {
-        var text = "", gameName = ""
+        var text = ""
         
         for i in 0...savedGames.count - 1 {
-            if savedGames[i].count <= 20 {
-                gameName = "Quina"
-            } else if savedGames[i].count > 20 && savedGames[i].count <= 24 {
-                gameName = "Mega-sena"
-            } else if savedGames[i].count > 24 && savedGames[i].count <= 60 {
-                gameName = "Loto Fácil"
-            } else {
-                gameName = "Lotomania"
+            viewModel.setGameName(savedGames[i]) { [weak self] gameName in
+                guard let self else { return }
+                text += "🍀 \(gameName) 🤞🏻\n\(savedGames[i])\n\n"
             }
-            text += "🍀 \(gameName) 🤞🏻\n\(savedGames[i])\n\n"
         }
+        
         let ac = UIActivityViewController(activityItems: [text.removeBrackets()], applicationActivities: nil)
         
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -90,6 +96,8 @@ class SavedGamesViewController: BaseViewController {
                 self.present(ac, animated: true)
             }
         }
+        
+        NJAnalytics.shared.trackEvent(name: .didShare)
     }
 }
 
