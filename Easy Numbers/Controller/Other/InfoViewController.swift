@@ -8,7 +8,6 @@
 import UIKit
 
 class InfoViewController: UIViewController {
-    
     private lazy var njImageView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -23,10 +22,10 @@ class InfoViewController: UIViewController {
         view.backgroundColor = .darkGray
         addComponents()
     }
-    
+
     private func addComponents() {
         view.addSubview(njImageView)
-        
+
         NSLayoutConstraint.activate([
             njImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             njImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -34,5 +33,4 @@ class InfoViewController: UIViewController {
             njImageView.heightAnchor.constraint(equalToConstant: 150)
         ])
     }
-
 }
