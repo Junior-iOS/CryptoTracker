@@ -31,7 +31,7 @@ class GameView: UIView {
         button.setTitle("Gerar novamente", for: .normal)
         button.backgroundColor = .systemBlue
         button.addTarget(self, action: #selector(generateAgain), for: .touchUpInside)
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = kButtonHeight / 2
         button.clipsToBounds = true
         return button
     }()
@@ -42,7 +42,7 @@ class GameView: UIView {
         button.setTitle("Jogos salvos", for: .normal)
         button.backgroundColor = .systemBlue
         button.addTarget(self, action: #selector(didPressSavedGamesButton), for: .touchUpInside)
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = kButtonHeight / 2
         button.clipsToBounds = true
         return button
     }()
@@ -100,7 +100,7 @@ class GameView: UIView {
             stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -kButtonMargin),
 
             generateButton.widthAnchor.constraint(equalToConstant: widthAnchor),
-            generateButton.heightAnchor.constraint(equalToConstant: kButtonHeight)
+            generateButton.heightAnchor.constraint(equalToConstant: kButtonHeight),
         ])
     }
 

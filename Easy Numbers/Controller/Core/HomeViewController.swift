@@ -16,7 +16,7 @@ class HomeViewController: BaseViewController {
         button.addTarget(self, action: #selector(myGamesPressed), for: .touchUpInside)
         button.backgroundColor = .systemBlue
         button.titleLabel?.textColor = .black
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = kButtonHeight / 2
         button.isHidden = true
         return button
     }()
@@ -30,6 +30,9 @@ class HomeViewController: BaseViewController {
     private var myGames: [Int] = []
     private var gameTitle = ""
     private var backButtonBackgroundColor = UIColor.white
+    
+    private let kButtonHeight: CGFloat = 50
+    private let kButtonMargin :CGFloat = 40
 
     // MARK: - Init & Life Cycle
     init(viewModel: HomeViewModel = HomeViewModel()) {
@@ -96,19 +99,13 @@ class HomeViewController: BaseViewController {
             homeView.widthAnchor.constraint(equalToConstant: homeWidth),
 
             btnMyGames.centerXAnchor.constraint(equalTo: homeView.centerXAnchor),
-            btnMyGames.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
+            btnMyGames.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -kButtonMargin),
             btnMyGames.widthAnchor.constraint(equalTo: homeView.widthAnchor),
-            btnMyGames.heightAnchor.constraint(equalToConstant: 50)
+            btnMyGames.heightAnchor.constraint(equalToConstant: kButtonHeight)
         ])
     }
 
     @objc func myGamesPressed(_ sender: UIButton) {
-//        let vc = SavedGamesViewController()
-//
-//        if loadedGames != nil && loadedIcons != nil {
-//            guard let loadedGames = loadedGames, let loadedIcons = loadedIcons else { return }
-//            vc.game = Game(icons: loadedIcons, loadedGames: loadedGames)
-//        }
         guard let savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") else { return }
         viewModel.route(from: self, with: savedGames)
         NJAnalytics.shared.trackEvent(name: .didSave)

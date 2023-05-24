@@ -109,7 +109,7 @@ class HomeView: UIView {
     // MARK: - Methods
     private func setViewsRoundCorners() {
         games.forEach({
-            $0.layer.cornerRadius = 10
+            $0.layer.cornerRadius = 25
             $0.clipsToBounds = true
         })
     }

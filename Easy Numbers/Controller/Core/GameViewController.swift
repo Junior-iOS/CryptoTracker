@@ -74,28 +74,6 @@ class GameViewController: BaseViewController {
 
         UserDefaults.standard.set(savedGames, forKey: "SavedGames")
         viewModel.isSavedButtonHidden()
-
-//        btnCheckSavedGames.isHidden = false
-//
-//        if loadedGames == nil && loadedIcons == nil {
-//            if let result = result {
-//                savedGames.append("\(result)")
-//                savedIcons.append(gameType.rawValue)
-//
-//                userDefaults.set(savedGames, forKey: "SavedGames")
-//                userDefaults.set(savedIcons, forKey: "SavedIcons")
-//            }
-//        } else {
-//            if let result = result {
-//                loadedGames?.append("\(result)")
-//                loadedIcons?.append(gameType.rawValue)
-//
-//                guard let loadedGames = loadedGames, let loadedIcons = loadedIcons else { return }
-//                userDefaults.set(loadedGames, forKey: "SavedGames")
-//                userDefaults.set(loadedIcons, forKey: "SavedIcons")
-//            }
-//        }
-//
 //        GameSnackBar.show(contextView: self, message: .save)
     }
 }

@@ -11,4 +11,8 @@ extension Bundle {
     var appName: String {
         self.object(forInfoDictionaryKey: "APP_NAME") as? String ?? ""
     }
+    
+    var savedGamestitle: String {
+        self.object(forInfoDictionaryKey: "SAVED_GAMES_TITLE") as? String ?? ""
+    }
 }
