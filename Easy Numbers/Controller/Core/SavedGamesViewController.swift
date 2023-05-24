@@ -79,7 +79,7 @@ class SavedGamesViewController: BaseViewController {
             }
             text += "🍀 \(gameName) 🤞🏻\n\(savedGames[i])\n\n"
         }
-        let ac = UIActivityViewController(activityItems: [text.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")], applicationActivities: nil)
+        let ac = UIActivityViewController(activityItems: [text.removeBrackets()], applicationActivities: nil)
         
         if UIDevice.current.userInterfaceIdiom == .pad {
             ac.popoverPresentationController?.sourceView = UIApplication.shared.windows.first
