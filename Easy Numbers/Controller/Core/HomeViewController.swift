@@ -23,6 +23,8 @@ class HomeViewController: BaseViewController {
 
     private let homeView = HomeView()
     private var viewModel = HomeViewModel()
+    
+    weak var mainCoordinator: MainCoordinator?
 
     private let device = UIDevice.current.userInterfaceIdiom
     private let screenWidth = UIScreen.main.bounds.width
@@ -77,7 +79,10 @@ class HomeViewController: BaseViewController {
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle.fill"), style: .done, target: self, action: #selector(didPressInfo))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle.fill"),
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(didPressInfo))
     }
 
     private func setup() {
@@ -112,9 +117,7 @@ class HomeViewController: BaseViewController {
     }
 
     @objc func didPressInfo() {
-        let infoVC = InfoViewController()
-        navigationController?.present(infoVC, animated: true)
-
+        mainCoordinator?.routeToInfoVC()
         NJAnalytics.shared.trackEvent(name: .info)
     }
 }

@@ -74,7 +74,8 @@ class GameViewController: BaseViewController {
 
         UserDefaults.standard.set(savedGames, forKey: "SavedGames")
         viewModel.isSavedButtonHidden()
-//        GameSnackBar.show(contextView: self, message: .save)
+        
+        haptic(.heavy)
     }
 }
 
@@ -110,6 +111,8 @@ extension GameViewController: GameViewDelegate {
 
         let pasteboard = UIPasteboard.general
         pasteboard.string = "\(String(describing: title)) 🤞🏻\n\(result)".removeBrackets()
+        
+        haptic(.medium)
     }
     
     func didPressSavedGames(_ savedGames: [String]) {
