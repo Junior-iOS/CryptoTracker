@@ -5,35 +5,57 @@
 //  Created by NJ Development on 13/05/23.
 //
 
+import Foundation
 import UIKit
+import WebKit
 
-class InfoViewController: UIViewController {
-    private lazy var njImageView: UIImageView = {
-        let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.image = UIImage(named: "Gradient Logo")
-        view.contentMode = .scaleAspectFill
-        view.clipsToBounds = true
-        return view
+class InfoViewController: BaseViewController {
+    
+    private lazy var webView: WKWebView = {
+        let webView = WKWebView()
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        return webView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .darkGray
         addComponents()
+        addRightBarButton()
     }
-
+    
+    private func addRightBarButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "house.circle"),
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(didPressHome))
+    }
+    
+    @objc private func didPressHome() {
+        configureWebView()
+    }
+    
     private func addComponents() {
-        view.addSubview(njImageView)
-
+        view.backgroundColor = .systemBackground
+        view.addSubview(webView)
+        
+        setConstraints()
+        configureWebView()
+    }
+    
+    private func setConstraints() {
         NSLayoutConstraint.activate([
-            njImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            njImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            njImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            njImageView.heightAnchor.constraint(equalToConstant: 150)
+            webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            webView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            webView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    
+    private func configureWebView() {
+        DispatchQueue.main.async {
+            guard let url = URL(string: Bundle.main.resultsURL) else { return }
+            self.webView.load(URLRequest(url: url))
+            self.webView.allowsBackForwardNavigationGestures = true
+        }
+    }
 }
-
-
-// https://www.caixa.gov.br/menu-app-loterias/Paginas/menu.aspx

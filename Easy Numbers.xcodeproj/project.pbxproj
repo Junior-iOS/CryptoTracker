@@ -25,6 +25,8 @@
 		14460B672A153C0D00C4DA54 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B662A153C0D00C4DA54 /* GameView.swift */; };
 		14460B692A153EFF00C4DA54 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B682A153EFF00C4DA54 /* BaseViewController.swift */; };
 		14531BBC2A1DD35400E0BA6D /* SavedGamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14531BBB2A1DD35400E0BA6D /* SavedGamesViewModel.swift */; };
+		145660D22A341EC1003FD467 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145660D12A341EC1003FD467 /* Coordinator.swift */; };
+		145660D42A341EDC003FD467 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145660D32A341EDC003FD467 /* MainCoordinator.swift */; };
 		14888E792A1B339600359431 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14888E782A1B339500359431 /* Game.swift */; };
 		14888E7B2A1B41C500359431 /* SavedGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */; };
 		149D53802A16BFD900DC71F0 /* SnackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D537F2A16BFD900DC71F0 /* SnackBar.swift */; };
@@ -56,6 +58,8 @@
 		14460B662A153C0D00C4DA54 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		14460B682A153EFF00C4DA54 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		14531BBB2A1DD35400E0BA6D /* SavedGamesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGamesViewModel.swift; sourceTree = "<group>"; };
+		145660D12A341EC1003FD467 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		145660D32A341EDC003FD467 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		14888E782A1B339500359431 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGamesViewController.swift; sourceTree = "<group>"; };
 		149D537F2A16BFD900DC71F0 /* SnackBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackBar.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 			children = (
 				14460B4D2A0C98BC00C4DA54 /* Resources */,
 				14460B3E2A0C953100C4DA54 /* Application */,
+				145660D02A341EAE003FD467 /* Coordinator */,
 				14460B3D2A0C951C00C4DA54 /* Controller */,
 				14460B412A0C954F00C4DA54 /* Model */,
 				14460B402A0C954800C4DA54 /* View */,
@@ -209,6 +214,15 @@
 				14460B602A0F60D400C4DA54 /* InfoViewController.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		145660D02A341EAE003FD467 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				145660D12A341EC1003FD467 /* Coordinator.swift */,
+				145660D32A341EDC003FD467 /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		149D537E2A16BFBD00DC71F0 /* Supporting Files */ = {
@@ -372,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14460B2E2A0C949900C4DA54 /* HomeViewController.swift in Sources */,
+				145660D42A341EDC003FD467 /* MainCoordinator.swift in Sources */,
 				14460B612A0F60D400C4DA54 /* InfoViewController.swift in Sources */,
 				14460B5A2A0DEF5900C4DA54 /* NJAnalytics.swift in Sources */,
 				14460B4B2A0C95EB00C4DA54 /* Extension+UIViewController.swift in Sources */,
@@ -388,6 +403,7 @@
 				14531BBC2A1DD35400E0BA6D /* SavedGamesViewModel.swift in Sources */,
 				14888E792A1B339600359431 /* Game.swift in Sources */,
 				14C663FE2A1C6872005E4E46 /* SavedGamesTableViewCell.swift in Sources */,
+				145660D22A341EC1003FD467 /* Coordinator.swift in Sources */,
 				14C663FB2A1C67EC005E4E46 /* SavedGamesView.swift in Sources */,
 				14C664022A1D3A71005E4E46 /* Extension+String.swift in Sources */,
 				14460B482A0C95EB00C4DA54 /* Extension+Bundle.swift in Sources */,
@@ -548,6 +564,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.njdevelopment.Easy-Numbers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RESULTS_URL = "https://www.caixa.gov.br/menu-app-loterias/Paginas/menu.aspx";
 				SAVED_GAMES_TITLE = "Meus Jogos";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -582,6 +599,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.njdevelopment.Easy-Numbers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RESULTS_URL = "https://www.caixa.gov.br/menu-app-loterias/Paginas/menu.aspx";
 				SAVED_GAMES_TITLE = "Meus Jogos";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

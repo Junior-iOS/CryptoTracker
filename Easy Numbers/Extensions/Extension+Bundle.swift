@@ -15,4 +15,8 @@ extension Bundle {
     var savedGamestitle: String {
         self.object(forInfoDictionaryKey: "SAVED_GAMES_TITLE") as? String ?? ""
     }
+    
+    var resultsURL: String {
+        self.object(forInfoDictionaryKey: "RESULTS_URL") as? String ?? ""
+    }
 }
