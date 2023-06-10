@@ -11,12 +11,6 @@ import UIKit
 final class HomeViewModel {
     var result: [Int]?
 
-    func route(from viewController: UIViewController, with savedGames: [String]) {
-        let vc = SavedGamesViewController()
-        vc.savedGames = savedGames
-        viewController.navigationController?.pushViewController(vc, animated: true)
-    }
-
     func generate(_ gameType: GameType) -> [Int] {
         result = []
 

@@ -13,12 +13,26 @@ class MainCoordinator: Coordinator {
     
     func start() {
         let homeViewController = HomeViewController()
-        homeViewController.mainCoordinator = self
+        homeViewController.coordinator = self
         navigationController.pushViewController(homeViewController, animated: true)
     }
     
     func routeToInfoVC() {
         let infoVC = InfoViewController()
         navigationController.pushViewController(infoVC, animated: true)
+    }
+    
+    func routeToGamesVC(with game: [Int], title: String) {
+        let gameVC = GameViewController()
+        gameVC.coordinator = self
+        gameVC.game = game
+        gameVC.gameTitle = title
+        navigationController.pushViewController(gameVC, animated: true)
+    }
+    
+    func routeToSavedGames(with savedGames: [String]) {
+        let vc = SavedGamesViewController()
+        vc.savedGames = savedGames
+        navigationController.pushViewController(vc, animated: true)
     }
 }
