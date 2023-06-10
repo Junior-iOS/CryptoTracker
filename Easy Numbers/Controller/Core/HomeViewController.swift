@@ -24,7 +24,7 @@ class HomeViewController: BaseViewController {
     private let homeView = HomeView()
     private var viewModel = HomeViewModel()
     
-    weak var mainCoordinator: MainCoordinator?
+    weak var coordinator: MainCoordinator?
 
     private let device = UIDevice.current.userInterfaceIdiom
     private let screenWidth = UIScreen.main.bounds.width
@@ -34,7 +34,7 @@ class HomeViewController: BaseViewController {
     private var backButtonBackgroundColor = UIColor.white
     
     private let kButtonHeight: CGFloat = 50
-    private let kButtonMargin :CGFloat = 40
+    private let kButtonMargin: CGFloat = 40
 
     // MARK: - Init & Life Cycle
     init(viewModel: HomeViewModel = HomeViewModel()) {
@@ -53,6 +53,7 @@ class HomeViewController: BaseViewController {
 
         guard let savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") else { return }
         btnMyGames.isHidden = savedGames.isNotEmpty ? false : true
+        btnMyGames.isEnabled = true
     }
 
     override func viewDidLoad() {
@@ -112,12 +113,14 @@ class HomeViewController: BaseViewController {
 
     @objc func myGamesPressed(_ sender: UIButton) {
         guard let savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") else { return }
-        viewModel.route(from: self, with: savedGames)
+        btnMyGames.isEnabled = false
+        coordinator?.routeToSavedGames(with: savedGames)
+        
         NJAnalytics.shared.trackEvent(name: .didSave)
     }
 
     @objc func didPressInfo() {
-        mainCoordinator?.routeToInfoVC()
+        coordinator?.routeToInfoVC()
         NJAnalytics.shared.trackEvent(name: .info)
     }
 }
@@ -152,9 +155,6 @@ extension HomeViewController: HomeViewDelegate {
         default: break
         }
 
-        let gameVC = GameViewController()
-        gameVC.game = myGames
-        gameVC.gameTitle = gameTitle
-        navigationController?.pushViewController(gameVC, animated: true)
+        coordinator?.routeToGamesVC(with: myGames, title: gameTitle)
     }
 }

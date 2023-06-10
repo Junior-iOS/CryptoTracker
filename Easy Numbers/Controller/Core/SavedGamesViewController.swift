@@ -123,17 +123,49 @@ extension SavedGamesViewController: UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = UIColor.clear
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let erase = UIContextualAction(style: .normal, title: "🚮") { [weak self] _, _, _ in
+            guard let self = self else { return }
+            
             savedGames.remove(at: indexPath.row)
             UserDefaults.standard.set(savedGames, forKey: "SavedGames")
             
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.deleteRows(at: [indexPath], with: .left)
             tableView.reloadData()
+            
+            if savedGames.count == 0 {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
         }
         
-        if savedGames.count == 0 {
-            self.navigationController?.popToRootViewController(animated: true)
+        let share = UIContextualAction(style: .normal, title: "↗️") { [weak self] _, _, _ in
+            guard let self = self else { return }
+            var text = ""
+            let selectedGame = savedGames[indexPath.row]
+            
+            viewModel.setGameName(selectedGame) { gameName in
+                text += "🍀 \(gameName) 🤞🏻\n\(selectedGame)\n\n"
+            }
+            
+            let ac = UIActivityViewController(activityItems: [text.removeBrackets()], applicationActivities: nil)
+            
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                ac.popoverPresentationController?.sourceView = UIApplication.shared.windows.first
+                ac.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 300, height: 350)
+                UIApplication.shared.windows.first?.rootViewController?.present(ac, animated: true, completion: nil)
+            } else {
+                DispatchQueue.main.async {
+                    self.present(ac, animated: true)
+                }
+            }
+            
+            NJAnalytics.shared.trackEvent(name: .didShare)
         }
+        
+        erase.backgroundColor = .njErase
+        share.backgroundColor = .njShare
+        
+        let swipeAction = UISwipeActionsConfiguration(actions: [erase, share])
+        return swipeAction
     }
 }

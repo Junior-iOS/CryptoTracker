@@ -9,7 +9,6 @@ import UIKit
 import WebKit
 
 class InfoView: UIView {
-
     lazy var webView: WKWebView = {
         let webView = WKWebView()
         webView.translatesAutoresizingMaskIntoConstraints = false

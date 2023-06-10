@@ -21,7 +21,8 @@ class SavedGamesTableViewCell: UITableViewCell {
     private lazy var gameImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "gear")
+        imageView.layer.cornerRadius = kGameImageSize / 2
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -55,8 +56,8 @@ class SavedGamesTableViewCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             cellBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 3),
-            cellBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: kGameMargin),
-            cellBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -kGameMargin),
+            cellBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: kLabelMargin),
+            cellBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -kLabelMargin),
             cellBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -3),
             
             gameImage.leadingAnchor.constraint(equalTo: cellBackgroundView.leadingAnchor, constant: kCellBackgroundMargin),
@@ -67,14 +68,23 @@ class SavedGamesTableViewCell: UITableViewCell {
             gameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: kLabelMargin),
             gameLabel.leadingAnchor.constraint(equalTo: gameImage.trailingAnchor, constant: kGameMargin),
             gameLabel.trailingAnchor.constraint(equalTo: cellBackgroundView.trailingAnchor, constant: -kLabelMargin),
-            gameLabel.bottomAnchor.constraint(equalTo: cellBackgroundView.bottomAnchor, constant: -kLabelMargin),
-            gameLabel.centerYAnchor.constraint(equalTo: gameImage.centerYAnchor)
+            gameLabel.bottomAnchor.constraint(equalTo: cellBackgroundView.bottomAnchor, constant: -kLabelMargin)
         ])
     }
     
     func configure(_ savedGames: String) {
         self.gameLabel.text = savedGames.removeBrackets()
         self.gameLabel.textAlignment = savedGames.count == 15 || savedGames.count == 50 ? .justified : .left
+        
+        if savedGames.count <= 20 {
+            gameImage.image = UIImage(named: "quina")
+        } else if savedGames.count > 20 && savedGames.count <= 24 {
+            gameImage.image = UIImage(named: "megasena")
+        } else if savedGames.count > 24 && savedGames.count <= 60 {
+            gameImage.image = UIImage(named: "lotofacil")
+        } else {
+            gameImage.image = UIImage(named: "lotomania")
+        }
     }
     
     override func prepareForReuse() {
