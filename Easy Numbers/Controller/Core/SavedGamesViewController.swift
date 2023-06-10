@@ -143,8 +143,7 @@ extension SavedGamesViewController: UITableViewDelegate, UITableViewDataSource {
             var text = ""
             let selectedGame = savedGames[indexPath.row]
             
-            viewModel.setGameName(selectedGame) { [weak self] gameName in
-                guard let self else { return }
+            viewModel.setGameName(selectedGame) { gameName in
                 text += "🍀 \(gameName) 🤞🏻\n\(selectedGame)\n\n"
             }
             
