@@ -34,7 +34,7 @@ class HomeViewController: BaseViewController {
     private var backButtonBackgroundColor = UIColor.white
     
     private let kButtonHeight: CGFloat = 50
-    private let kButtonMargin :CGFloat = 40
+    private let kButtonMargin: CGFloat = 40
 
     // MARK: - Init & Life Cycle
     init(viewModel: HomeViewModel = HomeViewModel()) {
@@ -53,6 +53,7 @@ class HomeViewController: BaseViewController {
 
         guard let savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") else { return }
         btnMyGames.isHidden = savedGames.isNotEmpty ? false : true
+        btnMyGames.isEnabled = true
     }
 
     override func viewDidLoad() {
@@ -112,6 +113,7 @@ class HomeViewController: BaseViewController {
 
     @objc func myGamesPressed(_ sender: UIButton) {
         guard let savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") else { return }
+        btnMyGames.isEnabled = false
         coordinator?.routeToSavedGames(with: savedGames)
         
         NJAnalytics.shared.trackEvent(name: .didSave)
