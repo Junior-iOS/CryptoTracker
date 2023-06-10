@@ -5,32 +5,40 @@
 //  Created by NJ Development on 13/05/23.
 //
 
+import Foundation
 import UIKit
+import WebKit
 
-class InfoViewController: UIViewController {
-    private lazy var njImageView: UIImageView = {
-        let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.image = UIImage(named: "Gradient Logo")
-        view.contentMode = .scaleAspectFill
-        view.clipsToBounds = true
-        return view
-    }()
-
+class InfoViewController: BaseViewController {
+    
+    private let infoView = InfoView()
+    private let infoViewModel = InfoViewModel()
+    
+    override func loadView() {
+        super.loadView()
+        self.view = infoView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .darkGray
-        addComponents()
+        configureWebView()
+        addRightBarButton()
     }
-
-    private func addComponents() {
-        view.addSubview(njImageView)
-
-        NSLayoutConstraint.activate([
-            njImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            njImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            njImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            njImageView.heightAnchor.constraint(equalToConstant: 150)
-        ])
+    
+    private func addRightBarButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "house.circle"),
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(didPressHome))
+    }
+    
+    private func configureWebView() {
+        DispatchQueue.main.async {
+            self.infoViewModel.configureWebView(self.infoView.webView)
+        }
+    }
+    
+    @objc private func didPressHome() {
+        configureWebView()
     }
 }
