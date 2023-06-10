@@ -11,15 +11,17 @@ import WebKit
 
 class InfoViewController: BaseViewController {
     
-    private lazy var webView: WKWebView = {
-        let webView = WKWebView()
-        webView.translatesAutoresizingMaskIntoConstraints = false
-        return webView
-    }()
+    private let infoView = InfoView()
+    private let infoViewModel = InfoViewModel()
+    
+    override func loadView() {
+        super.loadView()
+        self.view = infoView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addComponents()
+        configureWebView()
         addRightBarButton()
     }
     
@@ -30,32 +32,13 @@ class InfoViewController: BaseViewController {
                                                             action: #selector(didPressHome))
     }
     
-    @objc private func didPressHome() {
-        configureWebView()
-    }
-    
-    private func addComponents() {
-        view.backgroundColor = .systemBackground
-        view.addSubview(webView)
-        
-        setConstraints()
-        configureWebView()
-    }
-    
-    private func setConstraints() {
-        NSLayoutConstraint.activate([
-            webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            webView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            webView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-    }
-    
     private func configureWebView() {
         DispatchQueue.main.async {
-            guard let url = URL(string: Bundle.main.resultsURL) else { return }
-            self.webView.load(URLRequest(url: url))
-            self.webView.allowsBackForwardNavigationGestures = true
+            self.infoViewModel.configureWebView(self.infoView.webView)
         }
+    }
+    
+    @objc private func didPressHome() {
+        configureWebView()
     }
 }
