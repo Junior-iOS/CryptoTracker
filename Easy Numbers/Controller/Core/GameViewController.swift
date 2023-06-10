@@ -12,9 +12,12 @@ class GameViewController: BaseViewController {
     private lazy var gameView = GameView(frame: .zero, game: game ?? [])
     private let viewModel: GameViewModel
     private let homeViewModel = HomeViewModel()
+    
+    weak var coordinator: MainCoordinator?
 
     var game: [Int]?
     var gameTitle: String?
+    
     var savedGames = [String]()
 
     // MARK: - Life cycle
@@ -79,20 +82,6 @@ class GameViewController: BaseViewController {
     }
 }
 
-
-extension Array where Element: Hashable {
-    func removingDuplicates() -> [Element] {
-        var addedDict = [Element: Bool]()
-        return filter {
-            addedDict.updateValue(true, forKey: $0) == nil
-        }
-    }
-    
-    mutating func removeDuplicates() {
-        self = self.removingDuplicates()
-    }
-}
-
 // MARK: - GameView Delegate
 extension GameViewController: GameViewDelegate {
     func didPressGenerateGameAgain() {
@@ -116,7 +105,7 @@ extension GameViewController: GameViewDelegate {
     }
     
     func didPressSavedGames(_ savedGames: [String]) {
-        viewModel.route(from: self, with: savedGames)
+        coordinator?.routeToSavedGames(with: savedGames)
     }
 }
 

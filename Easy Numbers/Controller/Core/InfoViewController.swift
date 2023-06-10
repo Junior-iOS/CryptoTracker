@@ -19,6 +19,11 @@ class InfoViewController: BaseViewController {
         self.view = infoView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.tintColor = .white
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureWebView()
