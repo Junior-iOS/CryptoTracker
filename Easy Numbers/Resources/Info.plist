@@ -2,14 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>RESULTS_URL</key>
-	<string>${RESULTS_URL}</string>
-	<key>SAVED_GAMES_TITLE</key>
-	<string>${SAVED_GAMES_TITLE}</string>
 	<key>APP_NAME</key>
 	<string>${APP_NAME}</string>
 	<key>FirebaseAutomaticScreenReportingEnabled</key>
 	<false/>
+	<key>RESULTS_URL</key>
+	<string>${RESULTS_URL}</string>
+	<key>SAVED_GAMES_TITLE</key>
+	<string>${SAVED_GAMES_TITLE}</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UISceneConfigurations</key>
