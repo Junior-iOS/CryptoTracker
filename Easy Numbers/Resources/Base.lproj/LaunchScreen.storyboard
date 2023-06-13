@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,16 +18,26 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by NJ Development®" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SK8-92-xJv">
                                 <rect key="frame" x="40" y="754.66666666666663" width="313" height="23.333333333333371"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gradient Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Gk3-sj-6lZ">
+                                <rect key="frame" x="0.0" y="361" width="393" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="pno-2p-HEK"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.21568626169999999" green="0.21568626169999999" blue="0.21568626169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="SK8-92-xJv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="7S1-fJ-42s"/>
+                            <constraint firstItem="Gk3-sj-6lZ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9PX-lJ-YDT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SK8-92-xJv" secondAttribute="trailing" constant="40" id="Cdk-Bm-2CU"/>
+                            <constraint firstAttribute="trailing" secondItem="Gk3-sj-6lZ" secondAttribute="trailing" id="Gof-Oy-u0F"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SK8-92-xJv" secondAttribute="bottom" constant="40" id="mSn-Iy-bej"/>
+                            <constraint firstItem="Gk3-sj-6lZ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="ukq-rl-tX9"/>
+                            <constraint firstItem="Gk3-sj-6lZ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="vma-J5-NrU"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,8 +47,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="Gradient Logo" width="1304" height="860"/>
     </resources>
 </document>
