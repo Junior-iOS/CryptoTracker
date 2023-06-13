@@ -663,7 +663,7 @@
 			repositoryURL = "https://github.com/Junior-iOS/OnboardingKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.1;
+				minimumVersion = 1.2.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
