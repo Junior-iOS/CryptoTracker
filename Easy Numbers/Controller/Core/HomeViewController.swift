@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import OnboardingKit
 
 class HomeViewController: BaseViewController {
     // MARK: - Properties
@@ -60,6 +61,9 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         setupNavigation()
         setup()
+        updateFlag()
+        
+        viewModel.delegate = self
         NJAnalytics.shared.trackEvent(name: .didLoad)
     }
 
@@ -123,6 +127,12 @@ class HomeViewController: BaseViewController {
         coordinator?.routeToInfoVC()
         NJAnalytics.shared.trackEvent(name: .info)
     }
+    
+    private func updateFlag() {
+        if !UserDefaults.standard.bool(forKey: "isOnboardingSeen") {
+            viewModel.presentOnboardingKit()
+        }
+    }
 }
 
 // MARK: - HomeView Delegate
@@ -156,5 +166,21 @@ extension HomeViewController: HomeViewDelegate {
         }
 
         coordinator?.routeToGamesVC(with: myGames, title: gameTitle)
+    }
+}
+
+// MARK: - HomeViewModel Delegate
+extension HomeViewController: HomeViewModelDelegate {
+    func handlePresentOnboarding() {
+        viewModel.onboardingKit?.launchOnboarding(controller: self)
+    }
+    
+    func didTapNextButton() {
+        print("didTapNextButton")
+    }
+    
+    func didTapGetStarted() {
+        UserDefaults.standard.set(true, forKey: "isOnboardingSeen")
+        viewModel.onboardingKit?.dismissOnboarding()
     }
 }
