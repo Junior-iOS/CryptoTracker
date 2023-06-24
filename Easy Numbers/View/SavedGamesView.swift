@@ -8,7 +8,6 @@
 import UIKit
 
 class SavedGamesView: UIView {
-
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -19,7 +18,7 @@ class SavedGamesView: UIView {
         tableView.backgroundColor = .clear
         return tableView
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstraints()

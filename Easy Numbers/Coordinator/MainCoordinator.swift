@@ -9,19 +9,19 @@ import Foundation
 import UIKit
 
 class MainCoordinator: Coordinator {
-    var navigationController: UINavigationController = UINavigationController()
-    
+    var navigationController = UINavigationController()
+
     func start() {
         let homeViewController = HomeViewController()
         homeViewController.coordinator = self
         navigationController.pushViewController(homeViewController, animated: true)
     }
-    
+
     func routeToInfoVC() {
         let infoVC = InfoViewController()
         navigationController.pushViewController(infoVC, animated: true)
     }
-    
+
     func routeToGamesVC(with game: [Int], title: String) {
         let gameVC = GameViewController()
         gameVC.coordinator = self
@@ -29,10 +29,15 @@ class MainCoordinator: Coordinator {
         gameVC.gameTitle = title
         navigationController.pushViewController(gameVC, animated: true)
     }
-    
+
     func routeToSavedGames(with savedGames: [String]) {
         let vc = SavedGamesViewController()
         vc.savedGames = savedGames
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func routeToOutOfOrderView() {
+        let vc = OutOfOrderViewController()
         navigationController.pushViewController(vc, animated: true)
     }
 }

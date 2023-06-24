@@ -11,6 +11,5 @@ target 'Easy Numbers' do
   pod 'Firebase/Crashlytics'
   pod 'Firebase/RemoteConfig'
   pod 'SwiftLint'
-  #pod 'MaterialComponents/Snackbar'
 
 end
