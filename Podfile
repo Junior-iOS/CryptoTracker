@@ -9,6 +9,7 @@ target 'Easy Numbers' do
 
   pod 'Firebase/Core'
   pod 'Firebase/Crashlytics'
+  pod 'Firebase/RemoteConfig'
   pod 'SwiftLint'
   #pod 'MaterialComponents/Snackbar'
 

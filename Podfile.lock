@@ -7,6 +7,11 @@ PODS:
   - Firebase/Crashlytics (10.9.0):
     - Firebase/CoreOnly
     - FirebaseCrashlytics (~> 10.9.0)
+  - Firebase/RemoteConfig (10.9.0):
+    - Firebase/CoreOnly
+    - FirebaseRemoteConfig (~> 10.9.0)
+  - FirebaseABTesting (10.9.0):
+    - FirebaseCore (~> 10.0)
   - FirebaseAnalytics (10.9.0):
     - FirebaseAnalytics/AdIdSupport (= 10.9.0)
     - FirebaseCore (~> 10.0)
@@ -46,6 +51,12 @@ PODS:
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
+  - FirebaseRemoteConfig (10.9.0):
+    - FirebaseABTesting (~> 10.0)
+    - FirebaseCore (~> 10.0)
+    - FirebaseInstallations (~> 10.0)
+    - GoogleUtilities/Environment (~> 7.8)
+    - "GoogleUtilities/NSData+zlib (~> 7.8)"
   - FirebaseSessions (10.9.0):
     - FirebaseCore (~> 10.5)
     - FirebaseCoreExtension (~> 10.0)
@@ -110,17 +121,20 @@ PODS:
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/Crashlytics
+  - Firebase/RemoteConfig
   - SwiftLint
 
 SPEC REPOS:
   trunk:
     - Firebase
+    - FirebaseABTesting
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreExtension
     - FirebaseCoreInternal
     - FirebaseCrashlytics
     - FirebaseInstallations
+    - FirebaseRemoteConfig
     - FirebaseSessions
     - GoogleAppMeasurement
     - GoogleDataTransport
@@ -132,12 +146,14 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Firebase: bd152f0f3d278c4060c5c71359db08ebcfd5a3e2
+  FirebaseABTesting: 005b70969e2817e2a1e631e8dba29134a04c0622
   FirebaseAnalytics: 5ea0db4893825e7b0149d575352cd838236313dc
   FirebaseCore: b68d3616526ec02e4d155166bbafb8eca64af557
   FirebaseCoreExtension: d3e9bba2930a8033042112397cd9f006a1bb203d
   FirebaseCoreInternal: d2b4acb827908e72eca47a9fd896767c3053921e
   FirebaseCrashlytics: b60329455285aff853e54139d8ddbfe1e5f2b9f9
   FirebaseInstallations: c58489c9caacdbf27d1da60891a87318e20218e0
+  FirebaseRemoteConfig: 5ea5834e8c518f377bf1af2d97ebd611914ebf2d
   FirebaseSessions: 44a6782502eb279a214d4adca20891353278760c
   GoogleAppMeasurement: 373bcbead1bb6a85be7a64d5d8f96284b762ea9c
   GoogleDataTransport: 8378d1fa8ac49753ea6ce70d65a7cb70ce5f66e6
@@ -147,6 +163,6 @@ SPEC CHECKSUMS:
   PromisesSwift: cf9eb58666a43bbe007302226e510b16c1e10959
   SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
 
-PODFILE CHECKSUM: 26f04e38e4446efcc668aae9dcfed26ac517ad51
+PODFILE CHECKSUM: abc5807ba5954f836cb2f4446377c093b0faeac5
 
 COCOAPODS: 1.12.1
