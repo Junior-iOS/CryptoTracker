@@ -38,6 +38,7 @@ class MainCoordinator: Coordinator {
     
     func routeToOutOfOrderView() {
         let vc = OutOfOrderViewController()
+        navigationController.interactivePopGestureRecognizer?.isEnabled = false
         navigationController.pushViewController(vc, animated: true)
     }
 }
