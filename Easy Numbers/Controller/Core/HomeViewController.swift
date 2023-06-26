@@ -5,8 +5,8 @@
 //  Created by NJ Development on 11/05/23.
 //
 
-import UIKit
 import OnboardingKit
+import UIKit
 
 class HomeViewController: BaseViewController {
     // MARK: - Properties
@@ -24,7 +24,7 @@ class HomeViewController: BaseViewController {
 
     private let homeView = HomeView()
     private var viewModel = HomeViewModel()
-    
+
     weak var coordinator: MainCoordinator?
 
     private let device = UIDevice.current.userInterfaceIdiom
@@ -33,7 +33,7 @@ class HomeViewController: BaseViewController {
     private var myGames: [Int] = []
     private var gameTitle = ""
     private var backButtonBackgroundColor = UIColor.white
-    
+
     private let kButtonHeight: CGFloat = 50
     private let kButtonMargin: CGFloat = 40
 
@@ -62,7 +62,8 @@ class HomeViewController: BaseViewController {
         setupNavigation()
         setup()
         updateFlag()
-        
+        checkRemoteConfig()
+
         viewModel.delegate = self
         NJAnalytics.shared.trackEvent(name: .didLoad)
     }
@@ -119,7 +120,7 @@ class HomeViewController: BaseViewController {
         guard let savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") else { return }
         btnMyGames.isEnabled = false
         coordinator?.routeToSavedGames(with: savedGames)
-        
+
         NJAnalytics.shared.trackEvent(name: .didSave)
     }
 
@@ -127,11 +128,15 @@ class HomeViewController: BaseViewController {
         coordinator?.routeToInfoVC()
         NJAnalytics.shared.trackEvent(name: .info)
     }
-    
+
     private func updateFlag() {
         if !UserDefaults.standard.bool(forKey: "isOnboardingSeen") {
             viewModel.presentOnboardingKit()
         }
+    }
+
+    private func checkRemoteConfig() {
+        viewModel.checkRemoteConfig()
     }
 }
 
@@ -171,14 +176,19 @@ extension HomeViewController: HomeViewDelegate {
 
 // MARK: - HomeViewModel Delegate
 extension HomeViewController: HomeViewModelDelegate {
+    func handleRemoteConfig(with value: Bool) {
+        if value {
+            coordinator?.routeToOutOfOrderView()
+            hideNavigationBar(value)
+        }
+    }
+    
     func handlePresentOnboarding() {
         viewModel.onboardingKit?.launchOnboarding(controller: self)
     }
-    
-    func didTapNextButton() {
-        print("didTapNextButton")
-    }
-    
+
+    func didTapNextButton() {}
+
     func didTapGetStarted() {
         UserDefaults.standard.set(true, forKey: "isOnboardingSeen")
         viewModel.onboardingKit?.dismissOnboarding()

@@ -10,10 +10,10 @@ import UIKit
 
 extension UIColor {
     public class var njErase: UIColor {
-        return UIColor(red: 1.00, green: 0.23, blue: 0.15, alpha: 1.00)
+        UIColor(red: 1.00, green: 0.23, blue: 0.15, alpha: 1.00)
     }
-    
+
     public class var njShare: UIColor {
-        return UIColor(red: 0.76, green: 0.88, blue: 0.77, alpha: 1.00)
+        UIColor(red: 0.76, green: 0.88, blue: 0.77, alpha: 1.00)
     }
 }

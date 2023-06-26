@@ -12,12 +12,12 @@ class GameViewController: BaseViewController {
     private lazy var gameView = GameView(frame: .zero, game: game ?? [])
     private let viewModel: GameViewModel
     private let homeViewModel = HomeViewModel()
-    
+
     weak var coordinator: MainCoordinator?
 
     var game: [Int]?
     var gameTitle: String?
-    
+
     var savedGames = [String]()
 
     // MARK: - Life cycle
@@ -36,12 +36,12 @@ class GameViewController: BaseViewController {
         super.viewDidLoad()
         setup()
     }
-    
+
     init(viewModel: GameViewModel = GameViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         nil
@@ -77,7 +77,7 @@ class GameViewController: BaseViewController {
 
         UserDefaults.standard.set(savedGames, forKey: "SavedGames")
         viewModel.isSavedButtonHidden()
-        
+
         haptic(.heavy)
     }
 }
@@ -100,10 +100,10 @@ extension GameViewController: GameViewDelegate {
 
         let pasteboard = UIPasteboard.general
         pasteboard.string = "\(String(describing: title)) 🤞🏻\n\(result)".removeBrackets()
-        
+
         haptic(.medium)
     }
-    
+
     func didPressSavedGames(_ savedGames: [String]) {
         coordinator?.routeToSavedGames(with: savedGames)
     }
