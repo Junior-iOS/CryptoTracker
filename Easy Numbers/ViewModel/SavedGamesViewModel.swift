@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 final class SavedGamesViewModel: NSObject {
-    func setGameName(_ savedGame: String, completion: (String) -> ()) {
+    func setGameName(_ savedGame: String, completion: (String) -> Void) {
         if savedGame.count <= 20 {
             completion("Quina")
         } else if savedGame.count > 20 && savedGame.count <= 24 {
