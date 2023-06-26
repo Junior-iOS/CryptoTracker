@@ -21,7 +21,7 @@ extension UIViewController {
     func hideNavigationBar(_ status: Bool) {
         navigationController?.navigationBar.isHidden = status
     }
-    
+
     func haptic(_ style: UIImpactFeedbackGenerator.FeedbackStyle) {
         let generator = UIImpactFeedbackGenerator(style: style)
         generator.impactOccurred()

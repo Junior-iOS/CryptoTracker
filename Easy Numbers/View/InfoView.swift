@@ -14,25 +14,25 @@ class InfoView: UIView {
         webView.translatesAutoresizingMaskIntoConstraints = false
         return webView
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         addComponents()
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         nil
     }
-    
+
     private func addComponents() {
         backgroundColor = .systemBackground
         addSubview(webView)
-        
+
         setConstraints()
     }
-    
+
     private func setConstraints() {
         NSLayoutConstraint.activate([
             webView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
