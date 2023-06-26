@@ -10,7 +10,6 @@ import UIKit
 import WebKit
 
 final class InfoViewModel {
-    
     func configureWebView(_ webView: WKWebView) {
         DispatchQueue.main.async {
             guard let url = URL(string: Bundle.main.resultsURL) else { return }
@@ -18,5 +17,4 @@ final class InfoViewModel {
             webView.allowsBackForwardNavigationGestures = true
         }
     }
-    
 }

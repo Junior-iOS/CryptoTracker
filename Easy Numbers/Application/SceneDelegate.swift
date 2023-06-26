@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         mainCoodinator = MainCoordinator()
         mainCoodinator?.start()
-        
+
         let navigation = mainCoodinator?.navigationController
         navigation?.overrideUserInterfaceStyle = .dark
         window.rootViewController = navigation

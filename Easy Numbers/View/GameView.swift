@@ -100,13 +100,13 @@ class GameView: UIView {
             stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -kButtonMargin),
 
             generateButton.widthAnchor.constraint(equalToConstant: widthAnchor),
-            generateButton.heightAnchor.constraint(equalToConstant: kButtonHeight),
+            generateButton.heightAnchor.constraint(equalToConstant: kButtonHeight)
         ])
     }
 
     @objc private func didPressSavedGamesButton() {
         savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames")
-        
+
         NJAnalytics.shared.trackEvent(name: .savedGames)
         delegate?.didPressSavedGames(savedGames ?? [])
     }
