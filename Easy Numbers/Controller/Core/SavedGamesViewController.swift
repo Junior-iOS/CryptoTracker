@@ -87,9 +87,14 @@ class SavedGamesViewController: BaseViewController {
         let ac = UIActivityViewController(activityItems: [text.removeBrackets()], applicationActivities: nil)
 
         if UIDevice.current.userInterfaceIdiom == .pad {
-            ac.popoverPresentationController?.sourceView = UIApplication.shared.windows.first
+            let scenes = UIApplication.shared.connectedScenes
+            
+            guard let windowScene = scenes.first as? UIWindowScene,
+                  let window = windowScene.windows.first else { return }
+            
+            ac.popoverPresentationController?.sourceView = window
             ac.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 300, height: 350)
-            UIApplication.shared.windows.first?.rootViewController?.present(ac, animated: true, completion: nil)
+            window.rootViewController?.present(ac, animated: true, completion: nil)
         } else {
             DispatchQueue.main.async {
                 self.present(ac, animated: true)
@@ -149,9 +154,14 @@ extension SavedGamesViewController: UITableViewDelegate, UITableViewDataSource {
             let ac = UIActivityViewController(activityItems: [text.removeBrackets()], applicationActivities: nil)
 
             if UIDevice.current.userInterfaceIdiom == .pad {
-                ac.popoverPresentationController?.sourceView = UIApplication.shared.windows.first
+                let scenes = UIApplication.shared.connectedScenes
+                
+                guard let windowScene = scenes.first as? UIWindowScene,
+                      let window = windowScene.windows.first else { return }
+                
+                ac.popoverPresentationController?.sourceView = window
                 ac.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 300, height: 350)
-                UIApplication.shared.windows.first?.rootViewController?.present(ac, animated: true, completion: nil)
+                window.rootViewController?.present(ac, animated: true, completion: nil)
             } else {
                 DispatchQueue.main.async {
                     self.present(ac, animated: true)
