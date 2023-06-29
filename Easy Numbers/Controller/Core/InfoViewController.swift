@@ -30,7 +30,7 @@ class InfoViewController: BaseViewController {
     }
 
     private func addRightBarButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "house.circle"),
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: SFSymbol.houseCircle.image,
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(didPressHome))

@@ -85,7 +85,7 @@ class HomeViewController: BaseViewController {
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle.fill"),
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: SFSymbol.infoCircleFill.image,
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(didPressInfo))
