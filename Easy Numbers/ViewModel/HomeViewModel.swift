@@ -10,6 +10,7 @@ import OnboardingKit
 import FirebaseRemoteConfig
 import UIKit
 
+// MARK: - Protocol
 protocol HomeViewModelDelegate: AnyObject {
     func handlePresentOnboarding()
     func didTapNextButton()
@@ -19,10 +20,20 @@ protocol HomeViewModelDelegate: AnyObject {
 
 final class HomeViewModel {
     // MARK: - Properties
-    var result: [Int]?
+    
     var onboardingKit: OnboardingKit?
     weak var delegate: HomeViewModelDelegate?
     private let remoteConfig = RemoteConfig.remoteConfig()
+    
+    var result: [Int]?
+    
+    var navtitle: String {
+        Bundle.main.appName
+    }
+    
+    var myGamesButtonTitle: String {
+        "Meus jogos"
+    }
 
     // MARK: - Methods
     func presentOnboardingKit() {

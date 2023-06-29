@@ -28,7 +28,6 @@ class GameViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") ?? []
     }
 
@@ -37,6 +36,7 @@ class GameViewController: BaseViewController {
         setup()
     }
 
+    // MARK: - Init
     init(viewModel: GameViewModel = GameViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)

@@ -13,7 +13,7 @@ class HomeViewController: BaseViewController {
     private lazy var btnMyGames: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Meus jogos", for: .normal)
+        button.setTitle(viewModel.myGamesButtonTitle, for: .normal)
         button.addTarget(self, action: #selector(myGamesPressed), for: .touchUpInside)
         button.backgroundColor = .systemBlue
         button.titleLabel?.textColor = .black
@@ -93,7 +93,7 @@ class HomeViewController: BaseViewController {
 
     private func setup() {
         view.backgroundColor = .systemBackground
-        navigationItem.title = Bundle.main.appName
+        navigationItem.title = viewModel.navtitle
         homeView.delegate = self
 
         addComponents()

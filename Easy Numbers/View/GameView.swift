@@ -40,7 +40,7 @@ class GameView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Jogos salvos", for: .normal)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemCyan
         button.addTarget(self, action: #selector(didPressSavedGamesButton), for: .touchUpInside)
         button.layer.cornerRadius = kButtonHeight / 2
         button.clipsToBounds = true
