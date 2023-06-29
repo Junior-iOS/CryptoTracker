@@ -12,18 +12,21 @@ class MainCoordinator: Coordinator {
     var navigationController = UINavigationController()
 
     func start() {
-        let homeViewController = HomeViewController()
+        let viewModel = HomeViewModel()
+        let homeViewController = HomeViewController(viewModel: viewModel)
         homeViewController.coordinator = self
         navigationController.pushViewController(homeViewController, animated: true)
     }
 
     func routeToInfoVC() {
-        let infoVC = InfoViewController()
+        let viewModel = InfoViewModel()
+        let infoVC = InfoViewController(viewModel: viewModel)
         navigationController.pushViewController(infoVC, animated: true)
     }
 
     func routeToGamesVC(with game: [Int], title: String) {
-        let gameVC = GameViewController()
+        let viewModel = GameViewModel()
+        let gameVC = GameViewController(viewModel: viewModel)
         gameVC.coordinator = self
         gameVC.game = game
         gameVC.gameTitle = title
@@ -31,7 +34,8 @@ class MainCoordinator: Coordinator {
     }
 
     func routeToSavedGames(with savedGames: [String]) {
-        let vc = SavedGamesViewController()
+        let viewModel = SavedGamesViewModel()
+        let vc = SavedGamesViewController(viewModel: viewModel)
         vc.savedGames = savedGames
         navigationController.pushViewController(vc, animated: true)
     }

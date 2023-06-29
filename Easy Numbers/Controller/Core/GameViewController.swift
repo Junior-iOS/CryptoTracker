@@ -37,7 +37,7 @@ class GameViewController: BaseViewController {
     }
 
     // MARK: - Init
-    init(viewModel: GameViewModel = GameViewModel()) {
+    init(viewModel: GameViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

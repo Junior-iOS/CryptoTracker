@@ -24,7 +24,7 @@ class SavedGamesViewController: BaseViewController {
         tableViewSetup()
     }
 
-    init(viewModel: SavedGamesViewModel = SavedGamesViewModel()) {
+    init(viewModel: SavedGamesViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

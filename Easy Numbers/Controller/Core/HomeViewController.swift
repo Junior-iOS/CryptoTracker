@@ -23,7 +23,7 @@ class HomeViewController: BaseViewController {
     }()
 
     private let homeView = HomeView()
-    private var viewModel = HomeViewModel()
+    private var viewModel: HomeViewModel
 
     weak var coordinator: MainCoordinator?
 
@@ -38,9 +38,9 @@ class HomeViewController: BaseViewController {
     private let kButtonMargin: CGFloat = 40
 
     // MARK: - Init & Life Cycle
-    init(viewModel: HomeViewModel = HomeViewModel()) {
-        super.init(nibName: nil, bundle: nil)
+    init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
 
     @available(*, unavailable)
