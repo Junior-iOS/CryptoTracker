@@ -90,6 +90,7 @@ final class HomeViewModel {
             result = generateNumbers(total: 50, universe: 100)
 
         default:
+            result = generateNumbers(total: 10, universe: 80)
             break
         }
 

@@ -14,7 +14,9 @@ final class SavedGamesViewModel: NSObject {
             completion("Quina")
         } else if savedGame.count > 20 && savedGame.count <= 24 {
             completion("Mega-sena")
-        } else if savedGame.count > 24 && savedGame.count <= 60 {
+        } else if savedGame.count > 24 && savedGame.count <= 40 {
+            completion("Timemania")
+        } else if savedGame.count > 40 && savedGame.count <= 60 {
             completion("Loto Fácil")
         } else {
             completion("Lotomania")

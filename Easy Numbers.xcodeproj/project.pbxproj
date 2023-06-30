@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14388FBD2A4E9E38003F619D /* NJColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14388FBC2A4E9E38003F619D /* NJColor.swift */; };
 		14460B2A2A0C949900C4DA54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B292A0C949900C4DA54 /* AppDelegate.swift */; };
 		14460B2C2A0C949900C4DA54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B2B2A0C949900C4DA54 /* SceneDelegate.swift */; };
 		14460B2E2A0C949900C4DA54 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B2D2A0C949900C4DA54 /* HomeViewController.swift */; };
@@ -40,13 +41,14 @@
 		14C664022A1D3A71005E4E46 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C664012A1D3A71005E4E46 /* String+Extensions.swift */; };
 		14D014C72A46AFF800842FD5 /* OutOfOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D014C62A46AFF800842FD5 /* OutOfOrderViewController.swift */; };
 		14D014C92A46B87000842FD5 /* OutOfOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D014C82A46B87000842FD5 /* OutOfOrderView.swift */; };
-		14D014CD2A46C1A000842FD5 /* ThemeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D014CC2A46C1A000842FD5 /* ThemeFont.swift */; };
+		14D014CD2A46C1A000842FD5 /* NJFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D014CC2A46C1A000842FD5 /* NJFont.swift */; };
 		14FB0E972A16C79400AD91E9 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB0E962A16C79400AD91E9 /* GameViewModel.swift */; };
 		5A3BC5754BC55831EB0AB00A /* Pods_Easy_Numbers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540B8E743E6DDD9D69FB7F4D /* Pods_Easy_Numbers.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		024618918227F409E0D44A55 /* Pods-Easy Numbers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy Numbers.debug.xcconfig"; path = "Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers.debug.xcconfig"; sourceTree = "<group>"; };
+		14388FBC2A4E9E38003F619D /* NJColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NJColor.swift; sourceTree = "<group>"; };
 		14460B262A0C949800C4DA54 /* Easy Numbers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Easy Numbers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14460B292A0C949900C4DA54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14460B2B2A0C949900C4DA54 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +83,7 @@
 		14C664012A1D3A71005E4E46 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		14D014C62A46AFF800842FD5 /* OutOfOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutOfOrderViewController.swift; sourceTree = "<group>"; };
 		14D014C82A46B87000842FD5 /* OutOfOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutOfOrderView.swift; sourceTree = "<group>"; };
-		14D014CC2A46C1A000842FD5 /* ThemeFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFont.swift; sourceTree = "<group>"; };
+		14D014CC2A46C1A000842FD5 /* NJFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NJFont.swift; sourceTree = "<group>"; };
 		14FB0E962A16C79400AD91E9 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		540B8E743E6DDD9D69FB7F4D /* Pods_Easy_Numbers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Easy_Numbers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8D526D251AD9F0C4C425C9F /* Pods-Easy Numbers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy Numbers.release.xcconfig"; path = "Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers.release.xcconfig"; sourceTree = "<group>"; };
@@ -251,7 +253,8 @@
 			isa = PBXGroup;
 			children = (
 				149D537F2A16BFD900DC71F0 /* Enum.swift */,
-				14D014CC2A46C1A000842FD5 /* ThemeFont.swift */,
+				14D014CC2A46C1A000842FD5 /* NJFont.swift */,
+				14388FBC2A4E9E38003F619D /* NJColor.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -437,10 +440,11 @@
 				145660D22A341EC1003FD467 /* Coordinator.swift in Sources */,
 				14C663FB2A1C67EC005E4E46 /* SavedGamesView.swift in Sources */,
 				14C664022A1D3A71005E4E46 /* String+Extensions.swift in Sources */,
-				14D014CD2A46C1A000842FD5 /* ThemeFont.swift in Sources */,
+				14D014CD2A46C1A000842FD5 /* NJFont.swift in Sources */,
 				145660D82A3422F7003FD467 /* InfoViewModel.swift in Sources */,
 				14460B482A0C95EB00C4DA54 /* Bundle+Extensions.swift in Sources */,
 				14460B672A153C0D00C4DA54 /* GameView.swift in Sources */,
+				14388FBD2A4E9E38003F619D /* NJColor.swift in Sources */,
 				145660D62A342238003FD467 /* InfoView.swift in Sources */,
 				14460B4C2A0C95EB00C4DA54 /* UITableView+Extensions.swift in Sources */,
 			);
@@ -578,7 +582,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 024618918227F409E0D44A55 /* Pods-Easy Numbers.debug.xcconfig */;
 			buildSettings = {
-				APP_NAME = "Easy Numbers";
+				APP_NAME = "Jogos Lotéricas";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -586,6 +590,8 @@
 				DEVELOPMENT_TEAM = KTUAP2Z2QF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Easy Numbers/Resources/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Jogos Lotérica";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
@@ -614,7 +620,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D8D526D251AD9F0C4C425C9F /* Pods-Easy Numbers.release.xcconfig */;
 			buildSettings = {
-				APP_NAME = "Easy Numbers";
+				APP_NAME = "Jogos Lotéricas";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -622,6 +628,8 @@
 				DEVELOPMENT_TEAM = KTUAP2Z2QF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Easy Numbers/Resources/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Jogos Lotérica";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;

@@ -147,27 +147,31 @@ extension HomeViewController: HomeViewDelegate {
         case 0:
             myGames = viewModel.generate(.megasena)
             gameTitle = GameType.megasena.rawValue
-            backButtonBackgroundColor = UIColor(red: 52 / 255, green: 125 / 255, blue: 57 / 255, alpha: 1)
+            backButtonBackgroundColor = NJColor.megasena
             NJAnalytics.shared.trackEvent(name: .megasena)
 
         case 1:
             myGames = viewModel.generate(.lotofacil)
             gameTitle = GameType.lotofacil.rawValue
-            backButtonBackgroundColor = .systemPurple
+            backButtonBackgroundColor = NJColor.lotofacil
             NJAnalytics.shared.trackEvent(name: .lotofacil)
 
         case 2:
             myGames = viewModel.generate(.quina)
             gameTitle = GameType.quina.rawValue
-            backButtonBackgroundColor = UIColor(red: 25 / 255, green: 72 / 255, blue: 152 / 255, alpha: 1)
+            backButtonBackgroundColor = NJColor.quina
             NJAnalytics.shared.trackEvent(name: .quina)
 
         case 3:
             myGames = viewModel.generate(.lotomania)
             gameTitle = GameType.lotomania.rawValue
-            backButtonBackgroundColor = .systemOrange
+            backButtonBackgroundColor = NJColor.lotomania
             NJAnalytics.shared.trackEvent(name: .lotomania)
-        default: break
+        default:
+            myGames = viewModel.generate(.timemania)
+            gameTitle = GameType.timemania.rawValue
+            backButtonBackgroundColor = NJColor.timemania
+            NJAnalytics.shared.trackEvent(name: .timemania)
         }
 
         coordinator?.routeToGamesVC(with: myGames, title: gameTitle)

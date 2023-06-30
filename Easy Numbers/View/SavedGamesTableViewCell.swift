@@ -79,11 +79,15 @@ class SavedGamesTableViewCell: UITableViewCell {
             gameImage.image = UIImage(named: "quina")
         } else if savedGames.count > 20 && savedGames.count <= 24 {
             gameImage.image = UIImage(named: "megasena")
-        } else if savedGames.count > 24 && savedGames.count <= 60 {
+        }  else if savedGames.count > 24 && savedGames.count <= 40 {
+            gameImage.image = UIImage(named: "timemania")
+        } else if savedGames.count > 40 && savedGames.count <= 60 {
             gameImage.image = UIImage(named: "lotofacil")
         } else {
             gameImage.image = UIImage(named: "lotomania")
         }
+        
+        print(savedGames.count)
     }
 
     override func prepareForReuse() {

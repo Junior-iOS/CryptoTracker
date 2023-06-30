@@ -18,6 +18,7 @@ enum GameType: String {
     case lotofacil = "LotoFácil"
     case quina = "Quina"
     case lotomania = "LotoMania"
+    case timemania = "Timemania"
     case unknown = ""
 }
 
@@ -43,7 +44,7 @@ class HomeView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(GameType.megasena.rawValue, for: .normal)
         button.addTarget(self, action: #selector(generatePressed), for: .touchUpInside)
-        button.backgroundColor = UIColor(red: 52 / 255, green: 125 / 255, blue: 57 / 255, alpha: 1)
+        button.backgroundColor = NJColor.megasena
         button.titleLabel?.textColor = .white
         button.tag = 0
         return button
@@ -54,7 +55,7 @@ class HomeView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(GameType.lotofacil.rawValue, for: .normal)
         button.addTarget(self, action: #selector(generatePressed), for: .touchUpInside)
-        button.backgroundColor = .systemPurple
+        button.backgroundColor = NJColor.lotofacil
         button.titleLabel?.textColor = .white
         button.tag = 1
         return button
@@ -65,7 +66,7 @@ class HomeView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(GameType.quina.rawValue, for: .normal)
         button.addTarget(self, action: #selector(generatePressed), for: .touchUpInside)
-        button.backgroundColor = UIColor(red: 25 / 255, green: 72 / 255, blue: 152 / 255, alpha: 1)
+        button.backgroundColor = NJColor.quina
         button.titleLabel?.textColor = .white
         button.tag = 2
         return button
@@ -76,13 +77,24 @@ class HomeView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(GameType.lotomania.rawValue, for: .normal)
         button.addTarget(self, action: #selector(generatePressed), for: .touchUpInside)
-        button.backgroundColor = .systemOrange
+        button.backgroundColor = NJColor.lotomania
         button.titleLabel?.textColor = .white
         button.tag = 3
         return button
     }()
+    
+    private lazy var btnTimeMania: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(GameType.timemania.rawValue, for: .normal)
+        button.addTarget(self, action: #selector(generatePressed), for: .touchUpInside)
+        button.backgroundColor = NJColor.timemania
+        button.titleLabel?.textColor = .white
+        button.tag = 4
+        return button
+    }()
 
-    private lazy var games = [btnMegaSena, btnLotoFacil, btnQuina, btnLotoMania]
+    private lazy var games = [btnMegaSena, btnLotoFacil, btnQuina, btnLotoMania, btnTimeMania]
 
     private lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: games)

@@ -25,6 +25,7 @@ final class NJAnalytics {
         case lotofacil = "Analytics_Lotofacil"
         case quina = "Analytics_Quina"
         case lotomania = "Analytics_Lotomania"
+        case timemania = "Analytics_Timemania"
     }
 
     func trackEvent(name: Event, parameters: [String: Any]? = nil) {

@@ -25,15 +25,22 @@ class GameViewController: BaseViewController {
         super.loadView()
         self.view = gameView
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setup()
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") ?? []
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setup()
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let backBarBtnItem = UIBarButtonItem()
+        backBarBtnItem.title = "Jogos Lotérica"
+        navigationController?.navigationBar.backItem?.backBarButtonItem = backBarBtnItem
     }
 
     // MARK: - Init
@@ -57,6 +64,7 @@ class GameViewController: BaseViewController {
         viewModel.isSavedButtonHidden()
 
         setRightBarButton()
+        setSaveGameButtonColor()
     }
 
     private func generateGame(_ type: GameType) {
@@ -79,6 +87,16 @@ class GameViewController: BaseViewController {
         viewModel.isSavedButtonHidden()
 
         haptic(.heavy)
+    }
+    
+    private func setSaveGameButtonColor() {
+        switch game?.count {
+        case 5: gameView.savedGamesButton.backgroundColor = NJColor.quina
+        case 6: gameView.savedGamesButton.backgroundColor = NJColor.megasena
+        case 10: gameView.savedGamesButton.backgroundColor = NJColor.timemania
+        case 15: gameView.savedGamesButton.backgroundColor = NJColor.lotofacil
+        default: gameView.savedGamesButton.backgroundColor = NJColor.lotomania
+        }
     }
 }
 
