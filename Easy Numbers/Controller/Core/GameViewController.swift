@@ -9,15 +9,13 @@ import UIKit
 
 class GameViewController: BaseViewController {
     // MARK: - Properties
-    private lazy var gameView = GameView(frame: .zero, game: game ?? [])
-    private let viewModel: GameViewModel
+    private lazy var gameView = GameView(frame: .zero, game: viewModel.game ?? [])
+    
+    let viewModel: GameViewModel
     private let homeViewModel = HomeViewModel()
-
+    
     weak var coordinator: MainCoordinator?
-
-    var game: [Int]?
     var gameTitle: String?
-
     var savedGames = [String]()
 
     // MARK: - Life cycle
@@ -60,6 +58,9 @@ class GameViewController: BaseViewController {
         view.backgroundColor = .systemBackground
 
         gameView.delegate = self
+        gameView.collectionView.delegate = self
+        gameView.collectionView.dataSource = self
+        
         viewModel.delegate = self
         viewModel.isSavedButtonHidden()
 
@@ -68,9 +69,7 @@ class GameViewController: BaseViewController {
     }
 
     private func generateGame(_ type: GameType) {
-        self.game = homeViewModel.generate(type)
-        guard let game else { return }
-        self.gameView.setGame(game)
+        self.viewModel.game = homeViewModel.generate(type)
     }
 
     private func setRightBarButton() {
@@ -79,7 +78,7 @@ class GameViewController: BaseViewController {
     }
 
     @objc private func saveGame() {
-        guard let result = game else { return }
+        guard let result = viewModel.game else { return }
         self.savedGames.append("\(result)")
         self.savedGames.removeDuplicates()
 
@@ -90,7 +89,7 @@ class GameViewController: BaseViewController {
     }
     
     private func setSaveGameButtonColor() {
-        switch game?.count {
+        switch viewModel.game?.count {
         case 5: gameView.savedGamesButton.backgroundColor = NJColor.quina
         case 6: gameView.savedGamesButton.backgroundColor = NJColor.megasena
         case 10: gameView.savedGamesButton.backgroundColor = NJColor.timemania
@@ -100,10 +99,32 @@ class GameViewController: BaseViewController {
     }
 }
 
+// MARK: - CollectionView Delegate and DataSource
+extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        viewModel.didPressCopyGame()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.numberOfItemsInSection
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell( withReuseIdentifier: GameViewCell.identifier,
+                                                             for: indexPath) as? GameViewCell else { return UICollectionViewCell() }
+        let numbers = viewModel.game
+        cell.configure(number: numbers?[indexPath.row] ?? 0)
+        return cell
+    }
+}
+
 // MARK: - GameView Delegate
 extension GameViewController: GameViewDelegate {
     func didPressGenerateGameAgain() {
+        let game = viewModel.game
         guard let game else { return }
+        
         switch game.count {
         case 5: generateGame(.quina)
         case 6: generateGame(.megasena)
@@ -111,15 +132,6 @@ extension GameViewController: GameViewDelegate {
         case 50: generateGame(.lotomania)
         default: break
         }
-    }
-
-    func didPressCopyGame() {
-        guard let result = game, let title = gameTitle else { return }
-
-        let pasteboard = UIPasteboard.general
-        pasteboard.string = "\(String(describing: title)) 🤞🏻\n\(result)".removeBrackets()
-
-        haptic(.medium)
     }
 
     func didPressSavedGames(_ savedGames: [String]) {
@@ -131,5 +143,20 @@ extension GameViewController: GameViewDelegate {
 extension GameViewController: GameViewModelDelegate {
     func hideSavedGamesButton(_ game: [String]) {
         gameView.savedGamesButton.isHidden = game == [] ? true : false
+    }
+    
+    func didPressCopyGame() {
+        guard let result = viewModel.game, let title = gameTitle else { return }
+
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = "🍀 \(String(describing: title)) 🤞🏻\n\(result)".removeBrackets()
+
+        haptic(.medium)
+    }
+    
+    func reloadCollection() {
+        DispatchQueue.main.async {
+            self.gameView.collectionView.reloadData()
+        }
     }
 }

@@ -9,20 +9,20 @@ import UIKit
 
 protocol GameViewDelegate: AnyObject {
     func didPressGenerateGameAgain()
-    func didPressCopyGame()
     func didPressSavedGames(_ savedGames: [String])
 }
 
 class GameView: UIView {
-    lazy var gameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .justified
-        label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 30, weight: .semibold)
-        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didPressCopyGame)))
-        label.isUserInteractionEnabled = true
-        return label
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.register(GameViewCell.self, forCellWithReuseIdentifier: GameViewCell.identifier)
+        collection.showsVerticalScrollIndicator = false
+        collection.backgroundColor = .clear
+        return collection
     }()
 
     private lazy var generateButton: UIButton = {
@@ -68,7 +68,6 @@ class GameView: UIView {
 
     init(frame: CGRect, game: [Int]) {
         super.init(frame: frame)
-        setGame(game)
         addComponents()
     }
 
@@ -77,25 +76,17 @@ class GameView: UIView {
         nil
     }
 
-    func setGame(_ game: [Int]) {
-        DispatchQueue.main.async {
-            self.gameLabel.text = "\(game)".removeBrackets()
-        }
-
-        gameLabel.textAlignment = game.count == 15 || game.count == 50 ? .justified : .center
-    }
-
     private func addComponents() {
-        addSubviews(gameLabel, stackView)
+        addSubviews(collectionView, stackView)
         let widthAnchor = device == .phone ? screenWidth - 40 : screenWidth / 2
 
         NSLayoutConstraint.activate([
-            gameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: kLabelMargin),
-            gameLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            gameLabel.widthAnchor.constraint(equalToConstant: widthAnchor),
-            gameLabel.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: kLabelMargin),
+            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: kLabelMargin),
+            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: kLabelMargin),
+            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -kLabelMargin),
+            collectionView.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -kLabelMargin),
 
-            stackView.centerXAnchor.constraint(equalTo: gameLabel.centerXAnchor),
+            stackView.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
             stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -kButtonMargin),
 
             generateButton.widthAnchor.constraint(equalToConstant: widthAnchor),
@@ -113,10 +104,5 @@ class GameView: UIView {
     @objc private func generateAgain() {
         NJAnalytics.shared.trackEvent(name: .generateAgain)
         delegate?.didPressGenerateGameAgain()
-    }
-
-    @objc private func didPressCopyGame() {
-        NJAnalytics.shared.trackEvent(name: .didCopy)
-        delegate?.didPressCopyGame()
     }
 }

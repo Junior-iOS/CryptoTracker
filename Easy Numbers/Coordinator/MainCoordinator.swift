@@ -28,7 +28,7 @@ class MainCoordinator: Coordinator {
         let viewModel = GameViewModel()
         let gameVC = GameViewController(viewModel: viewModel)
         gameVC.coordinator = self
-        gameVC.game = game
+        gameVC.viewModel.game = game
         gameVC.gameTitle = title
         navigationController.pushViewController(gameVC, animated: true)
     }

@@ -95,7 +95,7 @@ final class HomeViewModel {
         }
 
         guard let result else { return [] }
-        return result
+        return result.sorted(by: { $0 < $1 } )
     }
 
     private func generateNumbers(total: Int, universe: Int) -> [Int] {
