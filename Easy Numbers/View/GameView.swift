@@ -31,7 +31,7 @@ class GameView: UIView {
         button.setTitle("Gerar novamente", for: .normal)
         button.backgroundColor = .systemBlue
         button.addTarget(self, action: #selector(generateAgain), for: .touchUpInside)
-        button.layer.cornerRadius = kButtonHeight / 2
+        button.layer.cornerRadius = .kButtonHeight / 2
         button.clipsToBounds = true
         return button
     }()
@@ -41,7 +41,7 @@ class GameView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Jogos salvos", for: .normal)
         button.addTarget(self, action: #selector(didPressSavedGamesButton), for: .touchUpInside)
-        button.layer.cornerRadius = kButtonHeight / 2
+        button.layer.cornerRadius = .kButtonHeight / 2
         button.clipsToBounds = true
         return button
     }()
@@ -59,11 +59,6 @@ class GameView: UIView {
 
     private let device = UIDevice.current.userInterfaceIdiom
     private let screenWidth = UIScreen.main.bounds.width
-
-    private let kLabelMargin: CGFloat = 20
-    private let kButtonMargin: CGFloat = 40
-    private let kButtonHeight: CGFloat = 50
-
     private var savedGames: [String]?
 
     init(frame: CGRect, game: [Int]) {
@@ -81,16 +76,16 @@ class GameView: UIView {
         let widthAnchor = device == .phone ? screenWidth - 40 : screenWidth / 2
 
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: kLabelMargin),
-            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: kLabelMargin),
-            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -kLabelMargin),
-            collectionView.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -kLabelMargin),
+            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .kLabelMargin),
+            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .kLabelMargin),
+            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.kLabelMargin),
+            collectionView.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -.kLabelMargin),
 
             stackView.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
-            stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -kButtonMargin),
+            stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.kButtonMargin),
 
             generateButton.widthAnchor.constraint(equalToConstant: widthAnchor),
-            generateButton.heightAnchor.constraint(equalToConstant: kButtonHeight)
+            generateButton.heightAnchor.constraint(equalToConstant: .kButtonHeight)
         ])
     }
 
@@ -105,4 +100,10 @@ class GameView: UIView {
         NJAnalytics.shared.trackEvent(name: .generateAgain)
         delegate?.didPressGenerateGameAgain()
     }
+}
+
+fileprivate extension CGFloat {
+    static let kLabelMargin: CGFloat = 20
+    static let kButtonMargin: CGFloat = 40
+    static let kButtonHeight: CGFloat = 50
 }
