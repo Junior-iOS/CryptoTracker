@@ -16,6 +16,7 @@ class GameViewController: BaseViewController {
     
     weak var coordinator: MainCoordinator?
 
+    private let device = UIDevice.current.userInterfaceIdiom
     var gameTitle: String?
     var savedGames = [String]()
 
@@ -67,6 +68,7 @@ class GameViewController: BaseViewController {
 
         setRightBarButton()
         setSaveGameButtonColor()
+        checkAlignment(gameTitle ?? "")
     }
 
     private func generateGame(_ type: GameType) {
@@ -101,6 +103,20 @@ class GameViewController: BaseViewController {
                  gameView.savedGamesButton.setTitleColor(NJColor.megasena, for: .normal)
         case 15: gameView.savedGamesButton.backgroundColor = NJColor.lotofacil
         default: gameView.savedGamesButton.backgroundColor = NJColor.lotomania
+        }
+    }
+    
+    private func checkAlignment(_ title: String) {
+        if title == "Quina" || title == "Megasena" && device == .pad {
+            guard let game = viewModel.game else { return }
+            
+            var number = ""
+            game.forEach({ number += $0 < 10 ? "0\($0)   " : "\($0)   " })
+            
+            gameView.gameLabel.text = number
+            gameView.collectionView.isHidden = true
+        } else {
+            gameView.gameLabel.isHidden = true
         }
     }
 }
@@ -139,10 +155,16 @@ extension GameViewController: GameViewDelegate {
         case 50: generateGame(.lotomania)
         default: break
         }
+        
+        checkAlignment(gameTitle ?? "")
     }
 
     func didPressSavedGames(_ savedGames: [String]) {
         coordinator?.routeToSavedGames(with: savedGames)
+    }
+    
+    func didTapCopyGame() {
+        viewModel.didPressCopyGame()
     }
 }
 
@@ -154,9 +176,12 @@ extension GameViewController: GameViewModelDelegate {
     
     func didPressCopyGame() {
         guard let result = viewModel.game, let title = gameTitle else { return }
+        
+        var number = ""
+        result.forEach({ number += $0 < 10 ? "0\($0) " : "\($0) " })
 
         let pasteboard = UIPasteboard.general
-        pasteboard.string = "🍀 \(String(describing: title)) 🤞🏻\n\(result)".removeBrackets()
+        pasteboard.string = "🍀 \(String(describing: title)) 🤞🏻\n\(number)".removeBrackets()
 
         haptic(.medium)
     }

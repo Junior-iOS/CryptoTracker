@@ -10,6 +10,7 @@ import UIKit
 protocol GameViewDelegate: AnyObject {
     func didPressGenerateGameAgain()
     func didPressSavedGames(_ savedGames: [String])
+    func didTapCopyGame()
 }
 
 class GameView: UIView {
@@ -23,6 +24,17 @@ class GameView: UIView {
         collection.showsVerticalScrollIndicator = false
         collection.backgroundColor = .clear
         return collection
+    }()
+    
+    lazy var gameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = NJFont.demibold(ofSize: 25)
+        label.textAlignment = .center
+        let tap = UITapGestureRecognizer(target: self, action: #selector(copyGame))
+        label.addGestureRecognizer(tap)
+        label.isUserInteractionEnabled = true
+        return label
     }()
     
     private lazy var generateButton: UIButton = {
@@ -72,12 +84,16 @@ class GameView: UIView {
     }
     
     private func addComponents() {
-        addSubviews(collectionView, stackView)
+        addSubviews(collectionView, gameLabel, stackView)
         let widthAnchor = device == .phone ? screenWidth - 40 : screenWidth / 2
         
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .kLabelMargin),
             collectionView.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -.kLabelMargin),
+            
+            gameLabel.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
+            gameLabel.topAnchor.constraint(equalTo: collectionView.topAnchor),
+            gameLabel.widthAnchor.constraint(equalTo: collectionView.widthAnchor),
             
             stackView.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
             stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.kButtonMargin),
@@ -99,6 +115,10 @@ class GameView: UIView {
                     collectionView.widthAnchor.constraint(equalToConstant: screenWidth / 2)
             ]
         }
+    }
+    
+    @objc private func copyGame() {
+        delegate?.didTapCopyGame()
     }
     
     @objc private func didPressSavedGamesButton() {
