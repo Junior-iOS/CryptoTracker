@@ -33,20 +33,31 @@ class SavedGamesTableViewCell: UITableViewCell {
         return label
     }()
 
+    private let device = UIDevice.current.userInterfaceIdiom
     private let kCellBackgroundMargin: CGFloat = 10
     private let kGameMargin: CGFloat = 8
     private let kLabelMargin: CGFloat = 16
     private let kGameImageSize: CGFloat = 30
+    private let kiPadConstraints: CGFloat = 100
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
         addComponents()
     }
 
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         nil
+    }
+    
+    private func setLeadingAndTrailingConstraints() -> [NSLayoutConstraint] {
+        if device == .phone {
+            return [cellBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: kLabelMargin),
+                    cellBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -kLabelMargin)]
+        } else {
+            return [cellBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: kiPadConstraints),
+                    cellBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -kiPadConstraints)]
+        }
     }
 
     private func addComponents() {
@@ -55,8 +66,6 @@ class SavedGamesTableViewCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             cellBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 3),
-            cellBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: kLabelMargin),
-            cellBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -kLabelMargin),
             cellBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -3),
 
             gameImage.leadingAnchor.constraint(equalTo: cellBackgroundView.leadingAnchor, constant: kCellBackgroundMargin),
@@ -69,11 +78,12 @@ class SavedGamesTableViewCell: UITableViewCell {
             gameLabel.trailingAnchor.constraint(equalTo: cellBackgroundView.trailingAnchor, constant: -kLabelMargin),
             gameLabel.bottomAnchor.constraint(equalTo: cellBackgroundView.bottomAnchor, constant: -kLabelMargin)
         ])
+        
+        NSLayoutConstraint.activate(setLeadingAndTrailingConstraints())
     }
 
     func configure(_ savedGames: String) {
         self.gameLabel.text = savedGames.removeBrackets()
-        self.gameLabel.textAlignment = savedGames.count == 15 || savedGames.count == 50 ? .justified : .left
 
         if savedGames.count <= 20 {
             gameImage.image = UIImage(named: "quina")
@@ -83,11 +93,11 @@ class SavedGamesTableViewCell: UITableViewCell {
             gameImage.image = UIImage(named: "timemania")
         } else if savedGames.count > 40 && savedGames.count <= 60 {
             gameImage.image = UIImage(named: "lotofacil")
+            gameLabel.textAlignment = .justified
         } else {
             gameImage.image = UIImage(named: "lotomania")
+            gameLabel.textAlignment = .justified
         }
-        
-        print(savedGames.count)
     }
 
     override func prepareForReuse() {

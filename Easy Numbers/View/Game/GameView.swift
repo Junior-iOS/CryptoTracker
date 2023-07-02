@@ -24,7 +24,7 @@ class GameView: UIView {
         collection.backgroundColor = .clear
         return collection
     }()
-
+    
     private lazy var generateButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +35,7 @@ class GameView: UIView {
         button.clipsToBounds = true
         return button
     }()
-
+    
     lazy var savedGamesButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +45,7 @@ class GameView: UIView {
         button.clipsToBounds = true
         return button
     }()
-
+    
     private lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [generateButton, savedGamesButton])
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -54,48 +54,60 @@ class GameView: UIView {
         stack.spacing = 8
         return stack
     }()
-
+    
     weak var delegate: GameViewDelegate?
-
+    
     private let device = UIDevice.current.userInterfaceIdiom
     private let screenWidth = UIScreen.main.bounds.width
     private var savedGames: [String]?
-
-    init(frame: CGRect, game: [Int]) {
+    
+    override init(frame: CGRect) {
         super.init(frame: frame)
         addComponents()
     }
-
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         nil
     }
-
+    
     private func addComponents() {
         addSubviews(collectionView, stackView)
         let widthAnchor = device == .phone ? screenWidth - 40 : screenWidth / 2
-
+        
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .kLabelMargin),
-            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .kLabelMargin),
-            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.kLabelMargin),
             collectionView.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -.kLabelMargin),
-
+            
             stackView.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
             stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.kButtonMargin),
-
+            
             generateButton.widthAnchor.constraint(equalToConstant: widthAnchor),
             generateButton.heightAnchor.constraint(equalToConstant: .kButtonHeight)
         ])
+        
+        NSLayoutConstraint.activate(centerColletion())
     }
-
+    
+    private func centerColletion() -> [NSLayoutConstraint] {
+        if device == .phone {
+            return [collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .kLabelMargin),
+                    collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.kLabelMargin)]
+        } else {
+            return [collectionView.topAnchor.constraint(equalTo: topAnchor, constant: 200),
+                    collectionView.centerXAnchor.constraint(equalTo: centerXAnchor),
+                    collectionView.widthAnchor.constraint(equalToConstant: screenWidth / 2)
+            ]
+        }
+    }
+    
     @objc private func didPressSavedGamesButton() {
         savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames")
-
+        
         NJAnalytics.shared.trackEvent(name: .savedGames)
         delegate?.didPressSavedGames(savedGames ?? [])
     }
-
+    
     @objc private func generateAgain() {
         NJAnalytics.shared.trackEvent(name: .generateAgain)
         delegate?.didPressGenerateGameAgain()

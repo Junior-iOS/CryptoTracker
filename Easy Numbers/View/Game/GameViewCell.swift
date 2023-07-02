@@ -44,7 +44,7 @@ class GameViewCell: UICollectionViewCell {
     
     func configure(number: Int) {
         DispatchQueue.main.async {
-            self.lblNumber.text = "\(number)"
+            self.lblNumber.text = number < 10 ? "0\(number)" : "\(number)"
         }
     }
 }

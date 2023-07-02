@@ -40,58 +40,34 @@ class HomeView: UIView {
     }()
 
     private lazy var btnMegaSena: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(GameType.megasena.rawValue, for: .normal)
-        button.addTarget(self, action: #selector(generatePressed), for: .touchUpInside)
-        button.backgroundColor = NJColor.megasena
-        button.titleLabel?.textColor = .white
-        button.tag = 0
-        return button
+        createButton(title: GameType.megasena.rawValue,
+                     backgroundColor: NJColor.megasena,
+                     tag: 0)
     }()
 
     private lazy var btnLotoFacil: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(GameType.lotofacil.rawValue, for: .normal)
-        button.addTarget(self, action: #selector(generatePressed), for: .touchUpInside)
-        button.backgroundColor = NJColor.lotofacil
-        button.titleLabel?.textColor = .white
-        button.tag = 1
-        return button
+        createButton(title: GameType.lotofacil.rawValue,
+                     backgroundColor: NJColor.lotofacil,
+                     tag: 1)
     }()
 
     private lazy var btnQuina: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(GameType.quina.rawValue, for: .normal)
-        button.addTarget(self, action: #selector(generatePressed), for: .touchUpInside)
-        button.backgroundColor = NJColor.quina
-        button.titleLabel?.textColor = .white
-        button.tag = 2
-        return button
+        createButton(title: GameType.quina.rawValue,
+                     backgroundColor: NJColor.quina,
+                     tag: 2)
     }()
 
     private lazy var btnLotoMania: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(GameType.lotomania.rawValue, for: .normal)
-        button.addTarget(self, action: #selector(generatePressed), for: .touchUpInside)
-        button.backgroundColor = NJColor.lotomania
-        button.titleLabel?.textColor = .white
-        button.tag = 3
-        return button
+        createButton(title: GameType.lotomania.rawValue,
+                     backgroundColor: NJColor.lotomania,
+                     tag: 3)
     }()
     
     private lazy var btnTimeMania: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(GameType.timemania.rawValue, for: .normal)
-        button.addTarget(self, action: #selector(generatePressed), for: .touchUpInside)
-        button.backgroundColor = NJColor.timemania
-        button.titleLabel?.textColor = .white
-        button.tag = 4
-        return button
+        createButton(title: GameType.timemania.rawValue,
+                     titleColor: NJColor.megasena,
+                     backgroundColor: NJColor.timemania,
+                     tag: 4)
     }()
 
     private lazy var games = [btnMegaSena, btnLotoFacil, btnQuina, btnLotoMania, btnTimeMania]
@@ -125,7 +101,21 @@ class HomeView: UIView {
             $0.clipsToBounds = true
         })
     }
-
+    
+    private func createButton(title: String,
+                              titleColor: UIColor = .white,
+                              backgroundColor: UIColor,
+                              tag: Int) -> UIButton {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(generatePressed), for: .touchUpInside)
+        button.backgroundColor = backgroundColor
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(titleColor, for: .normal)
+        button.tag = tag
+        return button
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         setViewsRoundCorners()

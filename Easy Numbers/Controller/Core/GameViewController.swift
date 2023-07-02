@@ -9,12 +9,13 @@ import UIKit
 
 class GameViewController: BaseViewController {
     // MARK: - Properties
-    private lazy var gameView = GameView(frame: .zero, game: viewModel.game ?? [])
+    private lazy var gameView = GameView(frame: .zero)
     
     let viewModel: GameViewModel
     private let homeViewModel = HomeViewModel()
     
     weak var coordinator: MainCoordinator?
+
     var gameTitle: String?
     var savedGames = [String]()
 
@@ -78,8 +79,12 @@ class GameViewController: BaseViewController {
     }
 
     @objc private func saveGame() {
-        guard let result = viewModel.game else { return }
-        self.savedGames.append("\(result)")
+        guard let results = viewModel.game else { return }
+        
+        var number = ""
+        results.forEach({ number += $0 < 10 ? "0\($0) " : "\($0) " })
+        
+        self.savedGames.append(number)
         self.savedGames.removeDuplicates()
 
         UserDefaults.standard.set(savedGames, forKey: "SavedGames")
@@ -93,6 +98,7 @@ class GameViewController: BaseViewController {
         case 5: gameView.savedGamesButton.backgroundColor = NJColor.quina
         case 6: gameView.savedGamesButton.backgroundColor = NJColor.megasena
         case 10: gameView.savedGamesButton.backgroundColor = NJColor.timemania
+                 gameView.savedGamesButton.setTitleColor(NJColor.megasena, for: .normal)
         case 15: gameView.savedGamesButton.backgroundColor = NJColor.lotofacil
         default: gameView.savedGamesButton.backgroundColor = NJColor.lotomania
         }
@@ -128,6 +134,7 @@ extension GameViewController: GameViewDelegate {
         switch game.count {
         case 5: generateGame(.quina)
         case 6: generateGame(.megasena)
+        case 10: generateGame(.timemania)
         case 15: generateGame(.lotofacil)
         case 50: generateGame(.lotomania)
         default: break
