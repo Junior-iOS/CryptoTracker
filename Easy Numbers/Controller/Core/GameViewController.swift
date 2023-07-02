@@ -107,7 +107,7 @@ class GameViewController: BaseViewController {
     }
     
     private func checkAlignment(_ title: String) {
-        if title == "Quina" || title == "Megasena" && device == .pad {
+        if (title == "Quina" || title == "Megasena") && device == .pad {
             guard let game = viewModel.game else { return }
             
             var number = ""
