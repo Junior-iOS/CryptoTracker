@@ -171,8 +171,8 @@ extension SavedGamesViewController: UITableViewDelegate, UITableViewDataSource {
             NJAnalytics.shared.trackEvent(name: .didShare)
         }
 
-        erase.backgroundColor = .njErase
-        share.backgroundColor = .njShare
+        erase.backgroundColor = NJColor.njErase
+        share.backgroundColor = NJColor.njShare
 
         return UISwipeActionsConfiguration(actions: [erase, share])
     }

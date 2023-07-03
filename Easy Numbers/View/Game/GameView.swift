@@ -102,15 +102,15 @@ class GameView: UIView {
             generateButton.heightAnchor.constraint(equalToConstant: .kButtonHeight)
         ])
         
-        NSLayoutConstraint.activate(centerColletion())
+        NSLayoutConstraint.activate(centerCollectionOnIpad())
     }
     
-    private func centerColletion() -> [NSLayoutConstraint] {
+    private func centerCollectionOnIpad() -> [NSLayoutConstraint] {
         if device == .phone {
             return [collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .kLabelMargin),
                     collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.kLabelMargin)]
         } else {
-            return [collectionView.topAnchor.constraint(equalTo: topAnchor, constant: 200),
+            return [collectionView.topAnchor.constraint(equalTo: topAnchor, constant: .kMarginOnIpad),
                     collectionView.centerXAnchor.constraint(equalTo: centerXAnchor),
                     collectionView.widthAnchor.constraint(equalToConstant: screenWidth / 2)
             ]
@@ -138,4 +138,5 @@ fileprivate extension CGFloat {
     static let kLabelMargin: CGFloat = 20
     static let kButtonMargin: CGFloat = 40
     static let kButtonHeight: CGFloat = 50
+    static let kMarginOnIpad: CGFloat = 200
 }

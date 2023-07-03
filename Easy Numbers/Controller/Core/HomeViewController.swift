@@ -159,7 +159,7 @@ extension HomeViewController: HomeViewDelegate {
         case 2:
             myGames = viewModel.generate(.quina)
             gameTitle = GameType.quina.rawValue
-            backButtonBackgroundColor = NJColor.quina
+            backButtonBackgroundColor = NJColor.navColorOnQuina
             NJAnalytics.shared.trackEvent(name: .quina)
 
         case 3:
