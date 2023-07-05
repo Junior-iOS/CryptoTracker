@@ -85,9 +85,9 @@ class SavedGamesTableViewCell: UITableViewCell {
     func configure(_ savedGames: String) {
         self.gameLabel.text = savedGames.removeBrackets()
 
-        if savedGames.count <= 20 {
+        if savedGames.count <= 15 {
             gameImage.image = UIImage(named: "quina")
-        } else if savedGames.count > 20 && savedGames.count <= 24 {
+        } else if savedGames.count > 15 && savedGames.count <= 24 {
             gameImage.image = UIImage(named: "megasena")
         }  else if savedGames.count > 24 && savedGames.count <= 40 {
             gameImage.image = UIImage(named: "timemania")
