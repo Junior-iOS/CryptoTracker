@@ -7,7 +7,6 @@
 
 import FirebaseAnalytics
 import Foundation
-import UIKit
 
 final class NJAnalytics {
     static let shared = NJAnalytics()
