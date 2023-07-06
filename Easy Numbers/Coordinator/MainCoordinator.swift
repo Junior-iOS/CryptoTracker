@@ -27,10 +27,10 @@ class MainCoordinator: Coordinator {
     func routeToGamesVC(with game: [Int], title: String) {
         let viewModel = GameViewModel()
         viewModel.game = game
+        viewModel.gameTitle = title
         
         let gameVC = GameViewController(viewModel: viewModel)
         gameVC.coordinator = self
-        gameVC.gameTitle = title
         navigationController.pushViewController(gameVC, animated: true)
     }
 

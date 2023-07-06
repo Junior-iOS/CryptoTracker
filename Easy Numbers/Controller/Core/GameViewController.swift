@@ -11,14 +11,11 @@ class GameViewController: BaseViewController {
     // MARK: - Properties
     private lazy var gameView = GameView(frame: .zero)
     
-    let viewModel: GameViewModel
+    var viewModel: GameViewModel
     private let homeViewModel = HomeViewModel()
-    
     weak var coordinator: MainCoordinator?
-
+    
     private let device = UIDevice.current.userInterfaceIdiom
-    var gameTitle: String?
-    var savedGames = [String]()
 
     // MARK: - Life cycle
     override func loadView() {
@@ -33,7 +30,7 @@ class GameViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") ?? []
+        viewModel.savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") ?? []
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,7 +53,7 @@ class GameViewController: BaseViewController {
 
     // MARK: - Private methods
     private func setup() {
-        navigationItem.title = gameTitle
+        navigationItem.title = viewModel.gameTitle
         view.backgroundColor = .systemBackground
 
         gameView.delegate = self
@@ -68,7 +65,7 @@ class GameViewController: BaseViewController {
 
         setRightBarButton()
         setSaveGameButtonColor()
-        checkAlignment(gameTitle ?? "")
+        checkAlignment(viewModel.gameTitle)
     }
 
     private func generateGame(_ type: GameType) {
@@ -86,11 +83,11 @@ class GameViewController: BaseViewController {
         var number = ""
         results.forEach({ number += $0 < 10 ? "0\($0) " : "\($0) " })
         
-        self.savedGames.append(number)
-        self.savedGames.removeDuplicates()
-        self.savedGames = savedGames.sorted(by: { $0 < $1 } )
+        self.viewModel.savedGames?.append(number)
+        self.viewModel.savedGames?.removeDuplicates()
+        self.viewModel.savedGames = viewModel.savedGames?.sorted(by: { $0 < $1 } )
 
-        UserDefaults.standard.set(savedGames, forKey: "SavedGames")
+        UserDefaults.standard.set(viewModel.savedGames, forKey: "SavedGames")
         viewModel.isSavedButtonHidden()
 
         SnackBar.show(contextView: self, message: .save)
@@ -158,7 +155,7 @@ extension GameViewController: GameViewDelegate {
         default: break
         }
         
-        checkAlignment(gameTitle ?? "")
+        checkAlignment(viewModel.gameTitle)
         haptic(.soft)
     }
 
@@ -179,13 +176,13 @@ extension GameViewController: GameViewModelDelegate {
     }
     
     func didPressCopyGame() {
-        guard let result = viewModel.game, let title = gameTitle else { return }
+        guard let result = viewModel.game else { return }
         
         var number = ""
         result.forEach({ number += $0 < 10 ? "0\($0) " : "\($0) " })
 
         let pasteboard = UIPasteboard.general
-        pasteboard.string = "🍀 \(String(describing: title)) 🤞🏻\n\(number)".removeBrackets()
+        pasteboard.string = "🍀 \(String(describing: viewModel.gameTitle)) 🤞🏻\n\(number)".removeBrackets()
 
         SnackBar.show(contextView: self, message: .copy)
         haptic(.medium)

@@ -22,6 +22,8 @@ final class GameViewModel: NSObject {
         didSet { self.delegate?.reloadCollection() }
     }
     
+    var gameTitle: String = ""
+    
     var numberOfItemsInSection: Int {
         game?.count ?? 0
     }
