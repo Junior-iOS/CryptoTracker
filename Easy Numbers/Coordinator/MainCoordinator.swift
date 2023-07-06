@@ -26,17 +26,19 @@ class MainCoordinator: Coordinator {
 
     func routeToGamesVC(with game: [Int], title: String) {
         let viewModel = GameViewModel()
+        viewModel.game = game
+        
         let gameVC = GameViewController(viewModel: viewModel)
         gameVC.coordinator = self
-        gameVC.viewModel.game = game
         gameVC.gameTitle = title
         navigationController.pushViewController(gameVC, animated: true)
     }
 
     func routeToSavedGames(with savedGames: [String]) {
         let viewModel = SavedGamesViewModel()
+        viewModel.savedGames = savedGames
+        
         let vc = SavedGamesViewController(viewModel: viewModel)
-        vc.savedGames = savedGames
         navigationController.pushViewController(vc, animated: true)
     }
     

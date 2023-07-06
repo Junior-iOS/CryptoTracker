@@ -11,8 +11,8 @@ class SavedGamesViewController: BaseViewController {
     // MARK: - Properties
     private let viewModel: SavedGamesViewModel
     private let savedGamesView = SavedGamesView()
-    var savedGames: [String] = []
-    private var filteredGames: [String] = []
+//    var savedGames: [String] = []
+//    var filteredGames: [String] = []
 
     override func loadView() {
         super.loadView()
@@ -23,7 +23,7 @@ class SavedGamesViewController: BaseViewController {
         super.viewDidLoad()
         setupNavButtons()
         tableViewSetup()
-        updateFilteredArray()
+        viewModel.updateFilteredArray()
     }
 
     init(viewModel: SavedGamesViewModel) {
@@ -70,24 +70,24 @@ class SavedGamesViewController: BaseViewController {
     }
 
     private func delete() {
-        filteredGames.removeAll()
-        UserDefaults.standard.set(filteredGames, forKey: "SavedGames")
+        viewModel.filteredGames.removeAll()
+        UserDefaults.standard.set(viewModel.filteredGames, forKey: "SavedGames")
 
         savedGamesView.tableView.reloadData()
     }
 
     @objc func share() {
         var text = ""
-
-        for i in 0...filteredGames.count - 1 {
-            viewModel.setGameName(filteredGames[i]) { [weak self] gameName in
+        
+        for i in 0...viewModel.filteredGames.count - 1 {
+            viewModel.setGameName(viewModel.filteredGames[i]) { [weak self] gameName in
                 guard let self else { return }
-                text += "🍀 \(gameName) 🤞🏻\n\(filteredGames[i])\n\n"
+                text += "🍀 \(gameName) 🤞🏻\n\(viewModel.filteredGames[i])\n\n"
             }
         }
-
+        
         let ac = UIActivityViewController(activityItems: [text.removeBrackets()], applicationActivities: nil)
-
+        
         if UIDevice.current.userInterfaceIdiom == .pad {
             let scenes = UIApplication.shared.connectedScenes
             
@@ -102,12 +102,8 @@ class SavedGamesViewController: BaseViewController {
                 self.present(ac, animated: true)
             }
         }
-
+        
         NJAnalytics.shared.trackEvent(name: .didShare)
-    }
-    
-    private func updateFilteredArray() {
-        filteredGames = savedGames.sorted(by: { $0.count < $1.count })
     }
 }
 
@@ -118,13 +114,13 @@ extension SavedGamesViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        filteredGames.count
+        viewModel.numberOfRowsInSection
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.dequeueReusableCell(of: SavedGamesTableViewCell.self, for: indexPath) { [weak self] cell in
             guard let self else { return }
-            let savedGame = filteredGames[indexPath.row]
+            let savedGame = viewModel.filteredGames[indexPath.row]
             cell.configure(savedGame)
         }
     }
@@ -137,13 +133,13 @@ extension SavedGamesViewController: UITableViewDelegate, UITableViewDataSource {
         let erase = UIContextualAction(style: .normal, title: "🚮") { [weak self] _, _, _ in
             guard let self else { return }
 
-            filteredGames.remove(at: indexPath.row)
-            UserDefaults.standard.set(filteredGames, forKey: "SavedGames")
+            viewModel.filteredGames.remove(at: indexPath.row)
+            UserDefaults.standard.set(viewModel.filteredGames, forKey: "SavedGames")
 
             tableView.deleteRows(at: [indexPath], with: .left)
             tableView.reloadData()
 
-            if filteredGames.count == 0 {
+            if viewModel.filteredGames.count == 0 {
                 self.navigationController?.popToRootViewController(animated: true)
             }
         }
@@ -151,7 +147,7 @@ extension SavedGamesViewController: UITableViewDelegate, UITableViewDataSource {
         let share = UIContextualAction(style: .normal, title: "↗️") { [weak self] _, _, _ in
             guard let self else { return }
             var text = ""
-            let selectedGame = filteredGames[indexPath.row]
+            let selectedGame = viewModel.filteredGames[indexPath.row]
 
             viewModel.setGameName(selectedGame) { gameName in
                 text += "🍀 \(gameName) 🤞🏻\n\(selectedGame)\n\n"

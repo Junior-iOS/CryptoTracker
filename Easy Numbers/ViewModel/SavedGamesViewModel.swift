@@ -9,6 +9,13 @@ import Foundation
 import UIKit
 
 final class SavedGamesViewModel: NSObject {
+    var savedGames: [String] = []
+    var filteredGames: [String] = []
+    
+    var numberOfRowsInSection: Int {
+        filteredGames.count
+    }
+    
     func setGameName(_ savedGame: String, completion: (String) -> Void) {
         if savedGame.count <= 15 {
             completion("Quina")
@@ -21,5 +28,9 @@ final class SavedGamesViewModel: NSObject {
         } else {
             completion("Lotomania")
         }
+    }
+    
+    func updateFilteredArray() {
+        filteredGames = savedGames.sorted(by: { $0.count < $1.count })
     }
 }
