@@ -88,6 +88,7 @@ class GameViewController: BaseViewController {
         
         self.savedGames.append(number)
         self.savedGames.removeDuplicates()
+        self.savedGames = savedGames.sorted(by: { $0 < $1 } )
 
         UserDefaults.standard.set(savedGames, forKey: "SavedGames")
         viewModel.isSavedButtonHidden()
@@ -158,6 +159,7 @@ extension GameViewController: GameViewDelegate {
         }
         
         checkAlignment(gameTitle ?? "")
+        haptic(.soft)
     }
 
     func didPressSavedGames(_ savedGames: [String]) {

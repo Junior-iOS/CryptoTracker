@@ -21,6 +21,7 @@ final class SnackBar: NSObject {
         mdcMessage.duration = 0.5
         
         MDCSnackbarManager.default.show(mdcMessage)
+        MDCSnackbarManager.default.alignment = .center
            
         switch message {
         case .copy:

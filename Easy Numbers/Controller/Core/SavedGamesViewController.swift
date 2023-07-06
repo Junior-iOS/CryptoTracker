@@ -12,6 +12,7 @@ class SavedGamesViewController: BaseViewController {
     private let viewModel: SavedGamesViewModel
     private let savedGamesView = SavedGamesView()
     var savedGames: [String] = []
+    private var filteredGames: [String] = []
 
     override func loadView() {
         super.loadView()
@@ -22,6 +23,7 @@ class SavedGamesViewController: BaseViewController {
         super.viewDidLoad()
         setupNavButtons()
         tableViewSetup()
+        updateFilteredArray()
     }
 
     init(viewModel: SavedGamesViewModel) {
@@ -68,8 +70,8 @@ class SavedGamesViewController: BaseViewController {
     }
 
     private func delete() {
-        savedGames.removeAll()
-        UserDefaults.standard.set(savedGames, forKey: "SavedGames")
+        filteredGames.removeAll()
+        UserDefaults.standard.set(filteredGames, forKey: "SavedGames")
 
         savedGamesView.tableView.reloadData()
     }
@@ -77,10 +79,10 @@ class SavedGamesViewController: BaseViewController {
     @objc func share() {
         var text = ""
 
-        for i in 0...savedGames.count - 1 {
-            viewModel.setGameName(savedGames[i]) { [weak self] gameName in
+        for i in 0...filteredGames.count - 1 {
+            viewModel.setGameName(filteredGames[i]) { [weak self] gameName in
                 guard let self else { return }
-                text += "🍀 \(gameName) 🤞🏻\n\(savedGames[i])\n\n"
+                text += "🍀 \(gameName) 🤞🏻\n\(filteredGames[i])\n\n"
             }
         }
 
@@ -103,6 +105,10 @@ class SavedGamesViewController: BaseViewController {
 
         NJAnalytics.shared.trackEvent(name: .didShare)
     }
+    
+    private func updateFilteredArray() {
+        filteredGames = savedGames.sorted(by: { $0.count < $1.count })
+    }
 }
 
 // MARK: - UITableView Delegate and Datasource
@@ -112,13 +118,13 @@ extension SavedGamesViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        savedGames.count
+        filteredGames.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.dequeueReusableCell(of: SavedGamesTableViewCell.self, for: indexPath) { [weak self] cell in
             guard let self else { return }
-            let savedGame = savedGames[indexPath.row]
+            let savedGame = filteredGames[indexPath.row]
             cell.configure(savedGame)
         }
     }
@@ -131,13 +137,13 @@ extension SavedGamesViewController: UITableViewDelegate, UITableViewDataSource {
         let erase = UIContextualAction(style: .normal, title: "🚮") { [weak self] _, _, _ in
             guard let self else { return }
 
-            savedGames.remove(at: indexPath.row)
-            UserDefaults.standard.set(savedGames, forKey: "SavedGames")
+            filteredGames.remove(at: indexPath.row)
+            UserDefaults.standard.set(filteredGames, forKey: "SavedGames")
 
             tableView.deleteRows(at: [indexPath], with: .left)
             tableView.reloadData()
 
-            if savedGames.count == 0 {
+            if filteredGames.count == 0 {
                 self.navigationController?.popToRootViewController(animated: true)
             }
         }
@@ -145,7 +151,7 @@ extension SavedGamesViewController: UITableViewDelegate, UITableViewDataSource {
         let share = UIContextualAction(style: .normal, title: "↗️") { [weak self] _, _, _ in
             guard let self else { return }
             var text = ""
-            let selectedGame = savedGames[indexPath.row]
+            let selectedGame = filteredGames[indexPath.row]
 
             viewModel.setGameName(selectedGame) { gameName in
                 text += "🍀 \(gameName) 🤞🏻\n\(selectedGame)\n\n"
