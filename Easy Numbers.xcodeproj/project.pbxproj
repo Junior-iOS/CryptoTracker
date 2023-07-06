@@ -33,6 +33,7 @@
 		145660DA2A342902003FD467 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145660D92A342902003FD467 /* Array+Extensions.swift */; };
 		145660DF2A3456EB003FD467 /* OnboardingKit in Frameworks */ = {isa = PBXBuildFile; productRef = 145660DE2A3456EB003FD467 /* OnboardingKit */; };
 		146F3E362A4FD250007EAF53 /* GameViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F3E352A4FD250007EAF53 /* GameViewCell.swift */; };
+		146F3E3D2A567A70007EAF53 /* Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F3E3C2A567A70007EAF53 /* Snackbar.swift */; };
 		14888E792A1B339600359431 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14888E782A1B339500359431 /* Game.swift */; };
 		14888E7B2A1B41C500359431 /* SavedGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */; };
 		149D53802A16BFD900DC71F0 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D537F2A16BFD900DC71F0 /* Enum.swift */; };
@@ -75,6 +76,7 @@
 		145660D72A3422F7003FD467 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
 		145660D92A342902003FD467 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		146F3E352A4FD250007EAF53 /* GameViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewCell.swift; sourceTree = "<group>"; };
+		146F3E3C2A567A70007EAF53 /* Snackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snackbar.swift; sourceTree = "<group>"; };
 		14888E782A1B339500359431 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGamesViewController.swift; sourceTree = "<group>"; };
 		149D537F2A16BFD900DC71F0 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				149D537F2A16BFD900DC71F0 /* Enum.swift */,
 				14D014CC2A46C1A000842FD5 /* NJFont.swift */,
 				14388FBC2A4E9E38003F619D /* NJColor.swift */,
+				146F3E3C2A567A70007EAF53 /* Snackbar.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				146F3E362A4FD250007EAF53 /* GameViewCell.swift in Sources */,
 				14D014C92A46B87000842FD5 /* OutOfOrderView.swift in Sources */,
 				14C663FE2A1C6872005E4E46 /* SavedGamesTableViewCell.swift in Sources */,
+				146F3E3D2A567A70007EAF53 /* Snackbar.swift in Sources */,
 				14D014C72A46AFF800842FD5 /* OutOfOrderViewController.swift in Sources */,
 				145660D22A341EC1003FD467 /* Coordinator.swift in Sources */,
 				14C663FB2A1C67EC005E4E46 /* SavedGamesView.swift in Sources */,
@@ -626,7 +630,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KTUAP2Z2QF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Easy Numbers/Resources/Info.plist";
@@ -664,7 +668,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KTUAP2Z2QF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Easy Numbers/Resources/Info.plist";

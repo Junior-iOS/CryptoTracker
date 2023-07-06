@@ -92,6 +92,7 @@ class GameViewController: BaseViewController {
         UserDefaults.standard.set(savedGames, forKey: "SavedGames")
         viewModel.isSavedButtonHidden()
 
+        SnackBar.show(contextView: self, message: .save)
         haptic(.heavy)
     }
     
@@ -163,6 +164,7 @@ extension GameViewController: GameViewDelegate {
         coordinator?.routeToSavedGames(with: savedGames)
     }
     
+    // MARK: - For iPad
     func didTapCopyGame() {
         viewModel.didPressCopyGame()
     }
@@ -183,6 +185,7 @@ extension GameViewController: GameViewModelDelegate {
         let pasteboard = UIPasteboard.general
         pasteboard.string = "🍀 \(String(describing: title)) 🤞🏻\n\(number)".removeBrackets()
 
+        SnackBar.show(contextView: self, message: .copy)
         haptic(.medium)
     }
     
