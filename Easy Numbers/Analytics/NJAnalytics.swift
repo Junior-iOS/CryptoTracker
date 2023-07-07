@@ -7,7 +7,6 @@
 
 import FirebaseAnalytics
 import Foundation
-import UIKit
 
 final class NJAnalytics {
     static let shared = NJAnalytics()
@@ -25,6 +24,7 @@ final class NJAnalytics {
         case lotofacil = "Analytics_Lotofacil"
         case quina = "Analytics_Quina"
         case lotomania = "Analytics_Lotomania"
+        case timemania = "Analytics_Timemania"
     }
 
     func trackEvent(name: Event, parameters: [String: Any]? = nil) {

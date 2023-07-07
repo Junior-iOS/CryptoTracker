@@ -1,5 +1,5 @@
 //
-//  ThemeFont.swift
+//  NJFont.swift
 //  Easy Numbers
 //
 //  Created by NJ Development on 24/06/23.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct ThemeFont {
+struct NJFont {
     static func regular(ofSize size: CGFloat) -> UIFont {
         return UIFont(name: "AvenirNext-Regular", size: size) ?? .systemFont(ofSize: size)
     }

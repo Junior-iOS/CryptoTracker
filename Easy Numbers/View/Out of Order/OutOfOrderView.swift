@@ -23,7 +23,7 @@ class OutOfOrderView: UIView {
         label.textColor = .white
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.font = ThemeFont.demibold(ofSize: 19)
+        label.font = NJFont.demibold(ofSize: 19)
         return label
     }()
 

@@ -11,3 +11,12 @@ import UIKit
 enum RemoteConfigValue: String {
     case newUI = "shows_improvement_view"
 }
+
+enum SFSymbol: String {
+    case infoCircleFill = "info.circle.fill"
+    case houseCircle = "house.circle"
+    
+    var image: UIImage? {
+        UIImage(systemName: rawValue)
+    }
+}
