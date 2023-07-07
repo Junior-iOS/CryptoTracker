@@ -11,7 +11,7 @@ import WebKit
 
 class InfoViewController: BaseViewController {
     private let infoView = InfoView()
-    private let infoViewModel = InfoViewModel()
+    private let viewModel: InfoViewModel
 
     override func loadView() {
         super.loadView()
@@ -28,9 +28,19 @@ class InfoViewController: BaseViewController {
         configureWebView()
         addRightBarButton()
     }
+    
+    init(viewModel: InfoViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        nil
+    }
 
     private func addRightBarButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "house.circle"),
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: SFSymbol.houseCircle.image,
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(didPressHome))
@@ -38,7 +48,7 @@ class InfoViewController: BaseViewController {
 
     private func configureWebView() {
         DispatchQueue.main.async {
-            self.infoViewModel.configureWebView(self.infoView.webView)
+            self.viewModel.configureWebView(self.infoView.webView)
         }
     }
 

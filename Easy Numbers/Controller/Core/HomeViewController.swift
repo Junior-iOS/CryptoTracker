@@ -13,7 +13,7 @@ class HomeViewController: BaseViewController {
     private lazy var btnMyGames: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Meus jogos", for: .normal)
+        button.setTitle(viewModel.myGamesButtonTitle, for: .normal)
         button.addTarget(self, action: #selector(myGamesPressed), for: .touchUpInside)
         button.backgroundColor = .systemBlue
         button.titleLabel?.textColor = .black
@@ -23,7 +23,7 @@ class HomeViewController: BaseViewController {
     }()
 
     private let homeView = HomeView()
-    private var viewModel = HomeViewModel()
+    private var viewModel: HomeViewModel
 
     weak var coordinator: MainCoordinator?
 
@@ -38,9 +38,9 @@ class HomeViewController: BaseViewController {
     private let kButtonMargin: CGFloat = 40
 
     // MARK: - Init & Life Cycle
-    init(viewModel: HomeViewModel = HomeViewModel()) {
-        super.init(nibName: nil, bundle: nil)
+    init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
 
     @available(*, unavailable)
@@ -85,7 +85,7 @@ class HomeViewController: BaseViewController {
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle.fill"),
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: SFSymbol.infoCircleFill.image,
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(didPressInfo))
@@ -93,7 +93,7 @@ class HomeViewController: BaseViewController {
 
     private func setup() {
         view.backgroundColor = .systemBackground
-        navigationItem.title = Bundle.main.appName
+        navigationItem.title = viewModel.navtitle
         homeView.delegate = self
 
         addComponents()
@@ -147,27 +147,31 @@ extension HomeViewController: HomeViewDelegate {
         case 0:
             myGames = viewModel.generate(.megasena)
             gameTitle = GameType.megasena.rawValue
-            backButtonBackgroundColor = UIColor(red: 52 / 255, green: 125 / 255, blue: 57 / 255, alpha: 1)
+            backButtonBackgroundColor = NJColor.megasena
             NJAnalytics.shared.trackEvent(name: .megasena)
 
         case 1:
             myGames = viewModel.generate(.lotofacil)
             gameTitle = GameType.lotofacil.rawValue
-            backButtonBackgroundColor = .systemPurple
+            backButtonBackgroundColor = NJColor.lotofacil
             NJAnalytics.shared.trackEvent(name: .lotofacil)
 
         case 2:
             myGames = viewModel.generate(.quina)
             gameTitle = GameType.quina.rawValue
-            backButtonBackgroundColor = UIColor(red: 25 / 255, green: 72 / 255, blue: 152 / 255, alpha: 1)
+            backButtonBackgroundColor = NJColor.navColorOnQuina
             NJAnalytics.shared.trackEvent(name: .quina)
 
         case 3:
             myGames = viewModel.generate(.lotomania)
             gameTitle = GameType.lotomania.rawValue
-            backButtonBackgroundColor = .systemOrange
+            backButtonBackgroundColor = NJColor.lotomania
             NJAnalytics.shared.trackEvent(name: .lotomania)
-        default: break
+        default:
+            myGames = viewModel.generate(.timemania)
+            gameTitle = GameType.timemania.rawValue
+            backButtonBackgroundColor = NJColor.timemania
+            NJAnalytics.shared.trackEvent(name: .timemania)
         }
 
         coordinator?.routeToGamesVC(with: myGames, title: gameTitle)
