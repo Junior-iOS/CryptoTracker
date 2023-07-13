@@ -26,8 +26,23 @@ final class NJAnalytics {
         case lotomania = "Analytics_Lotomania"
         case timemania = "Analytics_Timemania"
     }
+    
+    enum Flow: String {
+        case home = "Home"
+        case games = "Games"
+        case savedGames = "Saved Games"
+        case info = "Info View"
+    }
 
-    func trackEvent(name: Event, parameters: [String: Any]? = nil) {
+    func trackEvent(name: Event, from flow: Flow, parameters: [String: Any]? = nil) {
         Analytics.logEvent(name.rawValue, parameters: parameters)
+        
+        print("======= 🔎 Tracking Interaction 🔍 =======\n\n")
+        print("📂 Flow: \(flow.rawValue)\n")
+        print("📘 Action: \(name.rawValue)")
+        if parameters != nil {
+            print("🗒️ Extra: \(String(describing: parameters))\n")
+        }
+        print("✅")
     }
 }
