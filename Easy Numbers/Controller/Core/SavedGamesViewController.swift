@@ -11,8 +11,6 @@ class SavedGamesViewController: BaseViewController {
     // MARK: - Properties
     private let viewModel: SavedGamesViewModel
     private let savedGamesView = SavedGamesView()
-//    var savedGames: [String] = []
-//    var filteredGames: [String] = []
 
     override func loadView() {
         super.loadView()
