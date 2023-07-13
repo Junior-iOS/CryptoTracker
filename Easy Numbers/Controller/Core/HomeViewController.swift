@@ -65,7 +65,7 @@ class HomeViewController: BaseViewController {
         checkRemoteConfig()
 
         viewModel.delegate = self
-        NJAnalytics.shared.trackEvent(name: .didLoad)
+        NJAnalytics.shared.trackEvent(name: .didLoad, from: .home)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -121,12 +121,12 @@ class HomeViewController: BaseViewController {
         btnMyGames.isEnabled = false
         coordinator?.routeToSavedGames(with: savedGames)
 
-        NJAnalytics.shared.trackEvent(name: .didSave)
+        NJAnalytics.shared.trackEvent(name: .didSave, from: .games)
     }
 
     @objc func didPressInfo() {
         coordinator?.routeToInfoVC()
-        NJAnalytics.shared.trackEvent(name: .info)
+        NJAnalytics.shared.trackEvent(name: .info, from: .home)
     }
 
     private func updateFlag() {
@@ -148,30 +148,30 @@ extension HomeViewController: HomeViewDelegate {
             myGames = viewModel.generate(.megasena)
             gameTitle = GameType.megasena.rawValue
             backButtonBackgroundColor = NJColor.megasena
-            NJAnalytics.shared.trackEvent(name: .megasena)
+            NJAnalytics.shared.trackEvent(name: .megasena, from: .games)
 
         case 1:
             myGames = viewModel.generate(.lotofacil)
             gameTitle = GameType.lotofacil.rawValue
             backButtonBackgroundColor = NJColor.lotofacil
-            NJAnalytics.shared.trackEvent(name: .lotofacil)
+            NJAnalytics.shared.trackEvent(name: .lotofacil, from: .games)
 
         case 2:
             myGames = viewModel.generate(.quina)
             gameTitle = GameType.quina.rawValue
             backButtonBackgroundColor = NJColor.navColorOnQuina
-            NJAnalytics.shared.trackEvent(name: .quina)
+            NJAnalytics.shared.trackEvent(name: .quina, from: .games)
 
         case 3:
             myGames = viewModel.generate(.lotomania)
             gameTitle = GameType.lotomania.rawValue
             backButtonBackgroundColor = NJColor.lotomania
-            NJAnalytics.shared.trackEvent(name: .lotomania)
+            NJAnalytics.shared.trackEvent(name: .lotomania, from: .games)
         default:
             myGames = viewModel.generate(.timemania)
             gameTitle = GameType.timemania.rawValue
             backButtonBackgroundColor = NJColor.timemania
-            NJAnalytics.shared.trackEvent(name: .timemania)
+            NJAnalytics.shared.trackEvent(name: .timemania, from: .games)
         }
 
         coordinator?.routeToGamesVC(with: myGames, title: gameTitle)

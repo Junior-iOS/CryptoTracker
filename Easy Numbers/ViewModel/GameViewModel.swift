@@ -34,7 +34,7 @@ final class GameViewModel: NSObject {
     }
     
     func didPressCopyGame() {
-        NJAnalytics.shared.trackEvent(name: .didCopy)
+        NJAnalytics.shared.trackEvent(name: .didCopy, from: .games)
         delegate?.didPressCopyGame()
     }
 }

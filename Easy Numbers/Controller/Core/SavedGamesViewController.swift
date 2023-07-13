@@ -101,7 +101,7 @@ class SavedGamesViewController: BaseViewController {
             }
         }
         
-        NJAnalytics.shared.trackEvent(name: .didShare)
+        NJAnalytics.shared.trackEvent(name: .didShare, from: .savedGames)
     }
 }
 
@@ -168,7 +168,7 @@ extension SavedGamesViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
 
-            NJAnalytics.shared.trackEvent(name: .didShare)
+            NJAnalytics.shared.trackEvent(name: .didShare, from: .savedGames)
         }
 
         erase.backgroundColor = NJColor.njErase

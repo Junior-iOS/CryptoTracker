@@ -124,12 +124,12 @@ class GameView: UIView {
     @objc private func didPressSavedGamesButton() {
         savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames")
         
-        NJAnalytics.shared.trackEvent(name: .savedGames)
+        NJAnalytics.shared.trackEvent(name: .savedGames, from: .games)
         delegate?.didPressSavedGames(savedGames ?? [])
     }
     
     @objc private func generateAgain() {
-        NJAnalytics.shared.trackEvent(name: .generateAgain)
+        NJAnalytics.shared.trackEvent(name: .generateAgain, from: .games)
         delegate?.didPressGenerateGameAgain()
     }
 }
