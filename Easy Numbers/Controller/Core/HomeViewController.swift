@@ -59,7 +59,6 @@ class HomeViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigation()
         setup()
         updateFlag()
         checkRemoteConfig()
@@ -80,22 +79,13 @@ class HomeViewController: BaseViewController {
     }
 
     // MARK: - Methods
-    private func setupNavigation() {
-        navigationController?.navigationBar.tintColor = .white
-        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: SFSymbol.infoCircleFill.image,
-                                                            style: .done,
-                                                            target: self,
-                                                            action: #selector(didPressInfo))
-    }
-
     private func setup() {
         view.backgroundColor = .systemBackground
-        navigationItem.title = viewModel.navtitle
+        
+        navigationItem.title = viewModel.navTitle
+        setupNavigation(actionFor: #selector(didPressInfo), actionFor: #selector(didPressSettings))
+        
         homeView.delegate = self
-
         addComponents()
     }
 
@@ -124,9 +114,14 @@ class HomeViewController: BaseViewController {
         NJAnalytics.shared.trackEvent(name: .didSave, from: .games)
     }
 
-    @objc func didPressInfo() {
+    @objc private func didPressInfo() {
         coordinator?.routeToInfoVC()
         NJAnalytics.shared.trackEvent(name: .info, from: .home)
+    }
+    
+    @objc private func didPressSettings() {
+        coordinator?.routeToSettingsVC()
+        // MARK: - TO DO: Analytics
     }
 
     private func updateFlag() {

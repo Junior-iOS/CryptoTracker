@@ -17,6 +17,22 @@ extension UIViewController {
                                                            target: target ?? self.navigationController,
                                                            action: action ?? #selector(navigationController?.popViewController(animated:)))
     }
+    
+    func setupNavigation(actionFor leftBarButton: Selector, actionFor rightBarButton: Selector) {
+        navigationController?.navigationBar.tintColor = .white
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: SFSymbol.infoCircleFill.image,
+                                                           style: .done,
+                                                           target: self,
+                                                           action: leftBarButton)
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: SFSymbol.gear.image,
+                                                            style: .done,
+                                                            target: self,
+                                                            action: rightBarButton)
+    }
 
     func hideNavigationBar(_ status: Bool) {
         navigationController?.navigationBar.isHidden = status

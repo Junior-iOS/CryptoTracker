@@ -23,6 +23,12 @@ class MainCoordinator: Coordinator {
         let infoVC = InfoViewController(viewModel: viewModel)
         navigationController.pushViewController(infoVC, animated: true)
     }
+    
+    func routeToSettingsVC() {
+        let viewModel = SettingsViewModel()
+        let settingsVC = SettingsViewController(viewModel: viewModel)
+        navigationController.pushViewController(settingsVC, animated: true)
+    }
 
     func routeToGamesVC(with game: [Int], title: String) {
         let viewModel = GameViewModel()

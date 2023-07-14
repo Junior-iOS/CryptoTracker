@@ -34,6 +34,9 @@
 		145660DF2A3456EB003FD467 /* OnboardingKit in Frameworks */ = {isa = PBXBuildFile; productRef = 145660DE2A3456EB003FD467 /* OnboardingKit */; };
 		146F3E362A4FD250007EAF53 /* GameViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F3E352A4FD250007EAF53 /* GameViewCell.swift */; };
 		146F3E3D2A567A70007EAF53 /* Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F3E3C2A567A70007EAF53 /* Snackbar.swift */; };
+		148395492A60FBFD007B3704 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148395482A60FBFD007B3704 /* SettingsViewController.swift */; };
+		1483954B2A60FC09007B3704 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1483954A2A60FC09007B3704 /* SettingsViewModel.swift */; };
+		148395502A6103A3007B3704 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1483954F2A6103A3007B3704 /* SettingsView.swift */; };
 		14888E792A1B339600359431 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14888E782A1B339500359431 /* Game.swift */; };
 		14888E7B2A1B41C500359431 /* SavedGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */; };
 		149D53802A16BFD900DC71F0 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D537F2A16BFD900DC71F0 /* Enum.swift */; };
@@ -77,6 +80,9 @@
 		145660D92A342902003FD467 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		146F3E352A4FD250007EAF53 /* GameViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewCell.swift; sourceTree = "<group>"; };
 		146F3E3C2A567A70007EAF53 /* Snackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snackbar.swift; sourceTree = "<group>"; };
+		148395482A60FBFD007B3704 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		1483954A2A60FC09007B3704 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		1483954F2A6103A3007B3704 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		14888E782A1B339500359431 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGamesViewController.swift; sourceTree = "<group>"; };
 		149D537F2A16BFD900DC71F0 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
@@ -160,10 +166,8 @@
 		14460B3F2A0C954200C4DA54 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				14460B5D2A0ECDAA00C4DA54 /* HomeViewModel.swift */,
-				14FB0E962A16C79400AD91E9 /* GameViewModel.swift */,
-				14531BBB2A1DD35400E0BA6D /* SavedGamesViewModel.swift */,
-				145660D72A3422F7003FD467 /* InfoViewModel.swift */,
+				1483954C2A610368007B3704 /* Core */,
+				1483954D2A610373007B3704 /* Other */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -175,6 +179,7 @@
 				146F3E382A51274D007EAF53 /* Game */,
 				146F3E392A512758007EAF53 /* Saved Games */,
 				146F3E3A2A512762007EAF53 /* Info */,
+				1483954E2A61038B007B3704 /* Settings */,
 				146F3E3B2A512769007EAF53 /* Out of Order */,
 			);
 			path = View;
@@ -226,7 +231,6 @@
 				14460B2D2A0C949900C4DA54 /* HomeViewController.swift */,
 				14460B642A1340A800C4DA54 /* GameViewController.swift */,
 				14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */,
-				14460B602A0F60D400C4DA54 /* InfoViewController.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -235,6 +239,8 @@
 			isa = PBXGroup;
 			children = (
 				14460B682A153EFF00C4DA54 /* BaseViewController.swift */,
+				14460B602A0F60D400C4DA54 /* InfoViewController.swift */,
+				148395482A60FBFD007B3704 /* SettingsViewController.swift */,
 				14D014C62A46AFF800842FD5 /* OutOfOrderViewController.swift */,
 			);
 			path = Other;
@@ -289,6 +295,33 @@
 				14D014C82A46B87000842FD5 /* OutOfOrderView.swift */,
 			);
 			path = "Out of Order";
+			sourceTree = "<group>";
+		};
+		1483954C2A610368007B3704 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				14460B5D2A0ECDAA00C4DA54 /* HomeViewModel.swift */,
+				14FB0E962A16C79400AD91E9 /* GameViewModel.swift */,
+				14531BBB2A1DD35400E0BA6D /* SavedGamesViewModel.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1483954D2A610373007B3704 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				145660D72A3422F7003FD467 /* InfoViewModel.swift */,
+				1483954A2A60FC09007B3704 /* SettingsViewModel.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		1483954E2A61038B007B3704 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1483954F2A6103A3007B3704 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		149D537E2A16BFBD00DC71F0 /* Supporting Files */ = {
@@ -478,6 +511,8 @@
 				14888E792A1B339600359431 /* Game.swift in Sources */,
 				146F3E362A4FD250007EAF53 /* GameViewCell.swift in Sources */,
 				14D014C92A46B87000842FD5 /* OutOfOrderView.swift in Sources */,
+				1483954B2A60FC09007B3704 /* SettingsViewModel.swift in Sources */,
+				148395502A6103A3007B3704 /* SettingsView.swift in Sources */,
 				14C663FE2A1C6872005E4E46 /* SavedGamesTableViewCell.swift in Sources */,
 				146F3E3D2A567A70007EAF53 /* Snackbar.swift in Sources */,
 				14D014C72A46AFF800842FD5 /* OutOfOrderViewController.swift in Sources */,
@@ -487,6 +522,7 @@
 				14D014CD2A46C1A000842FD5 /* NJFont.swift in Sources */,
 				145660D82A3422F7003FD467 /* InfoViewModel.swift in Sources */,
 				14460B482A0C95EB00C4DA54 /* Bundle+Extensions.swift in Sources */,
+				148395492A60FBFD007B3704 /* SettingsViewController.swift in Sources */,
 				14460B672A153C0D00C4DA54 /* GameView.swift in Sources */,
 				14388FBD2A4E9E38003F619D /* NJColor.swift in Sources */,
 				145660D62A342238003FD467 /* InfoView.swift in Sources */,

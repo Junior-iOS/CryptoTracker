@@ -27,7 +27,7 @@ final class HomeViewModel {
     
     var result: [Int]?
     
-    var navtitle: String {
+    var navTitle: String {
         Bundle.main.appName
     }
     

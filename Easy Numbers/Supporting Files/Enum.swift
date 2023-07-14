@@ -15,6 +15,7 @@ enum RemoteConfigValue: String {
 enum SFSymbol: String {
     case infoCircleFill = "info.circle.fill"
     case houseCircle = "house.circle"
+    case gear = "gearshape.circle.fill"
     
     var image: UIImage? {
         UIImage(systemName: rawValue)
