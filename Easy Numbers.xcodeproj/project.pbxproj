@@ -37,6 +37,7 @@
 		148395492A60FBFD007B3704 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148395482A60FBFD007B3704 /* SettingsViewController.swift */; };
 		1483954B2A60FC09007B3704 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1483954A2A60FC09007B3704 /* SettingsViewModel.swift */; };
 		148395502A6103A3007B3704 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1483954F2A6103A3007B3704 /* SettingsView.swift */; };
+		148395522A6107D9007B3704 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148395512A6107D9007B3704 /* SettingsTableViewCell.swift */; };
 		14888E792A1B339600359431 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14888E782A1B339500359431 /* Game.swift */; };
 		14888E7B2A1B41C500359431 /* SavedGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */; };
 		149D53802A16BFD900DC71F0 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D537F2A16BFD900DC71F0 /* Enum.swift */; };
@@ -83,6 +84,7 @@
 		148395482A60FBFD007B3704 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1483954A2A60FC09007B3704 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		1483954F2A6103A3007B3704 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		148395512A6107D9007B3704 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		14888E782A1B339500359431 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGamesViewController.swift; sourceTree = "<group>"; };
 		149D537F2A16BFD900DC71F0 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				1483954F2A6103A3007B3704 /* SettingsView.swift */,
+				148395512A6107D9007B3704 /* SettingsTableViewCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				14FB0E972A16C79400AD91E9 /* GameViewModel.swift in Sources */,
 				14460B652A1340A800C4DA54 /* GameViewController.swift in Sources */,
 				14460B692A153EFF00C4DA54 /* BaseViewController.swift in Sources */,
+				148395522A6107D9007B3704 /* SettingsTableViewCell.swift in Sources */,
 				14460B5E2A0ECDAA00C4DA54 /* HomeViewModel.swift in Sources */,
 				149D53802A16BFD900DC71F0 /* Enum.swift in Sources */,
 				145660DA2A342902003FD467 /* Array+Extensions.swift in Sources */,
