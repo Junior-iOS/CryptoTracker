@@ -9,7 +9,7 @@ import UIKit
 
 protocol GameViewDelegate: AnyObject {
     func didPressGenerateGameAgain()
-    func didPressSavedGames(_ savedGames: [String])
+    func didPressGoToSavedGames(_ savedGames: [String])
     func didTapCopyGame()
 }
 
@@ -125,7 +125,7 @@ class GameView: UIView {
         savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames")
         
         NJAnalytics.shared.trackEvent(name: .savedGames, from: .games)
-        delegate?.didPressSavedGames(savedGames ?? [])
+        delegate?.didPressGoToSavedGames(savedGames ?? [])
     }
     
     @objc private func generateAgain() {

@@ -37,12 +37,13 @@ final class NJAnalytics {
     func trackEvent(name: Event, from flow: Flow, parameters: [String: Any]? = nil) {
         Analytics.logEvent(name.rawValue, parameters: parameters)
         
-        print("======= 🔎 Tracking Interaction 🔍 =======\n\n")
+        print("\n======= 🔎 Tracking Interaction 🔍 =======\n")
         print("📂 Flow: \(flow.rawValue)")
         print("📘 Action: \(name.rawValue)")
         if parameters != nil {
             print("🗒️ Extra: \(String(describing: parameters))\n")
         }
-        print("🕵🏻‍♂️ Tracked")
+        print("🕵🏻‍♂️ Tracked\n")
+        print("======= 🔎 Tracking Ended 🔍 =======\n\n")
     }
 }

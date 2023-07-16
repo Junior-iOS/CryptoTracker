@@ -18,7 +18,6 @@ class SettingsView: UIView {
         tableView.clipsToBounds = true
         tableView.indicatorStyle = .white
         tableView.showsVerticalScrollIndicator = false
-//        tableView.backgroundColor = .clear
         return tableView
     }()
     

@@ -38,6 +38,7 @@
 		1483954B2A60FC09007B3704 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1483954A2A60FC09007B3704 /* SettingsViewModel.swift */; };
 		148395502A6103A3007B3704 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1483954F2A6103A3007B3704 /* SettingsView.swift */; };
 		148395522A6107D9007B3704 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148395512A6107D9007B3704 /* SettingsTableViewCell.swift */; };
+		148395542A637F0C007B3704 /* LocalAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148395532A637F0C007B3704 /* LocalAuthentication.swift */; };
 		14888E792A1B339600359431 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14888E782A1B339500359431 /* Game.swift */; };
 		14888E7B2A1B41C500359431 /* SavedGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */; };
 		149D53802A16BFD900DC71F0 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D537F2A16BFD900DC71F0 /* Enum.swift */; };
@@ -85,6 +86,7 @@
 		1483954A2A60FC09007B3704 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		1483954F2A6103A3007B3704 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		148395512A6107D9007B3704 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		148395532A637F0C007B3704 /* LocalAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthentication.swift; sourceTree = "<group>"; };
 		14888E782A1B339500359431 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGamesViewController.swift; sourceTree = "<group>"; };
 		149D537F2A16BFD900DC71F0 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				14D014CC2A46C1A000842FD5 /* NJFont.swift */,
 				14388FBC2A4E9E38003F619D /* NJColor.swift */,
 				146F3E3C2A567A70007EAF53 /* Snackbar.swift */,
+				148395532A637F0C007B3704 /* LocalAuthentication.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				14888E792A1B339600359431 /* Game.swift in Sources */,
 				146F3E362A4FD250007EAF53 /* GameViewCell.swift in Sources */,
 				14D014C92A46B87000842FD5 /* OutOfOrderView.swift in Sources */,
+				148395542A637F0C007B3704 /* LocalAuthentication.swift in Sources */,
 				1483954B2A60FC09007B3704 /* SettingsViewModel.swift in Sources */,
 				148395502A6103A3007B3704 /* SettingsView.swift in Sources */,
 				14C663FE2A1C6872005E4E46 /* SavedGamesTableViewCell.swift in Sources */,

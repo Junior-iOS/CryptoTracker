@@ -46,6 +46,15 @@ class SettingsViewController: BaseViewController {
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 2 {
+            switch indexPath.row {
+            case 0:
+                print("Fale Conosco")
+            default:
+                print("Compartilhe")
+            }
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

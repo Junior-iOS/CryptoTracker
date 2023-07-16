@@ -159,8 +159,9 @@ extension GameViewController: GameViewDelegate {
         haptic(.soft)
     }
 
-    func didPressSavedGames(_ savedGames: [String]) {
-        coordinator?.routeToSavedGames(with: savedGames)
+    func didPressGoToSavedGames(_ savedGames: [String]) {
+        guard let coordinator = coordinator else { return }
+        checkforFaceID(coordinator: coordinator, savedGames: savedGames)
     }
     
     // MARK: - For iPad

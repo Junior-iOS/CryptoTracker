@@ -32,7 +32,7 @@ class HomeViewController: BaseViewController {
 
     private var myGames: [Int] = []
     private var gameTitle = ""
-    private var backButtonBackgroundColor = UIColor.white
+    private var backButtonBackgroundColor = UIColor.link
 
     private let kButtonHeight: CGFloat = 50
     private let kButtonMargin: CGFloat = 40
@@ -109,9 +109,10 @@ class HomeViewController: BaseViewController {
     @objc func myGamesPressed(_ sender: UIButton) {
         guard let savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") else { return }
         btnMyGames.isEnabled = false
-        coordinator?.routeToSavedGames(with: savedGames)
-
         NJAnalytics.shared.trackEvent(name: .didSave, from: .games)
+        
+        guard let coordinator = coordinator else { return }
+        checkforFaceID(coordinator: coordinator, savedGames: savedGames)
     }
 
     @objc private func didPressInfo() {

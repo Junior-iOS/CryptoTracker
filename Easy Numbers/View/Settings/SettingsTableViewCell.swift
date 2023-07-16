@@ -13,8 +13,6 @@ enum SwitchButton {
 }
 
 class SettingsTableViewCell: UITableViewCell {
-    var isShowingSwitchButton: SwitchButton = .show
-    
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -33,12 +31,14 @@ class SettingsTableViewCell: UITableViewCell {
         return switchButton
     }()
     
+    var isShowingSwitchButton: SwitchButton = .show
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
         addComponents()
     }
-
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         nil
@@ -81,11 +81,11 @@ class SettingsTableViewCell: UITableViewCell {
     }
     
     func configure(text: String, isShowingSwitchButton: SwitchButton, switchTag: Int) {
-        let isSwitchOn = switchTag == 0
-        ? UserDefaults.standard.bool(forKey: "safetySwitch")
-        : UserDefaults.standard.bool(forKey: "accessibilitySwitch")
-        
         DispatchQueue.main.async {
+            let isSwitchOn = switchTag == 0
+            ? UserDefaults.standard.bool(forKey: "safetySwitch")
+            : UserDefaults.standard.bool(forKey: "accessibilitySwitch")
+            
             self.nameLabel.text = text
             self.switchButton.isOn = isSwitchOn
         }

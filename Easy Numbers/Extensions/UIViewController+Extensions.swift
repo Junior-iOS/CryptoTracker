@@ -27,19 +27,38 @@ extension UIViewController {
                                                            style: .done,
                                                            target: self,
                                                            action: leftBarButton)
-
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: SFSymbol.gear.image,
                                                             style: .done,
                                                             target: self,
                                                             action: rightBarButton)
     }
-
+    
     func hideNavigationBar(_ status: Bool) {
         navigationController?.navigationBar.isHidden = status
     }
-
+    
     func haptic(_ style: UIImpactFeedbackGenerator.FeedbackStyle) {
         let generator = UIImpactFeedbackGenerator(style: style)
         generator.impactOccurred()
+    }
+    
+    func checkforFaceID(coordinator: MainCoordinator, savedGames: [String]) {
+        let hasBiometrics = UserDefaults.standard.bool(forKey: "safetySwitch")
+        
+        if hasBiometrics {
+            LocalAuthentication.shared.authenticateWithBiometrics { status in
+                switch status {
+                case true:
+                    DispatchQueue.main.async {
+                        coordinator.routeToSavedGames(with: savedGames)
+                    }
+                case false:
+                    coordinator.routeToSavedGames(with: savedGames)
+                }
+            }
+        } else {
+            coordinator.routeToSavedGames(with: savedGames)
+        }
     }
 }
