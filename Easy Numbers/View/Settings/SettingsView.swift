@@ -18,7 +18,6 @@ class SettingsView: UIView {
         tableView.clipsToBounds = true
         tableView.indicatorStyle = .white
         tableView.showsVerticalScrollIndicator = false
-        tableView.tableFooterView = createFooter()
         return tableView
     }()
     
@@ -29,12 +28,6 @@ class SettingsView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func createFooter() -> UIView {
-        let footer = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 100))
-        footer.backgroundColor = .secondarySystemGroupedBackground
-        return footer
     }
     
     func setupConstraints() {

@@ -10,6 +10,7 @@ import UIKit
 enum SwitchButton {
     case show
     case hide
+    case none
 }
 
 class SettingsTableViewCell: UITableViewCell {
@@ -94,10 +95,16 @@ class SettingsTableViewCell: UITableViewCell {
             self.switchButton.isHidden = false
             accessoryType = .none
             accessoryView = switchButton
+        } else if isShowingSwitchButton == .hide {
+            removeSwitchBUtton(accessoryType: .disclosureIndicator)
         } else {
-            self.switchButton.isHidden = true
-            accessoryType = .disclosureIndicator
-            accessoryView = nil
+            removeSwitchBUtton(accessoryType: .none)
         }
+    }
+    
+    private func removeSwitchBUtton(accessoryType: UITableViewCell.AccessoryType) {
+        self.switchButton.isHidden = true
+        self.accessoryType = accessoryType
+        accessoryView = nil
     }
 }

@@ -19,11 +19,25 @@ protocol SettingsViewModelDelegate: AnyObject {
 final class SettingsViewModel {
     
     public let navTitle = "Ajustes"
-    public let sectionTitles = ["SEGURANÇA", "ACESSIBILIDADE", "NOTIFICAÇÕES"]
+    public let sectionTitles = ["SEGURANÇA", "ACESSIBILIDADE", "NOTIFICAÇÕES", "VERSÃO"]
     public let rowTitles = ["Face ID e Código", "Ativar acessibilidade"]
     public let notificationRowTitles = ["Fale Conosco", "Compartilhe"]
     
+    private let kVersion = "CFBundleShortVersionString"
+    private let kBuildNumber = "CFBundleVersion"
+    
     weak var viewDelegate: SettingsViewModelDelegate?
+    
+    func appVersion() -> String {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary[kVersion] as! String
+        let build = dictionary[kBuildNumber] as! String
+        return "Versão atual: \(version)(\(build))"
+    }
+    
+    public func numberOfSections() -> Int {
+        return sectionTitles.count
+    }
     
     public func numberOfRowsIn(_ section: Int) -> Int {
         return section == 2 ? 2 : 1

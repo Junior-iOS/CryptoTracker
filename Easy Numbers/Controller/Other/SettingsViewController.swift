@@ -75,7 +75,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return viewModel.numberOfSections()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -99,10 +99,16 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                     switchTag: indexPath.section
                 )
                 cell.switchButton.tag = indexPath.section
-            default:
+            case 2:
                 return cell.configure(
                     text: self.viewModel.notificationRowTitles[indexPath.row],
                     isShowingSwitchButton: .hide,
+                    switchTag: -1
+                )
+            default:
+                return cell.configure(
+                    text: self.viewModel.appVersion(),
+                    isShowingSwitchButton: .none,
                     switchTag: -1
                 )
             }
