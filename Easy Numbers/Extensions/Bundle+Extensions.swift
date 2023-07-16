@@ -19,4 +19,12 @@ extension Bundle {
     var resultsURL: String {
         self.object(forInfoDictionaryKey: "RESULTS_URL") as? String ?? ""
     }
+    
+    var linkedIn: String {
+        self.object(forInfoDictionaryKey: "LINKED_IN") as? String ?? ""
+    }
+    
+    var njEmail: String {
+        self.object(forInfoDictionaryKey: "NJ_EMAIL") as? String ?? ""
+    }
 }

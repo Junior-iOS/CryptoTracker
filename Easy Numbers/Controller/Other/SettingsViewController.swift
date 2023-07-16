@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import MessageUI
 
 class SettingsViewController: BaseViewController {
     
+    // MARK: - Properties
     private let settingsView = SettingsView()
     private let viewModel: SettingsViewModel
     
@@ -27,6 +29,7 @@ class SettingsViewController: BaseViewController {
     init(viewModel: SettingsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewModel.viewDelegate = self
     }
     
     @available(*, unavailable)
@@ -43,6 +46,18 @@ class SettingsViewController: BaseViewController {
     }
 }
 
+// MARK: - SettingsViewModel Delegate
+extension SettingsViewController: SettingsViewModelDelegate {
+    func couldNotSentEmail(_ viewController: UIViewController) {
+        navigationController?.present(viewController, animated: true)
+    }
+    
+    func shareApp(_ viewController: UIViewController) {
+        navigationController?.present(viewController, animated: true)
+    }
+}
+
+// MARK: - UITableView Delegate and DataSource
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -50,9 +65,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 2 {
             switch indexPath.row {
             case 0:
-                print("Fale Conosco")
+                viewModel.sendEmail(delegate: self) { [weak self] mailComposeVC in
+                    self?.navigationController?.present(mailComposeVC, animated: true)
+                }
             default:
-                print("Compartilhe")
+                viewModel.shareApp()
             }
         }
     }
@@ -94,5 +111,12 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return viewModel.sectionTitles[section]
+    }
+}
+
+// MARK: - UINavigationController Delegate
+extension SettingsViewController: MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
 }
