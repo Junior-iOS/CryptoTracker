@@ -18,7 +18,7 @@ extension UIViewController {
                                                            action: action ?? #selector(navigationController?.popViewController(animated:)))
     }
     
-    func setupNavigation(actionFor leftBarButton: Selector, actionFor rightBarButton: Selector) {
+    func setupNavigation(actionFor leftBarButton: Selector?, actionFor rightBarButton: Selector) {
         navigationController?.navigationBar.tintColor = .white
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
@@ -43,22 +43,20 @@ extension UIViewController {
         generator.impactOccurred()
     }
     
-    func checkforFaceID(coordinator: MainCoordinator, savedGames: [String]) {
+    func checkforFaceID(_ coordinator: MainCoordinator) {
         let hasBiometrics = UserDefaults.standard.bool(forKey: "safetySwitch")
         
         if hasBiometrics {
             LocalAuthentication.shared.authenticateWithBiometrics { status in
                 switch status {
-                case true:
+                case .canEvaluate, .canNotEvaluate:
+                    break
+                case .canEvaluateError:
                     DispatchQueue.main.async {
-                        coordinator.routeToSavedGames(with: savedGames)
+                        coordinator.routeCheckFaceID()
                     }
-                case false:
-                    coordinator.routeToSavedGames(with: savedGames)
                 }
             }
-        } else {
-            coordinator.routeToSavedGames(with: savedGames)
         }
     }
 }

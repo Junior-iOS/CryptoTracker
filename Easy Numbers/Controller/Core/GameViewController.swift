@@ -161,7 +161,8 @@ extension GameViewController: GameViewDelegate {
 
     func didPressGoToSavedGames(_ savedGames: [String]) {
         guard let coordinator = coordinator else { return }
-        checkforFaceID(coordinator: coordinator, savedGames: savedGames)
+        coordinator.routeToSavedGames(with: savedGames)
+//        checkforFaceID(coordinator: coordinator, savedGames: savedGames)
     }
     
     // MARK: - For iPad

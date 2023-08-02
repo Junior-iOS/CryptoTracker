@@ -53,4 +53,10 @@ class MainCoordinator: Coordinator {
         navigationController.interactivePopGestureRecognizer?.isEnabled = false
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func routeCheckFaceID() {
+        let vc = CheckFaceIDViewController()
+        navigationController.interactivePopGestureRecognizer?.isEnabled = false
+        navigationController.pushViewController(vc, animated: true)
+    }
 }

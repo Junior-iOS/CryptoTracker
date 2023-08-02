@@ -9,6 +9,7 @@ import OnboardingKit
 import UIKit
 
 class HomeViewController: BaseViewController {
+    
     // MARK: - Properties
     private lazy var btnMyGames: UIButton = {
         let button = UIButton()
@@ -65,6 +66,8 @@ class HomeViewController: BaseViewController {
 
         viewModel.delegate = self
         NJAnalytics.shared.trackEvent(name: .didLoad, from: .home)
+        
+        authenticationCheck()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -111,8 +114,7 @@ class HomeViewController: BaseViewController {
         btnMyGames.isEnabled = false
         NJAnalytics.shared.trackEvent(name: .didSave, from: .games)
         
-        guard let coordinator = coordinator else { return }
-        checkforFaceID(coordinator: coordinator, savedGames: savedGames)
+        coordinator?.routeToSavedGames(with: savedGames)
     }
 
     @objc private func didPressInfo() {
@@ -133,6 +135,11 @@ class HomeViewController: BaseViewController {
 
     private func checkRemoteConfig() {
         viewModel.checkRemoteConfig()
+    }
+    
+    private func authenticationCheck() {
+        guard let coordinator = coordinator else { return }
+        checkforFaceID(coordinator)
     }
 }
 

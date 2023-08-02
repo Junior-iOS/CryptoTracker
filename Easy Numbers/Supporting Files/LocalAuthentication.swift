@@ -9,12 +9,18 @@ import Foundation
 import UIKit
 import LocalAuthentication
 
+enum AuthPolicy {
+    case canEvaluate
+    case canNotEvaluate
+    case canEvaluateError
+}
+
 final class LocalAuthentication {
     static let shared = LocalAuthentication()
     
     private init() {}
     
-    func authenticateWithBiometrics(completion: @escaping (Bool) -> ()) {
+    func authenticateWithBiometrics(completion: @escaping (AuthPolicy) -> ()) {
         let context = LAContext()
         var error: NSError?
         let policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics
@@ -22,15 +28,13 @@ final class LocalAuthentication {
         if context.canEvaluatePolicy(policy, error: &error) {
             context.evaluatePolicy(policy, localizedReason: "Liberar jogos salvos?") { success, error in
                 guard error == nil else {
-                    // MARK: - GIVE SOME ERROR BACK
+                    completion(.canEvaluateError)
                     return
                 }
-                completion(true)
+                completion(.canEvaluate)
             }
         } else {
-            guard let error = error else { return }
-            completion(false)
-            UserDefaults.standard.setValue(false, forKey: "safetySwitch")
+            completion(.canNotEvaluate)
         }
     }
 }
