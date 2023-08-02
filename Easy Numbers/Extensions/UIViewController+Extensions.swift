@@ -45,15 +45,26 @@ extension UIViewController {
     
     func checkforFaceID(_ coordinator: MainCoordinator) {
         let hasBiometrics = UserDefaults.standard.bool(forKey: "safetySwitch")
+        let isHomeVC = self is HomeViewController
         
         if hasBiometrics {
             LocalAuthentication.shared.authenticateWithBiometrics { status in
                 switch status {
                 case .canEvaluate, .canNotEvaluate:
-                    break
+                    if isHomeVC {
+                        break
+                    } else {
+                        DispatchQueue.main.async {
+                            self.navigationController?.popToRootViewController(animated: true)
+                        }
+                    }
                 case .canEvaluateError:
-                    DispatchQueue.main.async {
-                        coordinator.routeCheckFaceID()
+                    if isHomeVC {
+                        DispatchQueue.main.async {
+                            coordinator.routeCheckFaceID()
+                        }
+                    } else {
+                        break
                     }
                 }
             }

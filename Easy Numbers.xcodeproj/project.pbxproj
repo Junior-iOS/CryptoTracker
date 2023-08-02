@@ -49,6 +49,7 @@
 		14D014C92A46B87000842FD5 /* OutOfOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D014C82A46B87000842FD5 /* OutOfOrderView.swift */; };
 		14D014CD2A46C1A000842FD5 /* NJFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D014CC2A46C1A000842FD5 /* NJFont.swift */; };
 		14EC8CFD2A79F9F700598631 /* CheckFaceIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC8CFC2A79F9F700598631 /* CheckFaceIDViewController.swift */; };
+		14EC8D002A7A08A500598631 /* CheckFaceIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC8CFF2A7A08A500598631 /* CheckFaceIDView.swift */; };
 		14FB0E972A16C79400AD91E9 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB0E962A16C79400AD91E9 /* GameViewModel.swift */; };
 		5B3626AE93F6AD067A5DFEAB /* Pods_Easy_Numbers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA2BE56E56C326D1059670B /* Pods_Easy_Numbers.framework */; };
 /* End PBXBuildFile section */
@@ -97,6 +98,7 @@
 		14D014C82A46B87000842FD5 /* OutOfOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutOfOrderView.swift; sourceTree = "<group>"; };
 		14D014CC2A46C1A000842FD5 /* NJFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NJFont.swift; sourceTree = "<group>"; };
 		14EC8CFC2A79F9F700598631 /* CheckFaceIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFaceIDViewController.swift; sourceTree = "<group>"; };
+		14EC8CFF2A7A08A500598631 /* CheckFaceIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFaceIDView.swift; sourceTree = "<group>"; };
 		14FB0E962A16C79400AD91E9 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		894131655C02596668963EF8 /* Pods-Easy Numbers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy Numbers.release.xcconfig"; path = "Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers.release.xcconfig"; sourceTree = "<group>"; };
 		9FA2BE56E56C326D1059670B /* Pods_Easy_Numbers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Easy_Numbers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +183,7 @@
 		14460B402A0C954800C4DA54 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				14EC8CFE2A7A088700598631 /* Face ID */,
 				146F3E372A512742007EAF53 /* Home */,
 				146F3E382A51274D007EAF53 /* Game */,
 				146F3E392A512758007EAF53 /* Saved Games */,
@@ -344,6 +347,14 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		14EC8CFE2A7A088700598631 /* Face ID */ = {
+			isa = PBXGroup;
+			children = (
+				14EC8CFF2A7A08A500598631 /* CheckFaceIDView.swift */,
+			);
+			path = "Face ID";
+			sourceTree = "<group>";
+		};
 		5D8777C6AB94F118D675F5D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +516,7 @@
 				14460B612A0F60D400C4DA54 /* InfoViewController.swift in Sources */,
 				14460B5A2A0DEF5900C4DA54 /* NJAnalytics.swift in Sources */,
 				14460B4B2A0C95EB00C4DA54 /* UIViewController+Extensions.swift in Sources */,
+				14EC8D002A7A08A500598631 /* CheckFaceIDView.swift in Sources */,
 				14FB0E972A16C79400AD91E9 /* GameViewModel.swift in Sources */,
 				14460B652A1340A800C4DA54 /* GameViewController.swift in Sources */,
 				14460B692A153EFF00C4DA54 /* BaseViewController.swift in Sources */,
