@@ -18,6 +18,10 @@ protocol HomeViewModelDelegate: AnyObject {
     func handleRemoteConfig(with value: Bool)
 }
 
+protocol GenerateNumbers: AnyObject {
+    func generateNumbers(total: Int, universe: Int) -> [Int]
+}
+
 final class HomeViewModel {
     // MARK: - Properties
     
@@ -98,19 +102,6 @@ final class HomeViewModel {
         return result.sorted(by: { $0 < $1 } )
     }
 
-    private func generateNumbers(total: Int, universe: Int) -> [Int] {
-        guard let result else { return [] }
-        var myGame: [Int] = result
-
-        while myGame.count < total {
-            let randomNumber = Int.random(in: 1...universe)
-            if !myGame.contains(randomNumber) {
-                myGame.append(randomNumber)
-            }
-        }
-        return myGame.sorted()
-    }
-
     func checkRemoteConfig() {
         let defaults: [String: NSObject] = [
             RemoteConfigValue.newUI.rawValue: false as NSObject
@@ -137,6 +128,22 @@ final class HomeViewModel {
     
     private func updateUI(_ value: Bool) {
         delegate?.handleRemoteConfig(with: value)
+    }
+}
+
+// MARK: - GENERATE NUMBERS PROTOCOL
+extension HomeViewModel: GenerateNumbers {
+    func generateNumbers(total: Int, universe: Int) -> [Int] {
+        guard let result else { return [] }
+        var myGame: [Int] = result
+
+        while myGame.count < total {
+            let randomNumber = Int.random(in: 1...universe)
+            if !myGame.contains(randomNumber) {
+                myGame.append(randomNumber)
+            }
+        }
+        return myGame.sorted()
     }
 }
 

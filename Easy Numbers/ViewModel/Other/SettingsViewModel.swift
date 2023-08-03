@@ -29,9 +29,11 @@ final class SettingsViewModel {
     weak var viewDelegate: SettingsViewModelDelegate?
     
     func appVersion() -> String {
-        let dictionary = Bundle.main.infoDictionary!
-        let version = dictionary[kVersion] as! String
-        let build = dictionary[kBuildNumber] as! String
+        guard let dictionary = Bundle.main.infoDictionary,
+              let version = dictionary[kVersion] as? String,
+              let build = dictionary[kBuildNumber] as? String else {
+            return "Não encontrada"
+        }
         return "Versão atual: \(version)(\(build))"
     }
     
@@ -59,8 +61,9 @@ final class SettingsViewModel {
     }
     
     public func shareApp() {
+        guard let iTunesID = Int(Bundle.main.iTunesID) else { return }
         let vc = SKStoreProductViewController()
-        vc.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier: NSNumber(value: 6449045730)])
+        vc.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier: NSNumber(value: iTunesID)])
         viewDelegate?.shareApp(vc)
     }
 }

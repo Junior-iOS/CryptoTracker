@@ -21,6 +21,11 @@ class CheckFaceIDViewController: UIViewController {
         setup()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        hideNavigationBar(false)
+    }
+    
     init(_ coordinator: MainCoordinator? = MainCoordinator()) {
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)

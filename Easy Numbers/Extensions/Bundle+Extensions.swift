@@ -27,4 +27,8 @@ extension Bundle {
     var njEmail: String {
         self.object(forInfoDictionaryKey: "NJ_EMAIL") as? String ?? ""
     }
+    
+    var iTunesID: String {
+        self.object(forInfoDictionaryKey: "ITUNES_ID") as? String ?? ""
+    }
 }

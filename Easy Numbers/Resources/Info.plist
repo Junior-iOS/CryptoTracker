@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ITUNES_ID</key>
+	<string>${ITUNES_ID}</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Gostaria de proteger seus jogos salvos?</string>
 	<key>APP_NAME</key>

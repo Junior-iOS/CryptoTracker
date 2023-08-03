@@ -79,6 +79,9 @@ class SettingsTableViewCell: UITableViewCell {
             }
         default: break
         }
+        
+        let generator = UIImpactFeedbackGenerator(style: .soft)
+        generator.impactOccurred()
     }
     
     func configure(text: String, isShowingSwitchButton: SwitchButton, switchTag: Int) {
