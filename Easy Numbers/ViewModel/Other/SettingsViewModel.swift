@@ -18,23 +18,26 @@ protocol SettingsViewModelDelegate: AnyObject {
 
 final class SettingsViewModel {
     
-    public let navTitle = "Ajustes"
-    public let sectionTitles = ["SEGURANÇA", "ACESSIBILIDADE", "NOTIFICAÇÕES", "VERSÃO"]
-    public let rowTitles = ["Face ID e Código", "Ativar acessibilidade"]
-    public let notificationRowTitles = ["Fale Conosco", "Compartilhe"]
+    public let navTitle = LocalizableStrings.settingsNavTitle.localized
+    public let sectionTitles = [LocalizableStrings.settingsSafetySectionTitle.localized,
+                                LocalizableStrings.settingsAccessibilitySectionTitle.localized,
+                                LocalizableStrings.settingsNotificationSectionTitle.localized,
+                                LocalizableStrings.settingsVersionSectionTitle.localized]
+    public let rowTitles = [LocalizableStrings.settingsSafety.localized,
+                            LocalizableStrings.settingsAccessibility.localized]
+    public let notificationRowTitles = [LocalizableStrings.settingsNotificationTalkToUs.localized,
+                                        LocalizableStrings.settingsNotificationShare.localized]
     
     private let kVersion = "CFBundleShortVersionString"
-    private let kBuildNumber = "CFBundleVersion"
     
     weak var viewDelegate: SettingsViewModelDelegate?
     
     func appVersion() -> String {
         guard let dictionary = Bundle.main.infoDictionary,
-              let version = dictionary[kVersion] as? String,
-              let build = dictionary[kBuildNumber] as? String else {
+              let version = dictionary[kVersion] as? String else {
             return "Não encontrada"
         }
-        return "Versão atual: \(version)(\(build))"
+        return String(format: LocalizableStrings.settingsCurrentVersion.localized, "\(version)")
     }
     
     public func numberOfSections() -> Int {

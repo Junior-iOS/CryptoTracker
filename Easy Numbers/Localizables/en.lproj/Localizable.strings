@@ -1,0 +1,40 @@
+/* 
+  Localizable.strings
+  Easy Numbers
+
+  Created by NJ Development on 08/08/23.
+  
+*/
+
+// MARK: - HOME
+"LocalizableStrings_homeSavedGames" = "My games";
+
+// MARK: - GAMES
+"LocalizableStrings_gamesSaveButton" = "Save";
+"LocalizableStrings_gamesGenerateAgain" = "Generate again";
+"LocalizableStrings_gamesSavedGames" = "Saved games";
+"LocalizableStrings_gamesGameSaved" = "Game saved";
+"LocalizableStrings_gamesGameCopied" = "Game copied";
+
+// MARK: - SETTINGS
+"LocalizableStrings_settingsNavTitle" = "Settings";
+
+"LocalizableStrings_settingsSafetySectionTitle" = "SECURITY";
+"LocalizableStrings_settingsSafety" = "Face ID and Code";
+
+"LocalizableStrings_settingsAccessibilitySectionTitle" = "ACCESSIBILITY";
+"LocalizableStrings_settingsAccessibility" = "Activate accessibility";
+
+"LocalizableStrings_settingsNotificationSectionTitle" = "NOTIFICATIONS";
+"LocalizableStrings_settingsNotificationTalkToUs" = "Talk to us";
+"LocalizableStrings_settingsNotificationShare" = "Share";
+
+"LocalizableStrings_settingsVersionSectionTitle" = "VERSION";
+"LocalizableStrings_settingsCurrentVersion" = "Current version: %@";
+
+// MARK: - SAVED GAMES
+"LocalizableStrings_savedGamesNavTitle" = "My Games";
+"LocalizableStrings_savedGamesAlertTitle" = "Attention";
+"LocalizableStrings_savedGamesAlertMessage" = "Do you wish to erase all of your saved games?";
+"LocalizableStrings_savedGamesAlertNoButton" = "No";
+"LocalizableStrings_savedGamesAlertYesButton" = "Yes";

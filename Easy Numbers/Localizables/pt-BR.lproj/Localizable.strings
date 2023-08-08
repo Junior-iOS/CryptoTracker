@@ -1,0 +1,40 @@
+/* 
+  Localizable.strings
+  Easy Numbers
+
+  Created by NJ Development on 08/08/23.
+  
+*/
+
+// MARK: - HOME
+"LocalizableStrings_homeSavedGames" = "Meus jogos";
+
+// MARK: - GAMES
+"LocalizableStrings_gamesSaveButton" = "Salvar";
+"LocalizableStrings_gamesGenerateAgain" = "Gerar novamente";
+"LocalizableStrings_gamesSavedGames" = "Jogos salvos";
+"LocalizableStrings_gamesGameSaved" = "Jogo salvo";
+"LocalizableStrings_gamesGameCopied" = "Jogo copiado";
+
+// MARK: - SETTINGS
+"LocalizableStrings_settingsNavTitle" = "Ajustes";
+
+"LocalizableStrings_settingsSafetySectionTitle" = "SEGURANÇA";
+"LocalizableStrings_settingsSafety" = "Face ID e Código";
+
+"LocalizableStrings_settingsAccessibilitySectionTitle" = "ACESSIBILIDADE";
+"LocalizableStrings_settingsAccessibility" = "Ativar acessibilidade";
+
+"LocalizableStrings_settingsNotificationSectionTitle" = "NOTIFICAÇÕES";
+"LocalizableStrings_settingsNotificationTalkToUs" = "Fale conosco";
+"LocalizableStrings_settingsNotificationShare" = "Compartilhe";
+
+"LocalizableStrings_settingsVersionSectionTitle" = "VERSÃO";
+"LocalizableStrings_settingsCurrentVersion" = "Versão atual: %@";
+
+// MARK: - SAVED GAMES
+"LocalizableStrings_savedGamesNavTitle" = "Meus Jogos";
+"LocalizableStrings_savedGamesAlertTitle" = "Atenção";
+"LocalizableStrings_savedGamesAlertMessage" = "Deseja apagar todos seus jogos salvos?";
+"LocalizableStrings_savedGamesAlertNoButton" = "Não";
+"LocalizableStrings_savedGamesAlertYesButton" = "Sim";

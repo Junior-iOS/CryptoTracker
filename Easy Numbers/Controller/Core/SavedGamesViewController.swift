@@ -40,7 +40,7 @@ class SavedGamesViewController: BaseViewController {
     }
 
     private func setupNavButtons() {
-        title = Bundle.main.savedGamestitle
+        title = viewModel.navTitle
 
         let deleteButton = UIBarButtonItem(image: UIImage(systemName: "trash"),
                                            style: .plain,
@@ -55,9 +55,11 @@ class SavedGamesViewController: BaseViewController {
     }
 
     @objc private func deleteGames() {
-        let alert = UIAlertController(title: "Atenção", message: "Deseja apagar todos seus jogos salvos?", preferredStyle: .alert)
-        let no = UIAlertAction(title: "Não", style: .default)
-        let yes = UIAlertAction(title: "Sim", style: .destructive) { [weak self] _ in
+        let alert = UIAlertController(title: LocalizableStrings.savedGamesAlertTitle.localized,
+                                      message: LocalizableStrings.savedGamesAlertMessage.localized,
+                                      preferredStyle: .alert)
+        let no = UIAlertAction(title: LocalizableStrings.savedGamesAlertNoButton.localized, style: .default)
+        let yes = UIAlertAction(title: LocalizableStrings.savedGamesAlertYesButton.localized, style: .destructive) { [weak self] _ in
             self?.delete()
             self?.navigationController?.popToRootViewController(animated: true)
         }

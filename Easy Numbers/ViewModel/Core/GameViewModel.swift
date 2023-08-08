@@ -23,6 +23,7 @@ final class GameViewModel: NSObject {
     }
     
     var gameTitle: String = ""
+    let saveGameTitle = LocalizableStrings.gamesSaveButton.localized
     
     var numberOfItemsInSection: Int {
         game?.count ?? 0

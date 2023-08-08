@@ -36,7 +36,7 @@ final class HomeViewModel {
     }
     
     var myGamesButtonTitle: String {
-        "Meus jogos"
+        LocalizableStrings.homeSavedGames.localized
     }
 
     // MARK: - Methods
