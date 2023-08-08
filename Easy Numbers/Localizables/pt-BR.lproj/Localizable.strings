@@ -6,6 +6,12 @@
   
 */
 
+// MARK: - ONBOARDING
+"LocalizableStrings_onboardingCopyGame" = "Clique para copiar seu jogo!";
+"LocalizableStrings_onboardingSaveGame" = "Salve seu jogo para fazer sua aposta mais tarde. =)";
+"LocalizableStrings_onboardingShareDeleteGames" = "Compartilhe ou apague todos os seus jogos.";
+"LocalizableStrings_onboardingShareDeleteSingleGame" = "Compartilhe ou apague todos os seus jogos individualmente.";
+
 // MARK: - FACE ID
 "LocalizableStrings_faceID" = "Liberar jogos salvos?";
 

@@ -6,6 +6,12 @@
   
 */
 
+// MARK: - ONBOARDING
+"LocalizableStrings_onboardingCopyGame" = "Press to copy your game!";
+"LocalizableStrings_onboardingSaveGame" = "Save your game so you can make your bet later. =)";
+"LocalizableStrings_onboardingShareDeleteGames" = "Share or delete all of your games.";
+"LocalizableStrings_onboardingShareDeleteSingleGame" = "Share or delete all your games individually.";
+
 // MARK: - FACE ID
 "LocalizableStrings_faceID" = "Unlock saved games?";
 

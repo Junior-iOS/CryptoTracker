@@ -8,6 +8,11 @@
 import Foundation
 
 enum LocalizableStrings: String {
+    case onboardingCopyGame
+    case onboardingSaveGame
+    case onboardingShareDeleteGames
+    case onboardingShareDeleteSingleGame
+    
     case faceID
     
     case homeSavedGames

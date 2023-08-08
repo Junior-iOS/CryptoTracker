@@ -719,7 +719,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = KTUAP2Z2QF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Easy Numbers/Resources/Info.plist";
@@ -737,7 +737,7 @@
 					"@executable_path/Frameworks",
 				);
 				LINKED_IN = "https://www.linkedin.com/in/nelson-junior-70b113100/";
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 3.0;
 				NJ_EMAIL = "nj.development83@gmail.com";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.njdevelopment.Easy-Numbers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -760,7 +760,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = KTUAP2Z2QF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Easy Numbers/Resources/Info.plist";
@@ -778,7 +778,7 @@
 					"@executable_path/Frameworks",
 				);
 				LINKED_IN = "https://www.linkedin.com/in/nelson-junior-70b113100/";
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 3.0;
 				NJ_EMAIL = "nj.development83@gmail.com";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.njdevelopment.Easy-Numbers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
