@@ -20,11 +20,11 @@ final class SettingsViewModel {
     
     public let navTitle = LocalizableStrings.settingsNavTitle.localized
     public let sectionTitles = [LocalizableStrings.settingsSafetySectionTitle.localized,
-                                LocalizableStrings.settingsAccessibilitySectionTitle.localized,
+//                                LocalizableStrings.settingsAccessibilitySectionTitle.localized, // UNDO
                                 LocalizableStrings.settingsNotificationSectionTitle.localized,
                                 LocalizableStrings.settingsVersionSectionTitle.localized]
-    public let rowTitles = [LocalizableStrings.settingsSafety.localized,
-                            LocalizableStrings.settingsAccessibility.localized]
+    public let rowTitles = [LocalizableStrings.settingsSafety.localized/*,
+                            LocalizableStrings.settingsAccessibility.localized*/] // UNDO
     public let notificationRowTitles = [LocalizableStrings.settingsNotificationTalkToUs.localized,
                                         LocalizableStrings.settingsNotificationShare.localized]
     
@@ -45,16 +45,18 @@ final class SettingsViewModel {
     }
     
     public func numberOfRowsIn(_ section: Int) -> Int {
-        return section == 2 ? 2 : 1
+        // UNDO
+//        return section == 2 ? 2 : 1
+        return section == 1 ? 2 : 1
     }
     
     public func sendEmail(delegate: UINavigationControllerDelegate, completion: (MFMailComposeViewController) -> ()) {
         if MFMailComposeViewController.canSendMail() {
             let vc = MFMailComposeViewController()
             vc.delegate = delegate
-            vc.setSubject("Fale conosco / Dúvidas / Feedback - Jogos Lotérica")
+            vc.setSubject(LocalizableStrings.settingsEmailSubject.localized)
             vc.setToRecipients([Bundle.main.njEmail])
-            vc.setMessageBody("<h1>Olá, tudo bem?\n</h1>", isHTML: true)
+            vc.setMessageBody(LocalizableStrings.settingsEmailBody.localized, isHTML: true)
             completion(vc)
         } else {
             guard let url = URL(string: Bundle.main.linkedIn) else { return }

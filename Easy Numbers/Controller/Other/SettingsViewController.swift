@@ -62,7 +62,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.section == 2 {
+        if indexPath.section == 1 { // UNDO
             switch indexPath.row {
             case 0:
                 viewModel.sendEmail(delegate: self) { [weak self] mailComposeVC in
@@ -92,14 +92,15 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                     switchTag: indexPath.section
                 )
                 cell.switchButton.tag = indexPath.section
-            case 1:
-                cell.configure(
-                    text: self.viewModel.rowTitles[indexPath.section],
-                    isShowingSwitchButton: .show,
-                    switchTag: indexPath.section
-                )
-                cell.switchButton.tag = indexPath.section
-            case 2:
+                // UNDO
+//            case 1:
+//                cell.configure(
+//                    text: self.viewModel.rowTitles[indexPath.section],
+//                    isShowingSwitchButton: .show,
+//                    switchTag: indexPath.section
+//                )
+//                cell.switchButton.tag = indexPath.section
+            case 1: // UNDO
                 return cell.configure(
                     text: self.viewModel.notificationRowTitles[indexPath.row],
                     isShowingSwitchButton: .hide,

@@ -6,6 +6,9 @@
   
 */
 
+// MARK: - FACE ID
+"LocalizableStrings_faceID" = "Liberar jogos salvos?";
+
 // MARK: - HOME
 "LocalizableStrings_homeSavedGames" = "Meus jogos";
 
@@ -28,6 +31,9 @@
 "LocalizableStrings_settingsNotificationSectionTitle" = "NOTIFICAÇÕES";
 "LocalizableStrings_settingsNotificationTalkToUs" = "Fale conosco";
 "LocalizableStrings_settingsNotificationShare" = "Compartilhe";
+
+"LocalizableStrings_settingsEmailSubject" = "Fale conosco / Dúvidas / Feedback - Jogos Lotérica";
+"LocalizableStrings_settingsEmailBody" = "<h2>Olá, tudo bem?\n</h2>";
 
 "LocalizableStrings_settingsVersionSectionTitle" = "VERSÃO";
 "LocalizableStrings_settingsCurrentVersion" = "Versão atual: %@";

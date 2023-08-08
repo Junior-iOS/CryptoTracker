@@ -6,6 +6,9 @@
   
 */
 
+// MARK: - FACE ID
+"LocalizableStrings_faceID" = "Unlock saved games?";
+
 // MARK: - HOME
 "LocalizableStrings_homeSavedGames" = "My games";
 
@@ -28,6 +31,9 @@
 "LocalizableStrings_settingsNotificationSectionTitle" = "NOTIFICATIONS";
 "LocalizableStrings_settingsNotificationTalkToUs" = "Talk to us";
 "LocalizableStrings_settingsNotificationShare" = "Share";
+
+"LocalizableStrings_settingsEmailSubject" = "Talk to us / Doubts / Feedback - Jogos Lotérica";
+"LocalizableStrings_settingsEmailBody" = "<h2>Hey, how is it going?\n</h2>";
 
 "LocalizableStrings_settingsVersionSectionTitle" = "VERSION";
 "LocalizableStrings_settingsCurrentVersion" = "Current version: %@";

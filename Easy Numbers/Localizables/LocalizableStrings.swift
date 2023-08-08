@@ -8,6 +8,8 @@
 import Foundation
 
 enum LocalizableStrings: String {
+    case faceID
+    
     case homeSavedGames
     
     case settingsNavTitle
@@ -20,6 +22,9 @@ enum LocalizableStrings: String {
     case settingsNotificationSectionTitle
     case settingsNotificationTalkToUs
     case settingsNotificationShare
+    
+    case settingsEmailSubject
+    case settingsEmailBody
     
     case settingsVersionSectionTitle
     case settingsCurrentVersion

@@ -26,7 +26,7 @@ final class LocalAuthentication {
         let policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics
         
         if context.canEvaluatePolicy(policy, error: &error) {
-            context.evaluatePolicy(policy, localizedReason: "Liberar jogos salvos?") { success, error in
+            context.evaluatePolicy(policy, localizedReason: LocalizableStrings.faceID.localized) { success, error in
                 guard error == nil else {
                     completion(.canEvaluateError)
                     return
