@@ -34,21 +34,29 @@
 		145660DF2A3456EB003FD467 /* OnboardingKit in Frameworks */ = {isa = PBXBuildFile; productRef = 145660DE2A3456EB003FD467 /* OnboardingKit */; };
 		146F3E362A4FD250007EAF53 /* GameViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F3E352A4FD250007EAF53 /* GameViewCell.swift */; };
 		146F3E3D2A567A70007EAF53 /* Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F3E3C2A567A70007EAF53 /* Snackbar.swift */; };
+		148395492A60FBFD007B3704 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148395482A60FBFD007B3704 /* SettingsViewController.swift */; };
+		1483954B2A60FC09007B3704 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1483954A2A60FC09007B3704 /* SettingsViewModel.swift */; };
+		148395502A6103A3007B3704 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1483954F2A6103A3007B3704 /* SettingsView.swift */; };
+		148395522A6107D9007B3704 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148395512A6107D9007B3704 /* SettingsTableViewCell.swift */; };
+		148395542A637F0C007B3704 /* LocalAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148395532A637F0C007B3704 /* LocalAuthentication.swift */; };
 		14888E792A1B339600359431 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14888E782A1B339500359431 /* Game.swift */; };
 		14888E7B2A1B41C500359431 /* SavedGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */; };
 		149D53802A16BFD900DC71F0 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D537F2A16BFD900DC71F0 /* Enum.swift */; };
+		14C05A5E2A8287F100B22356 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C05A5D2A8287F100B22356 /* LocalizableStrings.swift */; };
+		14C05A612A828F1F00B22356 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 14C05A632A828F1F00B22356 /* Localizable.strings */; };
 		14C663FB2A1C67EC005E4E46 /* SavedGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C663FA2A1C67EC005E4E46 /* SavedGamesView.swift */; };
 		14C663FE2A1C6872005E4E46 /* SavedGamesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C663FD2A1C6872005E4E46 /* SavedGamesTableViewCell.swift */; };
 		14C664022A1D3A71005E4E46 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C664012A1D3A71005E4E46 /* String+Extensions.swift */; };
 		14D014C72A46AFF800842FD5 /* OutOfOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D014C62A46AFF800842FD5 /* OutOfOrderViewController.swift */; };
 		14D014C92A46B87000842FD5 /* OutOfOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D014C82A46B87000842FD5 /* OutOfOrderView.swift */; };
 		14D014CD2A46C1A000842FD5 /* NJFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D014CC2A46C1A000842FD5 /* NJFont.swift */; };
+		14EC8CFD2A79F9F700598631 /* CheckFaceIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC8CFC2A79F9F700598631 /* CheckFaceIDViewController.swift */; };
+		14EC8D002A7A08A500598631 /* CheckFaceIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC8CFF2A7A08A500598631 /* CheckFaceIDView.swift */; };
 		14FB0E972A16C79400AD91E9 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB0E962A16C79400AD91E9 /* GameViewModel.swift */; };
-		5A3BC5754BC55831EB0AB00A /* Pods_Easy_Numbers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540B8E743E6DDD9D69FB7F4D /* Pods_Easy_Numbers.framework */; };
+		5B3626AE93F6AD067A5DFEAB /* Pods_Easy_Numbers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA2BE56E56C326D1059670B /* Pods_Easy_Numbers.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		024618918227F409E0D44A55 /* Pods-Easy Numbers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy Numbers.debug.xcconfig"; path = "Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers.debug.xcconfig"; sourceTree = "<group>"; };
 		14388FBC2A4E9E38003F619D /* NJColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NJColor.swift; sourceTree = "<group>"; };
 		14460B262A0C949800C4DA54 /* Easy Numbers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Easy Numbers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14460B292A0C949900C4DA54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,18 +85,29 @@
 		145660D92A342902003FD467 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		146F3E352A4FD250007EAF53 /* GameViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewCell.swift; sourceTree = "<group>"; };
 		146F3E3C2A567A70007EAF53 /* Snackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snackbar.swift; sourceTree = "<group>"; };
+		148395482A60FBFD007B3704 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		1483954A2A60FC09007B3704 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		1483954F2A6103A3007B3704 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		148395512A6107D9007B3704 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		148395532A637F0C007B3704 /* LocalAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthentication.swift; sourceTree = "<group>"; };
 		14888E782A1B339500359431 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGamesViewController.swift; sourceTree = "<group>"; };
 		149D537F2A16BFD900DC71F0 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		14C05A5D2A8287F100B22356 /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
+		14C05A622A828F1F00B22356 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		14C05A642A828FE300B22356 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		14C663FA2A1C67EC005E4E46 /* SavedGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGamesView.swift; sourceTree = "<group>"; };
 		14C663FD2A1C6872005E4E46 /* SavedGamesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGamesTableViewCell.swift; sourceTree = "<group>"; };
 		14C664012A1D3A71005E4E46 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		14D014C62A46AFF800842FD5 /* OutOfOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutOfOrderViewController.swift; sourceTree = "<group>"; };
 		14D014C82A46B87000842FD5 /* OutOfOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutOfOrderView.swift; sourceTree = "<group>"; };
 		14D014CC2A46C1A000842FD5 /* NJFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NJFont.swift; sourceTree = "<group>"; };
+		14EC8CFC2A79F9F700598631 /* CheckFaceIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFaceIDViewController.swift; sourceTree = "<group>"; };
+		14EC8CFF2A7A08A500598631 /* CheckFaceIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFaceIDView.swift; sourceTree = "<group>"; };
 		14FB0E962A16C79400AD91E9 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
-		540B8E743E6DDD9D69FB7F4D /* Pods_Easy_Numbers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Easy_Numbers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8D526D251AD9F0C4C425C9F /* Pods-Easy Numbers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy Numbers.release.xcconfig"; path = "Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers.release.xcconfig"; sourceTree = "<group>"; };
+		894131655C02596668963EF8 /* Pods-Easy Numbers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy Numbers.release.xcconfig"; path = "Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers.release.xcconfig"; sourceTree = "<group>"; };
+		9FA2BE56E56C326D1059670B /* Pods_Easy_Numbers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Easy_Numbers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB1CC0DDF6ADCEEECBEBF98D /* Pods-Easy Numbers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy Numbers.debug.xcconfig"; path = "Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				145660DF2A3456EB003FD467 /* OnboardingKit in Frameworks */,
-				5A3BC5754BC55831EB0AB00A /* Pods_Easy_Numbers.framework in Frameworks */,
+				5B3626AE93F6AD067A5DFEAB /* Pods_Easy_Numbers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,7 +129,7 @@
 				14460B282A0C949900C4DA54 /* Easy Numbers */,
 				14460B272A0C949800C4DA54 /* Products */,
 				BC5265F804A3629EE1E49444 /* Pods */,
-				86216FBC4C69BB0AD4A7F601 /* Frameworks */,
+				5D8777C6AB94F118D675F5D9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +154,7 @@
 				14460B422A0C956200C4DA54 /* Extensions */,
 				14460B502A0DED2300C4DA54 /* Analytics */,
 				149D537E2A16BFBD00DC71F0 /* Supporting Files */,
+				14C05A5C2A8287B100B22356 /* Localizables */,
 			);
 			path = "Easy Numbers";
 			sourceTree = "<group>";
@@ -160,10 +180,8 @@
 		14460B3F2A0C954200C4DA54 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				14460B5D2A0ECDAA00C4DA54 /* HomeViewModel.swift */,
-				14FB0E962A16C79400AD91E9 /* GameViewModel.swift */,
-				14531BBB2A1DD35400E0BA6D /* SavedGamesViewModel.swift */,
-				145660D72A3422F7003FD467 /* InfoViewModel.swift */,
+				1483954C2A610368007B3704 /* Core */,
+				1483954D2A610373007B3704 /* Other */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -171,10 +189,12 @@
 		14460B402A0C954800C4DA54 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				14EC8CFE2A7A088700598631 /* Face ID */,
 				146F3E372A512742007EAF53 /* Home */,
 				146F3E382A51274D007EAF53 /* Game */,
 				146F3E392A512758007EAF53 /* Saved Games */,
 				146F3E3A2A512762007EAF53 /* Info */,
+				1483954E2A61038B007B3704 /* Settings */,
 				146F3E3B2A512769007EAF53 /* Out of Order */,
 			);
 			path = View;
@@ -226,7 +246,6 @@
 				14460B2D2A0C949900C4DA54 /* HomeViewController.swift */,
 				14460B642A1340A800C4DA54 /* GameViewController.swift */,
 				14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */,
-				14460B602A0F60D400C4DA54 /* InfoViewController.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -235,7 +254,10 @@
 			isa = PBXGroup;
 			children = (
 				14460B682A153EFF00C4DA54 /* BaseViewController.swift */,
+				14460B602A0F60D400C4DA54 /* InfoViewController.swift */,
+				148395482A60FBFD007B3704 /* SettingsViewController.swift */,
 				14D014C62A46AFF800842FD5 /* OutOfOrderViewController.swift */,
+				14EC8CFC2A79F9F700598631 /* CheckFaceIDViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -291,6 +313,34 @@
 			path = "Out of Order";
 			sourceTree = "<group>";
 		};
+		1483954C2A610368007B3704 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				14460B5D2A0ECDAA00C4DA54 /* HomeViewModel.swift */,
+				14FB0E962A16C79400AD91E9 /* GameViewModel.swift */,
+				14531BBB2A1DD35400E0BA6D /* SavedGamesViewModel.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1483954D2A610373007B3704 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				145660D72A3422F7003FD467 /* InfoViewModel.swift */,
+				1483954A2A60FC09007B3704 /* SettingsViewModel.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		1483954E2A61038B007B3704 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1483954F2A6103A3007B3704 /* SettingsView.swift */,
+				148395512A6107D9007B3704 /* SettingsTableViewCell.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		149D537E2A16BFBD00DC71F0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,14 +348,32 @@
 				14D014CC2A46C1A000842FD5 /* NJFont.swift */,
 				14388FBC2A4E9E38003F619D /* NJColor.swift */,
 				146F3E3C2A567A70007EAF53 /* Snackbar.swift */,
+				148395532A637F0C007B3704 /* LocalAuthentication.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		86216FBC4C69BB0AD4A7F601 /* Frameworks */ = {
+		14C05A5C2A8287B100B22356 /* Localizables */ = {
 			isa = PBXGroup;
 			children = (
-				540B8E743E6DDD9D69FB7F4D /* Pods_Easy_Numbers.framework */,
+				14C05A5D2A8287F100B22356 /* LocalizableStrings.swift */,
+				14C05A632A828F1F00B22356 /* Localizable.strings */,
+			);
+			path = Localizables;
+			sourceTree = "<group>";
+		};
+		14EC8CFE2A7A088700598631 /* Face ID */ = {
+			isa = PBXGroup;
+			children = (
+				14EC8CFF2A7A08A500598631 /* CheckFaceIDView.swift */,
+			);
+			path = "Face ID";
+			sourceTree = "<group>";
+		};
+		5D8777C6AB94F118D675F5D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FA2BE56E56C326D1059670B /* Pods_Easy_Numbers.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -313,8 +381,8 @@
 		BC5265F804A3629EE1E49444 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				024618918227F409E0D44A55 /* Pods-Easy Numbers.debug.xcconfig */,
-				D8D526D251AD9F0C4C425C9F /* Pods-Easy Numbers.release.xcconfig */,
+				BB1CC0DDF6ADCEEECBEBF98D /* Pods-Easy Numbers.debug.xcconfig */,
+				894131655C02596668963EF8 /* Pods-Easy Numbers.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -326,12 +394,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 14460B3A2A0C949B00C4DA54 /* Build configuration list for PBXNativeTarget "Easy Numbers" */;
 			buildPhases = (
-				7A56CA37AACE09EE990C538A /* [CP] Check Pods Manifest.lock */,
+				CF6D21E13B36C436F09F40AF /* [CP] Check Pods Manifest.lock */,
 				14460B222A0C949800C4DA54 /* Sources */,
 				14460B232A0C949800C4DA54 /* Frameworks */,
 				14460B242A0C949800C4DA54 /* Resources */,
-				E02069302BD44A3B9AC00D2D /* [CP] Embed Pods Frameworks */,
 				14460B5F2A0F339400C4DA54 /* ShellScript */,
+				AFD72C1734BD1E0ED13126F6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -367,6 +435,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 14460B1D2A0C949800C4DA54;
 			packageReferences = (
@@ -387,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14460B362A0C949B00C4DA54 /* LaunchScreen.storyboard in Resources */,
+				14C05A612A828F1F00B22356 /* Localizable.strings in Resources */,
 				14460B332A0C949B00C4DA54 /* Assets.xcassets in Resources */,
 				14460B5C2A0DF03F00C4DA54 /* GoogleService-Info.plist in Resources */,
 			);
@@ -412,7 +482,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
-		7A56CA37AACE09EE990C538A /* [CP] Check Pods Manifest.lock */ = {
+		AFD72C1734BD1E0ED13126F6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF6D21E13B36C436F09F40AF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -434,23 +521,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E02069302BD44A3B9AC00D2D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -463,9 +533,12 @@
 				14460B612A0F60D400C4DA54 /* InfoViewController.swift in Sources */,
 				14460B5A2A0DEF5900C4DA54 /* NJAnalytics.swift in Sources */,
 				14460B4B2A0C95EB00C4DA54 /* UIViewController+Extensions.swift in Sources */,
+				14C05A5E2A8287F100B22356 /* LocalizableStrings.swift in Sources */,
+				14EC8D002A7A08A500598631 /* CheckFaceIDView.swift in Sources */,
 				14FB0E972A16C79400AD91E9 /* GameViewModel.swift in Sources */,
 				14460B652A1340A800C4DA54 /* GameViewController.swift in Sources */,
 				14460B692A153EFF00C4DA54 /* BaseViewController.swift in Sources */,
+				148395522A6107D9007B3704 /* SettingsTableViewCell.swift in Sources */,
 				14460B5E2A0ECDAA00C4DA54 /* HomeViewModel.swift in Sources */,
 				149D53802A16BFD900DC71F0 /* Enum.swift in Sources */,
 				145660DA2A342902003FD467 /* Array+Extensions.swift in Sources */,
@@ -474,10 +547,14 @@
 				14460B492A0C95EB00C4DA54 /* UIView+Extensions.swift in Sources */,
 				14460B2C2A0C949900C4DA54 /* SceneDelegate.swift in Sources */,
 				14460B4F2A0D38AA00C4DA54 /* HomeView.swift in Sources */,
+				14EC8CFD2A79F9F700598631 /* CheckFaceIDViewController.swift in Sources */,
 				14531BBC2A1DD35400E0BA6D /* SavedGamesViewModel.swift in Sources */,
 				14888E792A1B339600359431 /* Game.swift in Sources */,
 				146F3E362A4FD250007EAF53 /* GameViewCell.swift in Sources */,
 				14D014C92A46B87000842FD5 /* OutOfOrderView.swift in Sources */,
+				148395542A637F0C007B3704 /* LocalAuthentication.swift in Sources */,
+				1483954B2A60FC09007B3704 /* SettingsViewModel.swift in Sources */,
+				148395502A6103A3007B3704 /* SettingsView.swift in Sources */,
 				14C663FE2A1C6872005E4E46 /* SavedGamesTableViewCell.swift in Sources */,
 				146F3E3D2A567A70007EAF53 /* Snackbar.swift in Sources */,
 				14D014C72A46AFF800842FD5 /* OutOfOrderViewController.swift in Sources */,
@@ -487,6 +564,7 @@
 				14D014CD2A46C1A000842FD5 /* NJFont.swift in Sources */,
 				145660D82A3422F7003FD467 /* InfoViewModel.swift in Sources */,
 				14460B482A0C95EB00C4DA54 /* Bundle+Extensions.swift in Sources */,
+				148395492A60FBFD007B3704 /* SettingsViewController.swift in Sources */,
 				14460B672A153C0D00C4DA54 /* GameView.swift in Sources */,
 				14388FBD2A4E9E38003F619D /* NJColor.swift in Sources */,
 				145660D62A342238003FD467 /* InfoView.swift in Sources */,
@@ -505,6 +583,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		14C05A632A828F1F00B22356 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14C05A622A828F1F00B22356 /* en */,
+				14C05A642A828FE300B22356 /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -512,6 +599,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -572,6 +660,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -624,13 +713,13 @@
 		};
 		14460B3B2A0C949B00C4DA54 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 024618918227F409E0D44A55 /* Pods-Easy Numbers.debug.xcconfig */;
+			baseConfigurationReference = BB1CC0DDF6ADCEEECBEBF98D /* Pods-Easy Numbers.debug.xcconfig */;
 			buildSettings = {
 				APP_NAME = "Jogos Lotérica";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = KTUAP2Z2QF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Easy Numbers/Resources/Info.plist";
@@ -642,11 +731,14 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				ITUNES_ID = 6449045730;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				LINKED_IN = "https://www.linkedin.com/in/nelson-junior-70b113100/";
+				MARKETING_VERSION = 3.0;
+				NJ_EMAIL = "nj.easynumbers@gmail.com";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.njdevelopment.Easy-Numbers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RESULTS_URL = "https://www.caixa.gov.br/menu-app-loterias/Paginas/menu.aspx";
@@ -662,13 +754,13 @@
 		};
 		14460B3C2A0C949B00C4DA54 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D8D526D251AD9F0C4C425C9F /* Pods-Easy Numbers.release.xcconfig */;
+			baseConfigurationReference = 894131655C02596668963EF8 /* Pods-Easy Numbers.release.xcconfig */;
 			buildSettings = {
 				APP_NAME = "Jogos Lotérica";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = KTUAP2Z2QF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Easy Numbers/Resources/Info.plist";
@@ -680,11 +772,14 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				ITUNES_ID = 6449045730;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				LINKED_IN = "https://www.linkedin.com/in/nelson-junior-70b113100/";
+				MARKETING_VERSION = 3.0;
+				NJ_EMAIL = "nj.easynumbers@gmail.com";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.njdevelopment.Easy-Numbers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RESULTS_URL = "https://www.caixa.gov.br/menu-app-loterias/Paginas/menu.aspx";

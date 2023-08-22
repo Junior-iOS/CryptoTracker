@@ -73,7 +73,7 @@ class GameViewController: BaseViewController {
     }
 
     private func setRightBarButton() {
-        let saveButton = UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(saveGame))
+        let saveButton = UIBarButtonItem(title: viewModel.saveGameTitle, style: .plain, target: self, action: #selector(saveGame))
         navigationItem.rightBarButtonItems = [saveButton]
     }
 
@@ -159,8 +159,9 @@ extension GameViewController: GameViewDelegate {
         haptic(.soft)
     }
 
-    func didPressSavedGames(_ savedGames: [String]) {
-        coordinator?.routeToSavedGames(with: savedGames)
+    func didPressGoToSavedGames(_ savedGames: [String]) {
+        guard let coordinator = coordinator else { return }
+        coordinator.routeToSavedGames(with: savedGames)
     }
     
     // MARK: - For iPad
@@ -189,8 +190,8 @@ extension GameViewController: GameViewModelDelegate {
     }
     
     func reloadCollection() {
-        DispatchQueue.main.async {
-            self.gameView.collectionView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.gameView.collectionView.reloadData()
         }
     }
 }

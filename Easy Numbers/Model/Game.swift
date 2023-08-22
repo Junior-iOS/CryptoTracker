@@ -8,7 +8,9 @@
 import Foundation
 
 struct Game {
-    var id: String
-    var icons: [String]
-    var loadedGames: [Int]
+    var numbers: [Int]
+    
+    init(numbers: [Int]) {
+        self.numbers = numbers
+    }
 }
