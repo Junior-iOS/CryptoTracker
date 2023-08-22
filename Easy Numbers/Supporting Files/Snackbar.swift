@@ -9,15 +9,15 @@ import Foundation
 import UIKit
 import MaterialComponents.MaterialSnackbar
 
-enum GameCopySave: String {
-    case copy = "Jogo copiado"
-    case save = "Jogo salvo"
+enum GameCopySave {
+    case copy
+    case save
 }
 
 final class SnackBar: NSObject {
     static func show(contextView: UIViewController, message: GameCopySave) {
         let mdcMessage = MDCSnackbarMessage()
-        mdcMessage.text = message.rawValue
+        mdcMessage.text = message == .save ? LocalizableStrings.gamesGameSaved.localized : LocalizableStrings.gamesGameCopied.localized
         mdcMessage.duration = 0.5
         
         MDCSnackbarManager.default.show(mdcMessage)

@@ -23,6 +23,12 @@ class MainCoordinator: Coordinator {
         let infoVC = InfoViewController(viewModel: viewModel)
         navigationController.pushViewController(infoVC, animated: true)
     }
+    
+    func routeToSettingsVC() {
+        let viewModel = SettingsViewModel()
+        let settingsVC = SettingsViewController(viewModel: viewModel)
+        navigationController.pushViewController(settingsVC, animated: true)
+    }
 
     func routeToGamesVC(with game: [Int], title: String) {
         let viewModel = GameViewModel()
@@ -44,6 +50,12 @@ class MainCoordinator: Coordinator {
     
     func routeToOutOfOrderView() {
         let vc = OutOfOrderViewController()
+        navigationController.interactivePopGestureRecognizer?.isEnabled = false
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func routeCheckFaceID() {
+        let vc = CheckFaceIDViewController(self)
         navigationController.interactivePopGestureRecognizer?.isEnabled = false
         navigationController.pushViewController(vc, animated: true)
     }
