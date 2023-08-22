@@ -16,6 +16,8 @@ final class SavedGamesViewModel: NSObject {
         filteredGames.count
     }
     
+    let navTitle = LocalizableStrings.savedGamesNavTitle.localized
+    
     func setGameName(_ savedGame: String, completion: (String) -> Void) {
         if savedGame.count <= 15 {
             completion("Quina")

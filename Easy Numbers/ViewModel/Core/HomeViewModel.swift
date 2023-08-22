@@ -18,6 +18,10 @@ protocol HomeViewModelDelegate: AnyObject {
     func handleRemoteConfig(with value: Bool)
 }
 
+protocol GenerateNumbers: AnyObject {
+    func generateNumbers(total: Int, universe: Int) -> [Int]
+}
+
 final class HomeViewModel {
     // MARK: - Properties
     
@@ -27,12 +31,12 @@ final class HomeViewModel {
     
     var result: [Int]?
     
-    var navtitle: String {
+    var navTitle: String {
         Bundle.main.appName
     }
     
     var myGamesButtonTitle: String {
-        "Meus jogos"
+        LocalizableStrings.homeSavedGames.localized
     }
 
     // MARK: - Methods
@@ -40,10 +44,10 @@ final class HomeViewModel {
         DispatchQueue.main.async {
             self.onboardingKit = OnboardingKit(
                 slides: [
-                    Slide(image: UIImage(named: "copy_game") ?? UIImage(), title: "Clique para copiar seu jogo!"),
-                    Slide(image: UIImage(named: "save_game") ?? UIImage(), title: "Salve seu jogo para fazer sua aposta mais tarde. =)"),
-                    Slide(image: UIImage(named: "share_delete_games") ?? UIImage(), title: "Compartilhe ou apague todos os seus jogos."),
-                    Slide(image: UIImage(named: "share_delete_individual_games") ?? UIImage(), title: "Compartilhe ou apague todos os seus jogos individualmente.")
+                    Slide(image: UIImage(named: "copy_game") ?? UIImage(), title: LocalizableStrings.onboardingCopyGame.localized),
+                    Slide(image: UIImage(named: "save_game") ?? UIImage(), title: LocalizableStrings.onboardingSaveGame.localized),
+                    Slide(image: UIImage(named: "share_delete_games") ?? UIImage(), title: LocalizableStrings.onboardingShareDeleteGames.localized),
+                    Slide(image: UIImage(named: "share_delete_individual_games") ?? UIImage(), title: LocalizableStrings.onboardingShareDeleteSingleGame.localized)
                 ],
                 tintColor: UIColor(red: 220 / 255, green: 20 / 255, blue: 60 / 255, alpha: 1),
                 font: UIFont(name: "Kohinoor Bangla", size: 28) ?? .systemFont(ofSize: 28, weight: .bold)
@@ -98,19 +102,6 @@ final class HomeViewModel {
         return result.sorted(by: { $0 < $1 } )
     }
 
-    private func generateNumbers(total: Int, universe: Int) -> [Int] {
-        guard let result else { return [] }
-        var myGame: [Int] = result
-
-        while myGame.count < total {
-            let randomNumber = Int.random(in: 1...universe)
-            if !myGame.contains(randomNumber) {
-                myGame.append(randomNumber)
-            }
-        }
-        return myGame.sorted()
-    }
-
     func checkRemoteConfig() {
         let defaults: [String: NSObject] = [
             RemoteConfigValue.newUI.rawValue: false as NSObject
@@ -137,6 +128,22 @@ final class HomeViewModel {
     
     private func updateUI(_ value: Bool) {
         delegate?.handleRemoteConfig(with: value)
+    }
+}
+
+// MARK: - GENERATE NUMBERS PROTOCOL
+extension HomeViewModel: GenerateNumbers {
+    func generateNumbers(total: Int, universe: Int) -> [Int] {
+        guard let result else { return [] }
+        var myGame: [Int] = result
+
+        while myGame.count < total {
+            let randomNumber = Int.random(in: 1...universe)
+            if !myGame.contains(randomNumber) {
+                myGame.append(randomNumber)
+            }
+        }
+        return myGame.sorted()
     }
 }
 

@@ -1,0 +1,59 @@
+/* 
+  Localizable.strings
+  Easy Numbers
+
+  Created by NJ Development on 08/08/23.
+  
+*/
+
+// MARK: - ONBOARDING
+"LocalizableStrings_onboardingCopyGame" = "Press to copy your game!";
+"LocalizableStrings_onboardingSaveGame" = "Save your game so you can make your bet later. =)";
+"LocalizableStrings_onboardingShareDeleteGames" = "Share or delete all of your games.";
+"LocalizableStrings_onboardingShareDeleteSingleGame" = "Share or delete all your games individually.";
+
+// MARK: - FACE ID
+"LocalizableStrings_faceID" = "Unlock saved games?";
+"LocalizableStrings_faceIDDeniedAlertTitle" = "Attention";
+"LocalizableStrings_faceIDDeniedAlertMessage" = "To enable Face ID you should give your permission in: Settings / Jogos Lotérica / Face ID";
+"LocalizableStrings_faceIDDeniedAlertButton" = "Ok";
+
+"LocalizableStrings_faceIDLockedTitle" = "Jogos Lotéricas locked";
+"LocalizableStrings_faceIDLockedMessage" = "Use Face ID to unlock Jogos Lotérica";
+"LocalizableStrings_faceIDLockedButton" = "Use Face ID";
+
+// MARK: - HOME
+"LocalizableStrings_homeSavedGames" = "My games";
+
+// MARK: - GAMES
+"LocalizableStrings_gamesSaveButton" = "Save";
+"LocalizableStrings_gamesGenerateAgain" = "Generate again";
+"LocalizableStrings_gamesSavedGames" = "Saved games";
+"LocalizableStrings_gamesGameSaved" = "Game saved";
+"LocalizableStrings_gamesGameCopied" = "Game copied";
+
+// MARK: - SETTINGS
+"LocalizableStrings_settingsNavTitle" = "Settings";
+
+"LocalizableStrings_settingsSafetySectionTitle" = "SECURITY";
+"LocalizableStrings_settingsSafety" = "Face ID and Code";
+
+"LocalizableStrings_settingsAccessibilitySectionTitle" = "ACCESSIBILITY";
+"LocalizableStrings_settingsAccessibility" = "Activate accessibility";
+
+"LocalizableStrings_settingsNotificationSectionTitle" = "NOTIFICATIONS";
+"LocalizableStrings_settingsNotificationTalkToUs" = "Talk to us";
+"LocalizableStrings_settingsNotificationShare" = "Share";
+
+"LocalizableStrings_settingsEmailSubject" = "Talk to us / Doubts / Feedback - Jogos Lotérica";
+"LocalizableStrings_settingsEmailBody" = "<h2>Hey, how is it going?\n</h2>";
+
+"LocalizableStrings_settingsVersionSectionTitle" = "VERSION";
+"LocalizableStrings_settingsCurrentVersion" = "Current version: %@";
+
+// MARK: - SAVED GAMES
+"LocalizableStrings_savedGamesNavTitle" = "My Games";
+"LocalizableStrings_savedGamesAlertTitle" = "Attention";
+"LocalizableStrings_savedGamesAlertMessage" = "Do you wish to erase all of your saved games?";
+"LocalizableStrings_savedGamesAlertNoButton" = "No";
+"LocalizableStrings_savedGamesAlertYesButton" = "Yes";
