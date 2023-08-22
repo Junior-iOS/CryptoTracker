@@ -23,6 +23,7 @@ final class GameViewModel: NSObject {
     }
     
     var gameTitle: String = ""
+    let saveGameTitle = LocalizableStrings.gamesSaveButton.localized
     
     var numberOfItemsInSection: Int {
         game?.count ?? 0
@@ -34,7 +35,7 @@ final class GameViewModel: NSObject {
     }
     
     func didPressCopyGame() {
-        NJAnalytics.shared.trackEvent(name: .didCopy)
+        NJAnalytics.shared.trackEvent(name: .didCopy, from: .games)
         delegate?.didPressCopyGame()
     }
 }

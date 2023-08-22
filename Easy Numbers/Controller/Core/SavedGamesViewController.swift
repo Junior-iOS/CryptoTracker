@@ -11,8 +11,6 @@ class SavedGamesViewController: BaseViewController {
     // MARK: - Properties
     private let viewModel: SavedGamesViewModel
     private let savedGamesView = SavedGamesView()
-//    var savedGames: [String] = []
-//    var filteredGames: [String] = []
 
     override func loadView() {
         super.loadView()
@@ -42,7 +40,7 @@ class SavedGamesViewController: BaseViewController {
     }
 
     private func setupNavButtons() {
-        title = Bundle.main.savedGamestitle
+        title = viewModel.navTitle
 
         let deleteButton = UIBarButtonItem(image: UIImage(systemName: "trash"),
                                            style: .plain,
@@ -57,9 +55,11 @@ class SavedGamesViewController: BaseViewController {
     }
 
     @objc private func deleteGames() {
-        let alert = UIAlertController(title: "Atenção", message: "Deseja apagar todos seus jogos salvos?", preferredStyle: .alert)
-        let no = UIAlertAction(title: "Não", style: .default)
-        let yes = UIAlertAction(title: "Sim", style: .destructive) { [weak self] _ in
+        let alert = UIAlertController(title: LocalizableStrings.savedGamesAlertTitle.localized,
+                                      message: LocalizableStrings.savedGamesAlertMessage.localized,
+                                      preferredStyle: .alert)
+        let no = UIAlertAction(title: LocalizableStrings.savedGamesAlertNoButton.localized, style: .default)
+        let yes = UIAlertAction(title: LocalizableStrings.savedGamesAlertYesButton.localized, style: .destructive) { [weak self] _ in
             self?.delete()
             self?.navigationController?.popToRootViewController(animated: true)
         }
@@ -103,7 +103,7 @@ class SavedGamesViewController: BaseViewController {
             }
         }
         
-        NJAnalytics.shared.trackEvent(name: .didShare)
+        NJAnalytics.shared.trackEvent(name: .didShare, from: .savedGames)
     }
 }
 
@@ -170,7 +170,7 @@ extension SavedGamesViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
 
-            NJAnalytics.shared.trackEvent(name: .didShare)
+            NJAnalytics.shared.trackEvent(name: .didShare, from: .savedGames)
         }
 
         erase.backgroundColor = NJColor.njErase

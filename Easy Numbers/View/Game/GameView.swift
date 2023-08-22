@@ -9,7 +9,7 @@ import UIKit
 
 protocol GameViewDelegate: AnyObject {
     func didPressGenerateGameAgain()
-    func didPressSavedGames(_ savedGames: [String])
+    func didPressGoToSavedGames(_ savedGames: [String])
     func didTapCopyGame()
 }
 
@@ -40,7 +40,7 @@ class GameView: UIView {
     private lazy var generateButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Gerar novamente", for: .normal)
+        button.setTitle(LocalizableStrings.gamesGenerateAgain.localized, for: .normal)
         button.backgroundColor = .systemBlue
         button.addTarget(self, action: #selector(generateAgain), for: .touchUpInside)
         button.layer.cornerRadius = .kButtonHeight / 2
@@ -51,7 +51,7 @@ class GameView: UIView {
     lazy var savedGamesButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Jogos salvos", for: .normal)
+        button.setTitle(LocalizableStrings.gamesSavedGames.localized, for: .normal)
         button.addTarget(self, action: #selector(didPressSavedGamesButton), for: .touchUpInside)
         button.layer.cornerRadius = .kButtonHeight / 2
         button.clipsToBounds = true
@@ -124,12 +124,12 @@ class GameView: UIView {
     @objc private func didPressSavedGamesButton() {
         savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames")
         
-        NJAnalytics.shared.trackEvent(name: .savedGames)
-        delegate?.didPressSavedGames(savedGames ?? [])
+        NJAnalytics.shared.trackEvent(name: .savedGames, from: .games)
+        delegate?.didPressGoToSavedGames(savedGames ?? [])
     }
     
     @objc private func generateAgain() {
-        NJAnalytics.shared.trackEvent(name: .generateAgain)
+        NJAnalytics.shared.trackEvent(name: .generateAgain, from: .games)
         delegate?.didPressGenerateGameAgain()
     }
 }

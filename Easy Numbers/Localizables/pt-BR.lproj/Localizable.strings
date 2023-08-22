@@ -1,0 +1,59 @@
+/* 
+  Localizable.strings
+  Easy Numbers
+
+  Created by NJ Development on 08/08/23.
+  
+*/
+
+// MARK: - ONBOARDING
+"LocalizableStrings_onboardingCopyGame" = "Clique para copiar seu jogo!";
+"LocalizableStrings_onboardingSaveGame" = "Salve seu jogo para fazer sua aposta mais tarde. =)";
+"LocalizableStrings_onboardingShareDeleteGames" = "Compartilhe ou apague todos os seus jogos.";
+"LocalizableStrings_onboardingShareDeleteSingleGame" = "Compartilhe ou apague todos os seus jogos individualmente.";
+
+// MARK: - FACE ID
+"LocalizableStrings_faceID" = "Liberar jogos salvos?";
+"LocalizableStrings_faceIDDeniedAlertTitle" = "Atenção";
+"LocalizableStrings_faceIDDeniedAlertMessage" = "Para utilizar o Face ID é necessário dar permissão em: Ajustes / Jogos Lotérica / Face ID";
+"LocalizableStrings_faceIDDeniedAlertButton" = "Ok";
+
+"LocalizableStrings_faceIDLockedTitle" = "Jogos Lotéricas bloqueado";
+"LocalizableStrings_faceIDLockedMessage" = "Usar Face ID para desbloquear Jogos Lotérica";
+"LocalizableStrings_faceIDLockedButton" = "Usar o Face ID";
+
+// MARK: - HOME
+"LocalizableStrings_homeSavedGames" = "Meus jogos";
+
+// MARK: - GAMES
+"LocalizableStrings_gamesSaveButton" = "Salvar";
+"LocalizableStrings_gamesGenerateAgain" = "Gerar novamente";
+"LocalizableStrings_gamesSavedGames" = "Jogos salvos";
+"LocalizableStrings_gamesGameSaved" = "Jogo salvo";
+"LocalizableStrings_gamesGameCopied" = "Jogo copiado";
+
+// MARK: - SETTINGS
+"LocalizableStrings_settingsNavTitle" = "Ajustes";
+
+"LocalizableStrings_settingsSafetySectionTitle" = "SEGURANÇA";
+"LocalizableStrings_settingsSafety" = "Face ID e Código";
+
+"LocalizableStrings_settingsAccessibilitySectionTitle" = "ACESSIBILIDADE";
+"LocalizableStrings_settingsAccessibility" = "Ativar acessibilidade";
+
+"LocalizableStrings_settingsNotificationSectionTitle" = "NOTIFICAÇÕES";
+"LocalizableStrings_settingsNotificationTalkToUs" = "Fale conosco";
+"LocalizableStrings_settingsNotificationShare" = "Compartilhe";
+
+"LocalizableStrings_settingsEmailSubject" = "Fale conosco / Dúvidas / Feedback - Jogos Lotérica";
+"LocalizableStrings_settingsEmailBody" = "<h2>Olá, tudo bem?\n</h2>";
+
+"LocalizableStrings_settingsVersionSectionTitle" = "VERSÃO";
+"LocalizableStrings_settingsCurrentVersion" = "Versão atual: %@";
+
+// MARK: - SAVED GAMES
+"LocalizableStrings_savedGamesNavTitle" = "Meus Jogos";
+"LocalizableStrings_savedGamesAlertTitle" = "Atenção";
+"LocalizableStrings_savedGamesAlertMessage" = "Deseja apagar todos seus jogos salvos?";
+"LocalizableStrings_savedGamesAlertNoButton" = "Não";
+"LocalizableStrings_savedGamesAlertYesButton" = "Sim";

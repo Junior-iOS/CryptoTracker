@@ -2,10 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ITUNES_ID</key>
+	<string>${ITUNES_ID}</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Gostaria de proteger seus jogos salvos?</string>
 	<key>APP_NAME</key>
 	<string>${APP_NAME}</string>
 	<key>FirebaseAutomaticScreenReportingEnabled</key>
 	<false/>
+	<key>LINKED_IN</key>
+	<string>${LINKED_IN}</string>
+	<key>NJ_EMAIL</key>
+	<string>${NJ_EMAIL}</string>
 	<key>RESULTS_URL</key>
 	<string>${RESULTS_URL}</string>
 	<key>SAVED_GAMES_TITLE</key>
