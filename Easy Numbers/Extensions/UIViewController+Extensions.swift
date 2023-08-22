@@ -23,15 +23,15 @@ extension UIViewController {
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: SFSymbol.infoCircleFill.image,
-                                                           style: .done,
-                                                           target: self,
-                                                           action: leftBarButton)
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: SFSymbol.gear.image,
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: SFSymbol.gear.image,
                                                             style: .done,
                                                             target: self,
-                                                            action: rightBarButton)
+                                                            action: leftBarButton)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: SFSymbol.infoCircleFill.image,
+                                                           style: .done,
+                                                           target: self,
+                                                           action: rightBarButton)
     }
     
     func hideNavigationBar(_ status: Bool) {

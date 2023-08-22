@@ -86,7 +86,7 @@ class HomeViewController: BaseViewController {
         view.backgroundColor = .systemBackground
         
         navigationItem.title = viewModel.navTitle
-        setupNavigation(actionFor: #selector(didPressInfo), actionFor: #selector(didPressSettings))
+        setupNavigation(actionFor: #selector(didPressSettings), actionFor: #selector(didPressInfo))
         
         homeView.delegate = self
         addComponents()

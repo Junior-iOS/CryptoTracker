@@ -24,4 +24,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         self.window = window
     }
+
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        // QUANDO VOLTA
+        
+    }
+
+    func sceneWillResignActive(_ scene: UIScene) {
+        // QUANDO LEVANTA A TELA
+        
+    }
 }
