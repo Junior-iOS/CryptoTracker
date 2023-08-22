@@ -738,7 +738,7 @@
 				);
 				LINKED_IN = "https://www.linkedin.com/in/nelson-junior-70b113100/";
 				MARKETING_VERSION = 3.0;
-				NJ_EMAIL = "nj.development83@gmail.com";
+				NJ_EMAIL = "nj.easynumbers@gmail.com";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.njdevelopment.Easy-Numbers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RESULTS_URL = "https://www.caixa.gov.br/menu-app-loterias/Paginas/menu.aspx";
@@ -779,7 +779,7 @@
 				);
 				LINKED_IN = "https://www.linkedin.com/in/nelson-junior-70b113100/";
 				MARKETING_VERSION = 3.0;
-				NJ_EMAIL = "nj.development83@gmail.com";
+				NJ_EMAIL = "nj.easynumbers@gmail.com";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.njdevelopment.Easy-Numbers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RESULTS_URL = "https://www.caixa.gov.br/menu-app-loterias/Paginas/menu.aspx";
