@@ -23,7 +23,7 @@ final class CheckFaceIDView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Jogos Lotéricas bloqueado"
+        label.text = LocalizableStrings.faceIDLockedTitle.localized
         label.textColor = .black
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -34,7 +34,7 @@ final class CheckFaceIDView: UIView {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Usar Face ID para desbloquear Jogos Lotérica"
+        label.text = LocalizableStrings.faceIDLockedMessage.localized
         label.textColor = .black
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -57,7 +57,7 @@ final class CheckFaceIDView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(didTapUseFaceID), for: .touchUpInside)
         button.backgroundColor = .systemBlue
-        button.setTitle("Usar o Face ID", for: .normal)
+        button.setTitle(LocalizableStrings.faceIDLockedButton.localized, for: .normal)
         button.layer.cornerRadius = 20
         button.clipsToBounds = true
         return button

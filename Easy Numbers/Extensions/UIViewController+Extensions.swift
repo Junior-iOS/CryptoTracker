@@ -50,7 +50,16 @@ extension UIViewController {
         if hasBiometrics {
             LocalAuthentication.shared.authenticateWithBiometrics { status in
                 switch status {
-                case .canEvaluate, .canNotEvaluate:
+                case .canNotEvaluate:
+                    UserDefaults.standard.setValue(false, forKey: "safetySwitch")
+                    let alert = UIAlertController(title: LocalizableStrings.faceIDDeniedAlertTitle.localized,
+                                                  message: LocalizableStrings.faceIDDeniedAlertMessage.localized,
+                                                  preferredStyle: .alert)
+                    let no = UIAlertAction(title: LocalizableStrings.faceIDDeniedAlertButton.localized, style: .default)
+
+                    alert.addAction(no)
+                    self.present(alert, animated: true)
+                case .canEvaluate:
                     if isHomeVC {
                         break
                     } else {

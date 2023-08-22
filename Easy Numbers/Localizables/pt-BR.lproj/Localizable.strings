@@ -14,6 +14,13 @@
 
 // MARK: - FACE ID
 "LocalizableStrings_faceID" = "Liberar jogos salvos?";
+"LocalizableStrings_faceIDDeniedAlertTitle" = "Atenção";
+"LocalizableStrings_faceIDDeniedAlertMessage" = "Para utilizar o Face ID é necessário dar permissão em: Ajustes / Jogos Lotérica / Face ID";
+"LocalizableStrings_faceIDDeniedAlertButton" = "Ok";
+
+"LocalizableStrings_faceIDLockedTitle" = "Jogos Lotéricas bloqueado";
+"LocalizableStrings_faceIDLockedMessage" = "Usar Face ID para desbloquear Jogos Lotérica";
+"LocalizableStrings_faceIDLockedButton" = "Usar o Face ID";
 
 // MARK: - HOME
 "LocalizableStrings_homeSavedGames" = "Meus jogos";

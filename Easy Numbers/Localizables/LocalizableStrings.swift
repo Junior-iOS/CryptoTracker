@@ -48,6 +48,14 @@ enum LocalizableStrings: String {
     case savedGamesAlertNoButton
     case savedGamesAlertYesButton
     
+    case faceIDDeniedAlertTitle
+    case faceIDDeniedAlertMessage
+    case faceIDDeniedAlertButton
+    
+    case faceIDLockedTitle
+    case faceIDLockedMessage
+    case faceIDLockedButton
+    
     var localized: String {
         NSLocalizedString(String(describing: Self.self) + "_\(rawValue)", comment: "")
     }

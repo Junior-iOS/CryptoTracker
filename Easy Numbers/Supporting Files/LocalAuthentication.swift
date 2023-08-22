@@ -28,12 +28,15 @@ final class LocalAuthentication {
         if context.canEvaluatePolicy(policy, error: &error) {
             context.evaluatePolicy(policy, localizedReason: LocalizableStrings.faceID.localized) { success, error in
                 guard error == nil else {
+                    // NÃO RECONHECEU O ROSTO E CLICOU EM CANCELAR
                     completion(.canEvaluateError)
                     return
                 }
+                // RECONHECEU O ROSTO
                 completion(.canEvaluate)
             }
         } else {
+            // NÃO TEM PERMISSÃO
             completion(.canNotEvaluate)
         }
     }

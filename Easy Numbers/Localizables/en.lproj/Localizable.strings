@@ -14,6 +14,13 @@
 
 // MARK: - FACE ID
 "LocalizableStrings_faceID" = "Unlock saved games?";
+"LocalizableStrings_faceIDDeniedAlertTitle" = "Attention";
+"LocalizableStrings_faceIDDeniedAlertMessage" = "To enable Face ID you should give your permission in: Settings / Jogos Lotérica / Face ID";
+"LocalizableStrings_faceIDDeniedAlertButton" = "Ok";
+
+"LocalizableStrings_faceIDLockedTitle" = "Jogos Lotéricas locked";
+"LocalizableStrings_faceIDLockedMessage" = "Use Face ID to unlock Jogos Lotérica";
+"LocalizableStrings_faceIDLockedButton" = "Use Face ID";
 
 // MARK: - HOME
 "LocalizableStrings_homeSavedGames" = "My games";
