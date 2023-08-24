@@ -2,6 +2,39 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemType</key>
+			<string>ShareAction</string>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeShare</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Compartilhe</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Compartilhe com um amigo</string>
+		</dict>
+        <dict>
+            <key>UIApplicationShortcutItemType</key>
+            <string>Results</string>
+            <key>UIApplicationShortcutItemIconType</key>
+            <string>UIApplicationShortcutIconTypeBookmark</string>
+            <key>UIApplicationShortcutItemTitle</key>
+            <string>Resultados</string>
+            <key>UIApplicationShortcutItemSubtitle</key>
+            <string>Veja os resultados</string>
+        </dict>
+        <dict>
+            <key>UIApplicationShortcutItemType</key>
+            <string>SearchAction</string>
+            <key>UIApplicationShortcutItemIconType</key>
+            <string>UIApplicationShortcutIconTypeSearch</string>
+            <key>UIApplicationShortcutItemTitle</key>
+            <string>Jogos Salvos</string>
+            <key>UIApplicationShortcutItemSubtitle</key>
+            <string>Veja seus jogos</string>
+        </dict>
+	</array>
 	<key>ITUNES_ID</key>
 	<string>${ITUNES_ID}</string>
 	<key>NSFaceIDUsageDescription</key>

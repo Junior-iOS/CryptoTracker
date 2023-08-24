@@ -6,6 +6,9 @@
   
 */
 
+// MARK: - QUICK ACTIONS
+"LocalizableStrings_quickActionsAlert" = "You haven't saved any games yet.";
+
 // MARK: - ONBOARDING
 "LocalizableStrings_onboardingCopyGame" = "Press to copy your game!";
 "LocalizableStrings_onboardingSaveGame" = "Save your game so you can make your bet later. =)";
