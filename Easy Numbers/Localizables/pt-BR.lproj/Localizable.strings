@@ -6,6 +6,9 @@
   
 */
 
+// MARK: - QUICK ACTIONS
+"LocalizableStrings_quickActionsAlert" = "Você não possui jogos salvos.";
+
 // MARK: - ONBOARDING
 "LocalizableStrings_onboardingCopyGame" = "Clique para copiar seu jogo!";
 "LocalizableStrings_onboardingSaveGame" = "Salve seu jogo para fazer sua aposta mais tarde. =)";
