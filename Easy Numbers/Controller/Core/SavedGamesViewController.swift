@@ -87,7 +87,7 @@ class SavedGamesViewController: BaseViewController {
         }
         
         let ac = UIActivityViewController(activityItems: [text.removeBrackets()], applicationActivities: nil)
-        
+    https://apps.apple.com/br/app/jogos-lot%C3%A9rica/id6449045730
         if UIDevice.current.userInterfaceIdiom == .pad {
             let scenes = UIApplication.shared.connectedScenes
             

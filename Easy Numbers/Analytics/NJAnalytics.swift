@@ -20,6 +20,8 @@ final class NJAnalytics {
         case generateAgain = "Analytics_GeneratedAgain"
         case savedGames = "Analytics_SavedGames"
         case info = "Analytics_Info"
+        case settings = "Analytics_Settings"
+        
         case megasena = "Analytics_Megasena"
         case lotofacil = "Analytics_Lotofacil"
         case quina = "Analytics_Quina"
@@ -32,6 +34,8 @@ final class NJAnalytics {
         case games = "Games"
         case savedGames = "Saved Games"
         case info = "Info View"
+        case settings = "Settings"
+        case quickActions = "Quick Actions"
     }
 
     func trackEvent(name: Event, from flow: Flow, parameters: [String: Any]? = nil) {

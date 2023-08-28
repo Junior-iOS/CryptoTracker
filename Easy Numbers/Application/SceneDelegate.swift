@@ -43,10 +43,25 @@ extension SceneDelegate {
         switch shortcutItem.type {
         case "ShareAction":
             DispatchQueue.main.async { [weak self] in
-                guard let iTunesID = Int(Bundle.main.iTunesID) else { return }
-                let vc = SKStoreProductViewController()
-                vc.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier: NSNumber(value: iTunesID)])
-                self?.mainCoodinator?.navigationController.present(vc, animated: true)
+                let ac = UIActivityViewController(activityItems: ["https://apps.apple.com/br/app/jogos-lot%C3%A9rica/id6449045730"], 
+                                                  applicationActivities: nil)
+        
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    let scenes = UIApplication.shared.connectedScenes
+                    
+                    guard let windowScene = scenes.first as? UIWindowScene,
+                          let window = windowScene.windows.first else { return }
+                    
+                    ac.popoverPresentationController?.sourceView = window
+                    ac.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 300, height: 350)
+                    window.rootViewController?.present(ac, animated: true, completion: nil)
+                } else {
+                    DispatchQueue.main.async {
+                        self?.window?.rootViewController?.present(ac, animated: true)
+                    }
+                }
+                
+                NJAnalytics.shared.trackEvent(name: .didShare, from: .quickActions)
             }
             
         case "SearchAction":
