@@ -43,7 +43,9 @@ extension SceneDelegate {
         switch shortcutItem.type {
         case "ShareAction":
             DispatchQueue.main.async { [weak self] in
-                let ac = UIActivityViewController(activityItems: ["https://apps.apple.com/br/app/jogos-lot%C3%A9rica/id6449045730"], 
+                guard let iTunesID = Int(Bundle.main.iTunesID) else { return }
+                
+                let ac = UIActivityViewController(activityItems: ["https://apps.apple.com/br/app/jogos-lot%C3%A9rica/id\(iTunesID)"],
                                                   applicationActivities: nil)
         
                 if UIDevice.current.userInterfaceIdiom == .pad {

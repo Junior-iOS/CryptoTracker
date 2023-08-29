@@ -67,8 +67,30 @@ final class SettingsViewModel {
     
     public func shareApp() {
         guard let iTunesID = Int(Bundle.main.iTunesID) else { return }
-        let vc = SKStoreProductViewController()
-        vc.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier: NSNumber(value: iTunesID)])
-        viewDelegate?.shareApp(vc)
+//        let vc = SKStoreProductViewController()
+//        vc.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier: NSNumber(value: iTunesID)])
+//        viewDelegate?.shareApp(vc)
+        
+        DispatchQueue.main.async { [weak self] in
+            let ac = UIActivityViewController(activityItems: ["https://apps.apple.com/br/app/jogos-lot%C3%A9rica/id\(iTunesID)"],
+                                              applicationActivities: nil)
+    
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                let scenes = UIApplication.shared.connectedScenes
+                
+                guard let windowScene = scenes.first as? UIWindowScene,
+                      let window = windowScene.windows.first else { return }
+                
+                ac.popoverPresentationController?.sourceView = window
+                ac.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 300, height: 350)
+                self?.viewDelegate?.shareApp(ac)
+            } else {
+                DispatchQueue.main.async {
+                    self?.viewDelegate?.shareApp(ac)
+                }
+            }
+            
+            NJAnalytics.shared.trackEvent(name: .didShare, from: .settings)
+        }
     }
 }
