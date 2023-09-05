@@ -5,9 +5,9 @@
 //  Created by NJ Development on 12/05/23.
 //
 
+import FirebaseRemoteConfig
 import Foundation
 import OnboardingKit
-import FirebaseRemoteConfig
 import UIKit
 
 // MARK: - Protocol
@@ -24,17 +24,17 @@ protocol GenerateNumbers: AnyObject {
 
 final class HomeViewModel {
     // MARK: - Properties
-    
+
     var onboardingKit: OnboardingKit?
     weak var delegate: HomeViewModelDelegate?
     private let remoteConfig = RemoteConfig.remoteConfig()
-    
+
     var result: [Int]?
-    
+
     var navTitle: String {
         Bundle.main.appName
     }
-    
+
     var myGamesButtonTitle: String {
         LocalizableStrings.homeSavedGames.localized
     }
@@ -99,7 +99,7 @@ final class HomeViewModel {
         }
 
         guard let result else { return [] }
-        return result.sorted(by: { $0 < $1 } )
+        return result.sorted(by: { $0 < $1 })
     }
 
     func checkRemoteConfig() {
@@ -107,17 +107,17 @@ final class HomeViewModel {
             RemoteConfigValue.newUI.rawValue: false as NSObject
         ]
         remoteConfig.setDefaults(defaults)
-        
+
         let settings = RemoteConfigSettings()
         settings.minimumFetchInterval = 0
         remoteConfig.configSettings = settings
-        
+
         self.remoteConfig.fetch(withExpirationDuration: 0) { status, error in
             if status == .success, error == nil {
                 self.remoteConfig.activate { [weak self] _, error in
                     guard let self, error == nil else { return }
-                    
-                    let value = self.remoteConfig.configValue(forKey: RemoteConfigValue.newUI.rawValue).boolValue
+
+                    let value = remoteConfig.configValue(forKey: RemoteConfigValue.newUI.rawValue).boolValue
                     DispatchQueue.main.async {
                         self.updateUI(value)
                     }
@@ -125,7 +125,7 @@ final class HomeViewModel {
             }
         }
     }
-    
+
     private func updateUI(_ value: Bool) {
         delegate?.handleRemoteConfig(with: value)
     }

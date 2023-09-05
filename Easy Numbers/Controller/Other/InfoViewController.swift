@@ -28,12 +28,12 @@ class InfoViewController: BaseViewController {
         configureWebView()
         addRightBarButton()
     }
-    
+
     init(viewModel: InfoViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         nil
