@@ -124,7 +124,7 @@ class HomeViewController: BaseViewController {
     
     @objc private func didPressSettings() {
         coordinator?.routeToSettingsVC()
-        // MARK: - TO DO: Analytics
+        NJAnalytics.shared.trackEvent(name: .settings, from: .home)
     }
 
     private func updateFlag() {

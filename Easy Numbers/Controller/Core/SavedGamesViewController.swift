@@ -87,7 +87,7 @@ class SavedGamesViewController: BaseViewController {
         }
         
         let ac = UIActivityViewController(activityItems: [text.removeBrackets()], applicationActivities: nil)
-        
+
         if UIDevice.current.userInterfaceIdiom == .pad {
             let scenes = UIApplication.shared.connectedScenes
             
