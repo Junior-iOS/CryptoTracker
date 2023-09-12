@@ -49,7 +49,7 @@ class SavedGamesTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         nil
     }
-    
+
     private func setLeadingAndTrailingConstraints() -> [NSLayoutConstraint] {
         if device == .phone {
             return [cellBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: kLabelMargin),
@@ -78,7 +78,7 @@ class SavedGamesTableViewCell: UITableViewCell {
             gameLabel.trailingAnchor.constraint(equalTo: cellBackgroundView.trailingAnchor, constant: -kLabelMargin),
             gameLabel.bottomAnchor.constraint(equalTo: cellBackgroundView.bottomAnchor, constant: -kLabelMargin)
         ])
-        
+
         NSLayoutConstraint.activate(setLeadingAndTrailingConstraints())
     }
 
@@ -89,7 +89,7 @@ class SavedGamesTableViewCell: UITableViewCell {
             gameImage.image = UIImage(named: "quina")
         } else if savedGames.count > 15 && savedGames.count <= 24 {
             gameImage.image = UIImage(named: "megasena")
-        }  else if savedGames.count > 24 && savedGames.count <= 40 {
+        } else if savedGames.count > 24 && savedGames.count <= 40 {
             gameImage.image = UIImage(named: "timemania")
         } else if savedGames.count > 40 && savedGames.count <= 60 {
             gameImage.image = UIImage(named: "lotofacil")

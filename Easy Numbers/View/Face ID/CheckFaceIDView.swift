@@ -19,7 +19,7 @@ final class CheckFaceIDView: UIView {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +41,7 @@ final class CheckFaceIDView: UIView {
         label.font = NJFont.regular(ofSize: 18)
         return label
     }()
-    
+
     private lazy var vStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [padlock, titleLabel, descriptionLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -51,7 +51,7 @@ final class CheckFaceIDView: UIView {
         stack.alignment = .center
         return stack
     }()
-    
+
     private lazy var faceIdButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +62,7 @@ final class CheckFaceIDView: UIView {
         button.clipsToBounds = true
         return button
     }()
-    
+
     weak var delegate: CheckFaceIDViewDelegate?
 
     override init(frame: CGRect) {
@@ -70,30 +70,30 @@ final class CheckFaceIDView: UIView {
         addComponents()
         backgroundColor = .white
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         nil
     }
-    
+
     private func addComponents() {
         addSubviews(vStack, faceIdButton)
-        
+
         NSLayoutConstraint.activate([
             vStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
             vStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             vStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             vStack.heightAnchor.constraint(equalToConstant: 300),
-            
+
             padlock.heightAnchor.constraint(equalToConstant: 70),
-        
+
             faceIdButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             faceIdButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             faceIdButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -60),
             faceIdButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
-    
+
     @objc
     private func didTapUseFaceID() {
         delegate?.didTapFaceID()

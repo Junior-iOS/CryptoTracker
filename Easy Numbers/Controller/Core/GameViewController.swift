@@ -10,11 +10,11 @@ import UIKit
 class GameViewController: BaseViewController {
     // MARK: - Properties
     private lazy var gameView = GameView(frame: .zero)
-    
+
     var viewModel: GameViewModel
     private let homeViewModel = HomeViewModel()
     weak var coordinator: MainCoordinator?
-    
+
     private let device = UIDevice.current.userInterfaceIdiom
 
     // MARK: - Life cycle
@@ -22,7 +22,7 @@ class GameViewController: BaseViewController {
         super.loadView()
         self.view = gameView
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -32,7 +32,7 @@ class GameViewController: BaseViewController {
         super.viewWillAppear(animated)
         viewModel.savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") ?? []
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let backBarBtnItem = UIBarButtonItem()
@@ -59,7 +59,7 @@ class GameViewController: BaseViewController {
         gameView.delegate = self
         gameView.collectionView.delegate = self
         gameView.collectionView.dataSource = self
-        
+
         viewModel.delegate = self
         viewModel.isSavedButtonHidden()
 
@@ -79,13 +79,13 @@ class GameViewController: BaseViewController {
 
     @objc private func saveGame() {
         guard let results = viewModel.game else { return }
-        
+
         var number = ""
         results.forEach({ number += $0 < 10 ? "0\($0) " : "\($0) " })
-        
+
         self.viewModel.savedGames?.append(number)
         self.viewModel.savedGames?.removeDuplicates()
-        self.viewModel.savedGames = viewModel.savedGames?.sorted(by: { $0 < $1 } )
+        self.viewModel.savedGames = viewModel.savedGames?.sorted(by: { $0 < $1 })
 
         UserDefaults.standard.set(viewModel.savedGames, forKey: "SavedGames")
         viewModel.isSavedButtonHidden()
@@ -93,7 +93,7 @@ class GameViewController: BaseViewController {
         SnackBar.show(contextView: self, message: .save)
         haptic(.heavy)
     }
-    
+
     private func setSaveGameButtonColor() {
         switch viewModel.game?.count {
         case 5: gameView.savedGamesButton.backgroundColor = NJColor.quina
@@ -104,14 +104,14 @@ class GameViewController: BaseViewController {
         default: gameView.savedGamesButton.backgroundColor = NJColor.lotomania
         }
     }
-    
+
     private func checkAlignment(_ title: String) {
         if (title == "Quina" || title == "Megasena") && device == .pad {
             guard let game = viewModel.game else { return }
-            
+
             var number = ""
             game.forEach({ number += $0 < 10 ? "0\($0)   " : "\($0)   " })
-            
+
             gameView.gameLabel.text = number
             gameView.collectionView.isHidden = true
         } else {
@@ -126,11 +126,11 @@ extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSour
         collectionView.deselectItem(at: indexPath, animated: true)
         viewModel.didPressCopyGame()
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.numberOfItemsInSection
+        viewModel.numberOfItemsInSection
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell( withReuseIdentifier: GameViewCell.identifier,
                                                              for: indexPath) as? GameViewCell else { return UICollectionViewCell() }
@@ -145,7 +145,7 @@ extension GameViewController: GameViewDelegate {
     func didPressGenerateGameAgain() {
         let game = viewModel.game
         guard let game else { return }
-        
+
         switch game.count {
         case 5: generateGame(.quina)
         case 6: generateGame(.megasena)
@@ -154,16 +154,16 @@ extension GameViewController: GameViewDelegate {
         case 50: generateGame(.lotomania)
         default: break
         }
-        
+
         checkAlignment(viewModel.gameTitle)
         haptic(.soft)
     }
 
     func didPressGoToSavedGames(_ savedGames: [String]) {
-        guard let coordinator = coordinator else { return }
+        guard let coordinator else { return }
         coordinator.routeToSavedGames(with: savedGames)
     }
-    
+
     // MARK: - For iPad
     func didTapCopyGame() {
         viewModel.didPressCopyGame()
@@ -175,10 +175,10 @@ extension GameViewController: GameViewModelDelegate {
     func hideSavedGamesButton(_ game: [String]) {
         gameView.savedGamesButton.isHidden = game == [] ? true : false
     }
-    
+
     func didPressCopyGame() {
         guard let result = viewModel.game else { return }
-        
+
         var number = ""
         result.forEach({ number += $0 < 10 ? "0\($0) " : "\($0) " })
 
@@ -188,7 +188,7 @@ extension GameViewController: GameViewModelDelegate {
         SnackBar.show(contextView: self, message: .copy)
         haptic(.medium)
     }
-    
+
     func reloadCollection() {
         DispatchQueue.main.async { [weak self] in
             self?.gameView.collectionView.reloadData()

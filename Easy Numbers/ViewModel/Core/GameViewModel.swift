@@ -17,14 +17,14 @@ protocol GameViewModelDelegate: AnyObject {
 final class GameViewModel: NSObject {
     weak var delegate: GameViewModelDelegate?
     var savedGames: [String]?
-    
+
     var game: [Int]? {
         didSet { self.delegate?.reloadCollection() }
     }
-    
+
     var gameTitle: String = ""
     let saveGameTitle = LocalizableStrings.gamesSaveButton.localized
-    
+
     var numberOfItemsInSection: Int {
         game?.count ?? 0
     }
@@ -33,7 +33,7 @@ final class GameViewModel: NSObject {
         savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames")
         delegate?.hideSavedGamesButton(savedGames ?? [])
     }
-    
+
     func didPressCopyGame() {
         NJAnalytics.shared.trackEvent(name: .didCopy, from: .games)
         delegate?.didPressCopyGame()

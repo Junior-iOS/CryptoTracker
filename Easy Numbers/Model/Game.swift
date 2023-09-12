@@ -9,7 +9,7 @@ import Foundation
 
 struct Game {
     var numbers: [Int]
-    
+
     init(numbers: [Int]) {
         self.numbers = numbers
     }

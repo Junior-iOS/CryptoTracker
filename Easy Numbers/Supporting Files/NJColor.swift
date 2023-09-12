@@ -15,7 +15,7 @@ struct NJColor {
     static let navColorOnQuina = UIColor(red: 0.24, green: 0.39, blue: 0.61, alpha: 1.00)
     static let lotomania = UIColor.systemOrange
     static let timemania = UIColor.systemYellow
-    
-    static let njErase: UIColor = UIColor(red: 1.00, green: 0.23, blue: 0.15, alpha: 1.00)
-    static let njShare: UIColor = UIColor(red: 0.76, green: 0.88, blue: 0.77, alpha: 1.00)
+
+    static let njErase = UIColor(red: 1.00, green: 0.23, blue: 0.15, alpha: 1.00)
+    static let njShare = UIColor(red: 0.76, green: 0.88, blue: 0.77, alpha: 1.00)
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class OutOfOrderViewController: UIViewController {
     private let outOfOrderView = OutOfOrderView()
-    
+
     override func loadView() {
         super.loadView()
         self.view = outOfOrderView
