@@ -7,6 +7,9 @@ PODS:
   - Firebase/Crashlytics (10.9.0):
     - Firebase/CoreOnly
     - FirebaseCrashlytics (~> 10.9.0)
+  - Firebase/Messaging (10.9.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 10.9.0)
   - Firebase/RemoteConfig (10.9.0):
     - Firebase/CoreOnly
     - FirebaseRemoteConfig (~> 10.9.0)
@@ -51,6 +54,15 @@ PODS:
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
+  - FirebaseMessaging (10.9.0):
+    - FirebaseCore (~> 10.0)
+    - FirebaseInstallations (~> 10.0)
+    - GoogleDataTransport (~> 9.2)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
+    - GoogleUtilities/Environment (~> 7.8)
+    - GoogleUtilities/Reachability (~> 7.8)
+    - GoogleUtilities/UserDefaults (~> 7.8)
+    - nanopb (< 2.30910.0, >= 2.30908.0)
   - FirebaseRemoteConfig (10.9.0):
     - FirebaseABTesting (~> 10.0)
     - FirebaseCore (~> 10.0)
@@ -190,6 +202,7 @@ PODS:
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/Crashlytics
+  - Firebase/Messaging
   - Firebase/RemoteConfig
   - MaterialComponents/Snackbar
   - SwiftLint
@@ -204,6 +217,7 @@ SPEC REPOS:
     - FirebaseCoreInternal
     - FirebaseCrashlytics
     - FirebaseInstallations
+    - FirebaseMessaging
     - FirebaseRemoteConfig
     - FirebaseSessions
     - GoogleAppMeasurement
@@ -226,6 +240,7 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: d2b4acb827908e72eca47a9fd896767c3053921e
   FirebaseCrashlytics: b60329455285aff853e54139d8ddbfe1e5f2b9f9
   FirebaseInstallations: c58489c9caacdbf27d1da60891a87318e20218e0
+  FirebaseMessaging: 6b7052cc3da7bc8e5f72bef871243e8f04a14eed
   FirebaseRemoteConfig: 5ea5834e8c518f377bf1af2d97ebd611914ebf2d
   FirebaseSessions: 44a6782502eb279a214d4adca20891353278760c
   GoogleAppMeasurement: 373bcbead1bb6a85be7a64d5d8f96284b762ea9c
@@ -239,6 +254,6 @@ SPEC CHECKSUMS:
   PromisesSwift: cf9eb58666a43bbe007302226e510b16c1e10959
   SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
 
-PODFILE CHECKSUM: f2d7d67ab113d6110a365eb2fd4542ebf881d695
+PODFILE CHECKSUM: d3568f97e02159dcfc82cb1949cdf65f7c787619
 
 COCOAPODS: 1.12.1

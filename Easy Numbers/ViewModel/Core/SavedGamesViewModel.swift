@@ -11,13 +11,13 @@ import UIKit
 final class SavedGamesViewModel: NSObject {
     var savedGames: [String] = []
     var filteredGames: [String] = []
-    
+
     var numberOfRowsInSection: Int {
         filteredGames.count
     }
-    
+
     let navTitle = LocalizableStrings.savedGamesNavTitle.localized
-    
+
     func setGameName(_ savedGame: String, completion: (String) -> Void) {
         if savedGame.count <= 15 {
             completion("Quina")
@@ -31,7 +31,7 @@ final class SavedGamesViewModel: NSObject {
             completion("Lotomania")
         }
     }
-    
+
     func updateFilteredArray() {
         filteredGames = savedGames.sorted(by: { $0.count < $1.count })
     }

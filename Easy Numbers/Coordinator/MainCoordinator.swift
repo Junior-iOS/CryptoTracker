@@ -23,7 +23,7 @@ class MainCoordinator: Coordinator {
         let infoVC = InfoViewController(viewModel: viewModel)
         navigationController.pushViewController(infoVC, animated: true)
     }
-    
+
     func routeToSettingsVC() {
         let viewModel = SettingsViewModel()
         let settingsVC = SettingsViewController(viewModel: viewModel)
@@ -34,7 +34,7 @@ class MainCoordinator: Coordinator {
         let viewModel = GameViewModel()
         viewModel.game = game
         viewModel.gameTitle = title
-        
+
         let gameVC = GameViewController(viewModel: viewModel)
         gameVC.coordinator = self
         navigationController.pushViewController(gameVC, animated: true)
@@ -43,17 +43,17 @@ class MainCoordinator: Coordinator {
     func routeToSavedGames(with savedGames: [String]) {
         let viewModel = SavedGamesViewModel()
         viewModel.savedGames = savedGames
-        
+
         let vc = SavedGamesViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
-    
+
     func routeToOutOfOrderView() {
         let vc = OutOfOrderViewController()
         navigationController.interactivePopGestureRecognizer?.isEnabled = false
         navigationController.pushViewController(vc, animated: true)
     }
-    
+
     func routeCheckFaceID() {
         let vc = CheckFaceIDViewController(self)
         navigationController.interactivePopGestureRecognizer?.isEnabled = false
@@ -61,8 +61,8 @@ class MainCoordinator: Coordinator {
     }
 }
 
-//public enum CoordinatorPresenter: CoordinatorPresenterProtocol {
+// public enum CoordinatorPresenter: CoordinatorPresenterProtocol {
 //    case push(UINavigationController)
 //    case present(UIViewController, UIModalPresentationStyle = .fullScreen)
 //    case custom(CoordinatorPresenterProtocol)
-//}
+// }

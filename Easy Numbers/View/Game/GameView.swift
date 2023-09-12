@@ -17,7 +17,7 @@ class GameView: UIView {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        
+
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.register(GameViewCell.self, forCellWithReuseIdentifier: GameViewCell.identifier)
@@ -25,7 +25,7 @@ class GameView: UIView {
         collection.backgroundColor = .clear
         return collection
     }()
-    
+
     lazy var gameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +36,7 @@ class GameView: UIView {
         label.isUserInteractionEnabled = true
         return label
     }()
-    
+
     private lazy var generateButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -47,7 +47,7 @@ class GameView: UIView {
         button.clipsToBounds = true
         return button
     }()
-    
+
     lazy var savedGamesButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +57,7 @@ class GameView: UIView {
         button.clipsToBounds = true
         return button
     }()
-    
+
     private lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [generateButton, savedGamesButton])
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -66,45 +66,45 @@ class GameView: UIView {
         stack.spacing = 8
         return stack
     }()
-    
+
     weak var delegate: GameViewDelegate?
-    
+
     private let device = UIDevice.current.userInterfaceIdiom
     private let screenWidth = UIScreen.main.bounds.width
     private var savedGames: [String]?
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         addComponents()
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         nil
     }
-    
+
     private func addComponents() {
         addSubviews(collectionView, gameLabel, stackView)
         let widthAnchor = device == .phone ? screenWidth - 40 : screenWidth / 2
-        
+
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .kLabelMargin),
             collectionView.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -.kLabelMargin),
-            
+
             gameLabel.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
             gameLabel.topAnchor.constraint(equalTo: collectionView.topAnchor),
             gameLabel.widthAnchor.constraint(equalTo: collectionView.widthAnchor),
-            
+
             stackView.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
             stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.kButtonMargin),
-            
+
             generateButton.widthAnchor.constraint(equalToConstant: widthAnchor),
             generateButton.heightAnchor.constraint(equalToConstant: .kButtonHeight)
         ])
-        
+
         NSLayoutConstraint.activate(centerCollectionOnIpad())
     }
-    
+
     private func centerCollectionOnIpad() -> [NSLayoutConstraint] {
         if device == .phone {
             return [collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .kLabelMargin),
@@ -116,18 +116,18 @@ class GameView: UIView {
             ]
         }
     }
-    
+
     @objc private func copyGame() {
         delegate?.didTapCopyGame()
     }
-    
+
     @objc private func didPressSavedGamesButton() {
         savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames")
-        
+
         NJAnalytics.shared.trackEvent(name: .savedGames, from: .games)
         delegate?.didPressGoToSavedGames(savedGames ?? [])
     }
-    
+
     @objc private func generateAgain() {
         NJAnalytics.shared.trackEvent(name: .generateAgain, from: .games)
         delegate?.didPressGenerateGameAgain()
