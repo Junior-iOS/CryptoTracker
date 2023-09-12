@@ -62,7 +62,7 @@ class HomeView: UIView {
                      backgroundColor: NJColor.lotomania,
                      tag: 3)
     }()
-    
+
     private lazy var btnTimeMania: UIButton = {
         createButton(title: GameType.timemania.rawValue,
                      titleColor: NJColor.megasena,
@@ -101,7 +101,7 @@ class HomeView: UIView {
             $0.clipsToBounds = true
         })
     }
-    
+
     private func createButton(title: String,
                               titleColor: UIColor = .white,
                               backgroundColor: UIColor,
@@ -115,7 +115,7 @@ class HomeView: UIView {
         button.tag = tag
         return button
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         setViewsRoundCorners()

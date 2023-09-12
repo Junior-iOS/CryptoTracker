@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import UIKit
 import LocalAuthentication
+import UIKit
 
 enum AuthPolicy {
     case canEvaluate
@@ -17,16 +17,16 @@ enum AuthPolicy {
 
 final class LocalAuthentication {
     static let shared = LocalAuthentication()
-    
+
     private init() {}
-    
-    func authenticateWithBiometrics(completion: @escaping (AuthPolicy) -> ()) {
+
+    func authenticateWithBiometrics(completion: @escaping (AuthPolicy) -> Void) {
         let context = LAContext()
         var error: NSError?
         let policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics
-        
+
         if context.canEvaluatePolicy(policy, error: &error) {
-            context.evaluatePolicy(policy, localizedReason: LocalizableStrings.faceID.localized) { success, error in
+            context.evaluatePolicy(policy, localizedReason: LocalizableStrings.faceID.localized) { _, error in
                 guard error == nil else {
                     // NÃO RECONHECEU O ROSTO E CLICOU EM CANCELAR
                     completion(.canEvaluateError)

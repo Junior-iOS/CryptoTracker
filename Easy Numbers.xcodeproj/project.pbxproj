@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0609BC5213545BAF176606AF /* Pods_Easy_Numbers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EAA989DFED7BBA41A683AE5 /* Pods_Easy_Numbers.framework */; };
 		14388FBD2A4E9E38003F619D /* NJColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14388FBC2A4E9E38003F619D /* NJColor.swift */; };
 		14460B2A2A0C949900C4DA54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B292A0C949900C4DA54 /* AppDelegate.swift */; };
 		14460B2C2A0C949900C4DA54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B2B2A0C949900C4DA54 /* SceneDelegate.swift */; };
@@ -53,7 +54,6 @@
 		14EC8CFD2A79F9F700598631 /* CheckFaceIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC8CFC2A79F9F700598631 /* CheckFaceIDViewController.swift */; };
 		14EC8D002A7A08A500598631 /* CheckFaceIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC8CFF2A7A08A500598631 /* CheckFaceIDView.swift */; };
 		14FB0E972A16C79400AD91E9 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB0E962A16C79400AD91E9 /* GameViewModel.swift */; };
-		5B3626AE93F6AD067A5DFEAB /* Pods_Easy_Numbers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA2BE56E56C326D1059670B /* Pods_Easy_Numbers.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +93,7 @@
 		14888E782A1B339500359431 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGamesViewController.swift; sourceTree = "<group>"; };
 		149D537F2A16BFD900DC71F0 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		14A102A72AA6FA2000ECF163 /* Easy Numbers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Easy Numbers.entitlements"; sourceTree = "<group>"; };
 		14C05A5D2A8287F100B22356 /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
 		14C05A622A828F1F00B22356 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		14C05A642A828FE300B22356 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -105,9 +106,9 @@
 		14EC8CFC2A79F9F700598631 /* CheckFaceIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFaceIDViewController.swift; sourceTree = "<group>"; };
 		14EC8CFF2A7A08A500598631 /* CheckFaceIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFaceIDView.swift; sourceTree = "<group>"; };
 		14FB0E962A16C79400AD91E9 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
-		894131655C02596668963EF8 /* Pods-Easy Numbers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy Numbers.release.xcconfig"; path = "Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers.release.xcconfig"; sourceTree = "<group>"; };
-		9FA2BE56E56C326D1059670B /* Pods_Easy_Numbers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Easy_Numbers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB1CC0DDF6ADCEEECBEBF98D /* Pods-Easy Numbers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy Numbers.debug.xcconfig"; path = "Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers.debug.xcconfig"; sourceTree = "<group>"; };
+		599B5247B2B37FF688919A0D /* Pods-Easy Numbers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy Numbers.release.xcconfig"; path = "Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers.release.xcconfig"; sourceTree = "<group>"; };
+		7EAA989DFED7BBA41A683AE5 /* Pods_Easy_Numbers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Easy_Numbers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8D9245B0966FD02DDEFFAD9 /* Pods-Easy Numbers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy Numbers.debug.xcconfig"; path = "Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				145660DF2A3456EB003FD467 /* OnboardingKit in Frameworks */,
-				5B3626AE93F6AD067A5DFEAB /* Pods_Easy_Numbers.framework in Frameworks */,
+				0609BC5213545BAF176606AF /* Pods_Easy_Numbers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,7 +130,7 @@
 				14460B282A0C949900C4DA54 /* Easy Numbers */,
 				14460B272A0C949800C4DA54 /* Products */,
 				BC5265F804A3629EE1E49444 /* Pods */,
-				5D8777C6AB94F118D675F5D9 /* Frameworks */,
+				DCE65D758160D3763A994C88 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +145,7 @@
 		14460B282A0C949900C4DA54 /* Easy Numbers */ = {
 			isa = PBXGroup;
 			children = (
+				14A102A72AA6FA2000ECF163 /* Easy Numbers.entitlements */,
 				14460B4D2A0C98BC00C4DA54 /* Resources */,
 				14460B3E2A0C953100C4DA54 /* Application */,
 				145660D02A341EAE003FD467 /* Coordinator */,
@@ -370,21 +372,21 @@
 			path = "Face ID";
 			sourceTree = "<group>";
 		};
-		5D8777C6AB94F118D675F5D9 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9FA2BE56E56C326D1059670B /* Pods_Easy_Numbers.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		BC5265F804A3629EE1E49444 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BB1CC0DDF6ADCEEECBEBF98D /* Pods-Easy Numbers.debug.xcconfig */,
-				894131655C02596668963EF8 /* Pods-Easy Numbers.release.xcconfig */,
+				C8D9245B0966FD02DDEFFAD9 /* Pods-Easy Numbers.debug.xcconfig */,
+				599B5247B2B37FF688919A0D /* Pods-Easy Numbers.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DCE65D758160D3763A994C88 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7EAA989DFED7BBA41A683AE5 /* Pods_Easy_Numbers.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,12 +396,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 14460B3A2A0C949B00C4DA54 /* Build configuration list for PBXNativeTarget "Easy Numbers" */;
 			buildPhases = (
-				CF6D21E13B36C436F09F40AF /* [CP] Check Pods Manifest.lock */,
+				2AACFD259A252468D975AD19 /* [CP] Check Pods Manifest.lock */,
 				14460B222A0C949800C4DA54 /* Sources */,
 				14460B232A0C949800C4DA54 /* Frameworks */,
 				14460B242A0C949800C4DA54 /* Resources */,
 				14460B5F2A0F339400C4DA54 /* ShellScript */,
-				AFD72C1734BD1E0ED13126F6 /* [CP] Embed Pods Frameworks */,
+				B0A58EF5D80C8CBC7D8B49B1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -482,24 +484,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
-		AFD72C1734BD1E0ED13126F6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CF6D21E13B36C436F09F40AF /* [CP] Check Pods Manifest.lock */ = {
+		2AACFD259A252468D975AD19 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -519,6 +504,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0A58EF5D80C8CBC7D8B49B1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Easy Numbers/Pods-Easy Numbers-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -713,18 +715,20 @@
 		};
 		14460B3B2A0C949B00C4DA54 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB1CC0DDF6ADCEEECBEBF98D /* Pods-Easy Numbers.debug.xcconfig */;
+			baseConfigurationReference = C8D9245B0966FD02DDEFFAD9 /* Pods-Easy Numbers.debug.xcconfig */;
 			buildSettings = {
 				APP_NAME = "Jogos Lotérica";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Easy Numbers/Easy Numbers.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = KTUAP2Z2QF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Easy Numbers/Resources/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Jogos Lotérica";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Gostaria de proteger seus jogos salvos?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
@@ -754,18 +758,20 @@
 		};
 		14460B3C2A0C949B00C4DA54 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 894131655C02596668963EF8 /* Pods-Easy Numbers.release.xcconfig */;
+			baseConfigurationReference = 599B5247B2B37FF688919A0D /* Pods-Easy Numbers.release.xcconfig */;
 			buildSettings = {
 				APP_NAME = "Jogos Lotérica";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Easy Numbers/Easy Numbers.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = KTUAP2Z2QF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Easy Numbers/Resources/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Jogos Lotérica";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Gostaria de proteger seus jogos salvos?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
