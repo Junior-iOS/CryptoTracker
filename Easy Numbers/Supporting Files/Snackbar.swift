@@ -12,23 +12,34 @@ import UIKit
 enum GameCopySave {
     case copy
     case save
+    
+    var description: String {
+        switch self {
+        case .copy:
+            LocalizableStrings.gamesGameCopied.localized
+        case .save:
+            LocalizableStrings.gamesGameSaved.localized
+        }
+    }
+    
+    var backgroundColor: UIColor {
+        switch self {
+        case .copy:
+            UIColor.systemGreen
+        case .save:
+            UIColor.systemCyan
+        }
+    }
 }
 
 final class SnackBar: NSObject {
-    static func show(contextView: UIViewController, message: GameCopySave) {
+    static func show(contextView: UIViewController, type: GameCopySave) {
         let mdcMessage = MDCSnackbarMessage()
-        mdcMessage.text = message == .save ? LocalizableStrings.gamesGameSaved.localized : LocalizableStrings.gamesGameCopied.localized
+        mdcMessage.text = type.description
         mdcMessage.duration = 0.5
 
         MDCSnackbarManager.default.show(mdcMessage)
         MDCSnackbarManager.default.alignment = .center
-
-        switch message {
-        case .copy:
-            MDCSnackbarManager.default.snackbarMessageViewBackgroundColor = UIColor.systemGreen
-
-        case .save:
-            MDCSnackbarManager.default.snackbarMessageViewBackgroundColor = UIColor.systemCyan
-        }
+        MDCSnackbarManager.default.snackbarMessageViewBackgroundColor = type.backgroundColor
     }
 }
