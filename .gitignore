@@ -60,7 +60,7 @@ Pods/
 *.xcworkspace
 
 # Google Services
-/Users/juniorsilva/Projetos iOS/Easy Numbers/Easy Numbers/Resources/GoogleService-Info.plist
+GoogleService-Info.plist
 
 # Carthage
 #
