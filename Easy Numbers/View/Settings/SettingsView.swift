@@ -8,8 +8,7 @@
 import UIKit
 
 class SettingsView: UIView {
-    
-    lazy var tableView: UITableView = {
+    public lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(cellClass: SettingsTableViewCell.self)
@@ -20,19 +19,20 @@ class SettingsView: UIView {
         tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstraints()
     }
-    
+
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        nil
     }
-    
+
     func setupConstraints() {
         addSubviews(tableView)
-        
+
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),

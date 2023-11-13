@@ -78,22 +78,22 @@ class SavedGamesViewController: BaseViewController {
 
     @objc func share() {
         var text = ""
-        
+
         for i in 0...viewModel.filteredGames.count - 1 {
             viewModel.setGameName(viewModel.filteredGames[i]) { [weak self] gameName in
                 guard let self else { return }
                 text += "🍀 \(gameName) 🤞🏻\n\(viewModel.filteredGames[i])\n\n"
             }
         }
-        
+
         let ac = UIActivityViewController(activityItems: [text.removeBrackets()], applicationActivities: nil)
-        
+
         if UIDevice.current.userInterfaceIdiom == .pad {
             let scenes = UIApplication.shared.connectedScenes
-            
+
             guard let windowScene = scenes.first as? UIWindowScene,
                   let window = windowScene.windows.first else { return }
-            
+
             ac.popoverPresentationController?.sourceView = window
             ac.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 300, height: 350)
             window.rootViewController?.present(ac, animated: true, completion: nil)
@@ -102,7 +102,7 @@ class SavedGamesViewController: BaseViewController {
                 self.present(ac, animated: true)
             }
         }
-        
+
         NJAnalytics.shared.trackEvent(name: .didShare, from: .savedGames)
     }
 }
@@ -157,10 +157,10 @@ extension SavedGamesViewController: UITableViewDelegate, UITableViewDataSource {
 
             if UIDevice.current.userInterfaceIdiom == .pad {
                 let scenes = UIApplication.shared.connectedScenes
-                
+
                 guard let windowScene = scenes.first as? UIWindowScene,
                       let window = windowScene.windows.first else { return }
-                
+
                 ac.popoverPresentationController?.sourceView = window
                 ac.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 300, height: 350)
                 window.rootViewController?.present(ac, animated: true, completion: nil)

@@ -9,13 +9,12 @@ import OnboardingKit
 import UIKit
 
 class HomeViewController: BaseViewController {
-    
     // MARK: - Properties
     private lazy var btnMyGames: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(viewModel.myGamesButtonTitle, for: .normal)
-        button.addTarget(self, action: #selector(myGamesPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(myGamesPressed), for: .primaryActionTriggered)
         button.backgroundColor = .systemBlue
         button.titleLabel?.textColor = .black
         button.layer.cornerRadius = kButtonHeight / 2
@@ -66,7 +65,7 @@ class HomeViewController: BaseViewController {
 
         viewModel.delegate = self
         NJAnalytics.shared.trackEvent(name: .didLoad, from: .home)
-        
+
         authenticationCheck()
     }
 
@@ -84,10 +83,10 @@ class HomeViewController: BaseViewController {
     // MARK: - Methods
     private func setup() {
         view.backgroundColor = .systemBackground
-        
+
         navigationItem.title = viewModel.navTitle
         setupNavigation(actionFor: #selector(didPressSettings), actionFor: #selector(didPressInfo))
-        
+
         homeView.delegate = self
         addComponents()
     }
@@ -113,7 +112,7 @@ class HomeViewController: BaseViewController {
         guard let savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") else { return }
         btnMyGames.isEnabled = false
         NJAnalytics.shared.trackEvent(name: .didSave, from: .games)
-        
+
         coordinator?.routeToSavedGames(with: savedGames)
     }
 
@@ -121,10 +120,10 @@ class HomeViewController: BaseViewController {
         coordinator?.routeToInfoVC()
         NJAnalytics.shared.trackEvent(name: .info, from: .home)
     }
-    
+
     @objc private func didPressSettings() {
         coordinator?.routeToSettingsVC()
-        // MARK: - TO DO: Analytics
+        NJAnalytics.shared.trackEvent(name: .settings, from: .home)
     }
 
     private func updateFlag() {
@@ -136,9 +135,9 @@ class HomeViewController: BaseViewController {
     private func checkRemoteConfig() {
         viewModel.checkRemoteConfig()
     }
-    
+
     private func authenticationCheck() {
-        guard let coordinator = coordinator else { return }
+        guard let coordinator else { return }
         checkforFaceID(coordinator)
     }
 }
@@ -170,6 +169,7 @@ extension HomeViewController: HomeViewDelegate {
             gameTitle = GameType.lotomania.rawValue
             backButtonBackgroundColor = NJColor.lotomania
             NJAnalytics.shared.trackEvent(name: .lotomania, from: .games)
+
         default:
             myGames = viewModel.generate(.timemania)
             gameTitle = GameType.timemania.rawValue
@@ -189,7 +189,7 @@ extension HomeViewController: HomeViewModelDelegate {
             hideNavigationBar(value)
         }
     }
-    
+
     func handlePresentOnboarding() {
         viewModel.onboardingKit?.launchOnboarding(controller: self)
     }

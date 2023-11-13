@@ -5,29 +5,40 @@
 //  Created by NJ Development on 06/07/23.
 //
 
-import Foundation
 import UIKit
-import MaterialComponents.MaterialSnackbar
+import JGProgressHUD
 
 enum GameCopySave {
     case copy
     case save
+    
+    var description: String {
+        switch self {
+        case .copy:
+            LocalizableStrings.gamesGameCopied.localized
+        case .save:
+            LocalizableStrings.gamesGameSaved.localized
+        }
+    }
+    
+    var backgroundColor: UIColor {
+        switch self {
+        case .copy:
+            UIColor.systemGreen
+        case .save:
+            UIColor.systemCyan
+        }
+    }
 }
 
 final class SnackBar: NSObject {
-    static func show(contextView: UIViewController, message: GameCopySave) {
-        let mdcMessage = MDCSnackbarMessage()
-        mdcMessage.text = message == .save ? LocalizableStrings.gamesGameSaved.localized : LocalizableStrings.gamesGameCopied.localized
-        mdcMessage.duration = 0.5
-        
-        MDCSnackbarManager.default.show(mdcMessage)
-        MDCSnackbarManager.default.alignment = .center
-           
-        switch message {
-        case .copy:
-            MDCSnackbarManager.default.snackbarMessageViewBackgroundColor = UIColor.systemGreen
-        case .save:
-            MDCSnackbarManager.default.snackbarMessageViewBackgroundColor = UIColor.systemCyan
-        }
+    static func showHUD(in view: UIView, type: GameCopySave) {
+        guard let image = type == .copy ? SFSymbol.plusCircleFill.image : SFSymbol.checkmarkCircleFill.image else { return }
+        let hud = JGProgressHUD()
+        hud.indicatorView = JGProgressHUDImageIndicatorView(image: image)
+        hud.textLabel.text = type.description
+        hud.hudView.backgroundColor = type.backgroundColor
+        hud.show(in: view)
+        hud.dismiss(afterDelay: 0.5)
     }
 }

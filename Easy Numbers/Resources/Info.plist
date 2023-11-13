@@ -2,47 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIApplicationShortcutItems</key>
-	<array>
-		<dict>
-			<key>UIApplicationShortcutItemType</key>
-			<string>ShareAction</string>
-			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeShare</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Compartilhe</string>
-			<key>UIApplicationShortcutItemSubtitle</key>
-			<string>Compartilhe com um amigo</string>
-		</dict>
-        <dict>
-            <key>UIApplicationShortcutItemType</key>
-            <string>Results</string>
-            <key>UIApplicationShortcutItemIconType</key>
-            <string>UIApplicationShortcutIconTypeBookmark</string>
-            <key>UIApplicationShortcutItemTitle</key>
-            <string>Resultados</string>
-            <key>UIApplicationShortcutItemSubtitle</key>
-            <string>Veja os resultados</string>
-        </dict>
-        <dict>
-            <key>UIApplicationShortcutItemType</key>
-            <string>SearchAction</string>
-            <key>UIApplicationShortcutItemIconType</key>
-            <string>UIApplicationShortcutIconTypeSearch</string>
-            <key>UIApplicationShortcutItemTitle</key>
-            <string>Jogos Salvos</string>
-            <key>UIApplicationShortcutItemSubtitle</key>
-            <string>Veja seus jogos</string>
-        </dict>
-	</array>
-	<key>ITUNES_ID</key>
-	<string>${ITUNES_ID}</string>
-	<key>NSFaceIDUsageDescription</key>
-	<string>Gostaria de proteger seus jogos salvos?</string>
 	<key>APP_NAME</key>
 	<string>${APP_NAME}</string>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.540199740349-a5gmt872aggpgjfk173ni6l3i8h1lt4r</string>
+			</array>
+		</dict>
+	</array>
 	<key>FirebaseAutomaticScreenReportingEnabled</key>
 	<false/>
+	<key>ITUNES_ID</key>
+	<string>${ITUNES_ID}</string>
 	<key>LINKED_IN</key>
 	<string>${LINKED_IN}</string>
 	<key>NJ_EMAIL</key>
@@ -66,5 +44,43 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeShare</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Compartilhe com um amigo</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Compartilhe</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>ShareAction</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeBookmark</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Veja os resultados</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Resultados</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>Results</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeSearch</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Veja seus jogos</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Jogos Salvos</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>SearchAction</string>
+		</dict>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 </dict>
 </plist>

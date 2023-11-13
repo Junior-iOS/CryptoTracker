@@ -17,7 +17,9 @@ enum SFSymbol: String {
     case houseCircle = "house.circle"
     case gear = "gearshape.circle.fill"
     case lock = "lock.circle.fill"
-    
+    case plusCircleFill = "plus.circle.fill"
+    case checkmarkCircleFill = "checkmark.circle.fill"
+
     var image: UIImage? {
         UIImage(systemName: rawValue)
     }
