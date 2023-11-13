@@ -8,7 +8,7 @@
 import UIKit
 
 class SettingsView: UIView {
-    lazy var tableView: UITableView = {
+    public lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(cellClass: SettingsTableViewCell.self)
@@ -25,8 +25,9 @@ class SettingsView: UIView {
         setupConstraints()
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        nil
     }
 
     func setupConstraints() {

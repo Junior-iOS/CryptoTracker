@@ -14,7 +14,7 @@ class HomeViewController: BaseViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(viewModel.myGamesButtonTitle, for: .normal)
-        button.addTarget(self, action: #selector(myGamesPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(myGamesPressed), for: .primaryActionTriggered)
         button.backgroundColor = .systemBlue
         button.titleLabel?.textColor = .black
         button.layer.cornerRadius = kButtonHeight / 2

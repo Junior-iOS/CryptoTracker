@@ -36,6 +36,6 @@ extension Array {
     }
 
     func contains<T>(obj: T) -> Bool where T: Equatable {
-        !self.filter({ $0 as? T == obj }).isEmpty
+        self.filter({ $0 as? T == obj }).isNotEmpty
     }
 }
