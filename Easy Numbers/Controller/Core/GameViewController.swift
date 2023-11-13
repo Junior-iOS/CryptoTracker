@@ -90,7 +90,7 @@ class GameViewController: BaseViewController {
         UserDefaults.standard.set(viewModel.savedGames, forKey: "SavedGames")
         viewModel.isSavedButtonHidden()
 
-        SnackBar.show(contextView: self, type: .save)
+        SnackBar.showHUD(in: self.view, type: .save)
         haptic(.heavy)
     }
 
@@ -185,7 +185,7 @@ extension GameViewController: GameViewModelDelegate {
         let pasteboard = UIPasteboard.general
         pasteboard.string = "🍀 \(String(describing: viewModel.gameTitle)) 🤞🏻\n\(number)".removeBrackets()
 
-        SnackBar.show(contextView: self, type: .copy)
+        SnackBar.showHUD(in: self.view, type: .copy)
         haptic(.medium)
     }
 

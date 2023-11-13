@@ -42,7 +42,7 @@ class GameView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(LocalizableStrings.gamesGenerateAgain.localized, for: .normal)
         button.backgroundColor = .systemBlue
-        button.addTarget(self, action: #selector(generateAgain), for: .touchUpInside)
+        button.addTarget(self, action: #selector(generateAgain), for: .primaryActionTriggered)
         button.layer.cornerRadius = .kButtonHeight / 2
         button.clipsToBounds = true
         return button
@@ -52,7 +52,7 @@ class GameView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(LocalizableStrings.gamesSavedGames.localized, for: .normal)
-        button.addTarget(self, action: #selector(didPressSavedGamesButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didPressSavedGamesButton), for: .primaryActionTriggered)
         button.layer.cornerRadius = .kButtonHeight / 2
         button.clipsToBounds = true
         return button

@@ -55,7 +55,7 @@ final class CheckFaceIDView: UIView {
     private lazy var faceIdButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(didTapUseFaceID), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapUseFaceID), for: .primaryActionTriggered)
         button.backgroundColor = .systemBlue
         button.setTitle(LocalizableStrings.faceIDLockedButton.localized, for: .normal)
         button.layer.cornerRadius = 20

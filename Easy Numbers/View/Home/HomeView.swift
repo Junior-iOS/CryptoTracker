@@ -108,7 +108,7 @@ class HomeView: UIView {
                               tag: Int) -> UIButton {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(generatePressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(generatePressed), for: .primaryActionTriggered)
         button.backgroundColor = backgroundColor
         button.setTitle(title, for: .normal)
         button.setTitleColor(titleColor, for: .normal)
