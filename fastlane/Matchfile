@@ -1,2 +1,2 @@
-#git_url("")
-#git_branch ""
+git_url "git@github.com:Junior-iOS/EasyNumbers.git"
+git_branch "develop"
