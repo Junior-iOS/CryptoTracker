@@ -30,7 +30,7 @@ class GameViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") ?? []
+        viewModel.savedGames = GameManager.shared.retrieveGames()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -87,7 +87,7 @@ class GameViewController: BaseViewController {
         self.viewModel.savedGames?.removeDuplicates()
         self.viewModel.savedGames = viewModel.savedGames?.sorted(by: { $0 < $1 })
 
-        UserDefaults.standard.set(viewModel.savedGames, forKey: "SavedGames")
+        GameManager.shared.saveGames(viewModel.savedGames ?? [])
         viewModel.isSavedButtonHidden()
 
         SnackBar.showHUD(in: self.view, type: .save)

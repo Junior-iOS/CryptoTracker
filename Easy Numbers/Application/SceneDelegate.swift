@@ -68,7 +68,7 @@ extension SceneDelegate {
 
         case "SearchAction":
             DispatchQueue.main.async { [weak self] in
-                guard let savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") else { return }
+                let savedGames = GameManager.shared.retrieveGames()
                 if savedGames.isEmpty {
                     let alert = UIAlertController(title: "Ops!",
                                                   message: LocalizableStrings.quickActionsAlert.localized,

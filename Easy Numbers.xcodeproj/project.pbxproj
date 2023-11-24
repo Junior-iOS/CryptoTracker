@@ -45,6 +45,7 @@
 		14888E7B2A1B41C500359431 /* SavedGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14888E7A2A1B41C500359431 /* SavedGamesViewController.swift */; };
 		149D53802A16BFD900DC71F0 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D537F2A16BFD900DC71F0 /* Enum.swift */; };
 		14B42DDA2B0F11DD008C2BF0 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B42DD92B0F11DD008C2BF0 /* HomeViewModelTests.swift */; };
+		14B42DE12B102244008C2BF0 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B42DE02B102244008C2BF0 /* GameManager.swift */; };
 		14C05A5E2A8287F100B22356 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C05A5D2A8287F100B22356 /* LocalizableStrings.swift */; };
 		14C05A612A828F1F00B22356 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 14C05A632A828F1F00B22356 /* Localizable.strings */; };
 		14C663FB2A1C67EC005E4E46 /* SavedGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C663FA2A1C67EC005E4E46 /* SavedGamesView.swift */; };
@@ -108,6 +109,7 @@
 		14A102A72AA6FA2000ECF163 /* Easy Numbers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Easy Numbers.entitlements"; sourceTree = "<group>"; };
 		14B42DD72B0F11DD008C2BF0 /* Easy NumbersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Easy NumbersTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14B42DD92B0F11DD008C2BF0 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		14B42DE02B102244008C2BF0 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		14C05A5D2A8287F100B22356 /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
 		14C05A622A828F1F00B22356 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		14C05A642A828FE300B22356 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				14388FBC2A4E9E38003F619D /* NJColor.swift */,
 				146F3E3C2A567A70007EAF53 /* Snackbar.swift */,
 				148395532A637F0C007B3704 /* LocalAuthentication.swift */,
+				14B42DE02B102244008C2BF0 /* GameManager.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 				146F3E3D2A567A70007EAF53 /* Snackbar.swift in Sources */,
 				14D014C72A46AFF800842FD5 /* OutOfOrderViewController.swift in Sources */,
 				145660D22A341EC1003FD467 /* Coordinator.swift in Sources */,
+				14B42DE12B102244008C2BF0 /* GameManager.swift in Sources */,
 				14C663FB2A1C67EC005E4E46 /* SavedGamesView.swift in Sources */,
 				14C664022A1D3A71005E4E46 /* String+Extensions.swift in Sources */,
 				14D014CD2A46C1A000842FD5 /* NJFont.swift in Sources */,

@@ -30,7 +30,7 @@ final class GameViewModel: NSObject {
     }
 
     func isSavedButtonHidden() {
-        savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames")
+        savedGames = GameManager.shared.retrieveGames()
         delegate?.hideSavedGamesButton(savedGames ?? [])
     }
 

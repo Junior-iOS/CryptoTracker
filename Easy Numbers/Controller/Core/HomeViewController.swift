@@ -44,18 +44,7 @@ class HomeViewController: BaseViewController {
     }
 
     @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        nil
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.tintColor = .white
-
-        guard let savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") else { return }
-        btnMyGames.isHidden = savedGames.isNotEmpty ? false : true
-        btnMyGames.isEnabled = true
-    }
+    required init?(coder: NSCoder) { nil }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +56,15 @@ class HomeViewController: BaseViewController {
         NJAnalytics.shared.trackEvent(name: .didLoad, from: .home)
 
         authenticationCheck()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.tintColor = .white
+
+        let savedGames = GameManager.shared.retrieveGames()
+        btnMyGames.isHidden = savedGames.isNotEmpty ? false : true
+        btnMyGames.isEnabled = true
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -109,7 +107,7 @@ class HomeViewController: BaseViewController {
     }
 
     @objc func myGamesPressed(_ sender: UIButton) {
-        guard let savedGames = UserDefaults.standard.stringArray(forKey: "SavedGames") else { return }
+        let savedGames = GameManager.shared.retrieveGames()
         btnMyGames.isEnabled = false
         NJAnalytics.shared.trackEvent(name: .didSave, from: .games)
 

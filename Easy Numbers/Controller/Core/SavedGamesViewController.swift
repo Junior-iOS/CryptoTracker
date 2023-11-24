@@ -71,7 +71,7 @@ class SavedGamesViewController: BaseViewController {
 
     private func delete() {
         viewModel.filteredGames.removeAll()
-        UserDefaults.standard.set(viewModel.filteredGames, forKey: "SavedGames")
+        GameManager.shared.saveGames(viewModel.filteredGames)
 
         savedGamesView.tableView.reloadData()
     }
@@ -134,7 +134,7 @@ extension SavedGamesViewController: UITableViewDelegate, UITableViewDataSource {
             guard let self else { return }
 
             viewModel.filteredGames.remove(at: indexPath.row)
-            UserDefaults.standard.set(viewModel.filteredGames, forKey: "SavedGames")
+            GameManager.shared.saveGames(viewModel.filteredGames)
 
             tableView.deleteRows(at: [indexPath], with: .left)
             tableView.reloadData()
