@@ -13,6 +13,9 @@
 		140D31972C09849200E8664D /* CoinImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140D31962C09849200E8664D /* CoinImageService.swift */; };
 		140D31992C0986AD00E8664D /* CoinImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140D31982C0986AD00E8664D /* CoinImageViewModel.swift */; };
 		140D319B2C0ACA8D00E8664D /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140D319A2C0ACA8D00E8664D /* LocalFileManager.swift */; };
+		140D319E2C0AD80B00E8664D /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140D319D2C0AD80B00E8664D /* SearchBarView.swift */; };
+		140D31A02C0ADF9D00E8664D /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140D319F2C0ADF9D00E8664D /* UIApplication+Extensions.swift */; };
+		140D31A32C0AE40B00E8664D /* CurrencyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140D31A22C0AE40B00E8664D /* CurrencyPickerView.swift */; };
 		145ECBC22C044DBA000C2C0B /* CryptoTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145ECBC12C044DBA000C2C0B /* CryptoTrackerApp.swift */; };
 		145ECBC42C044DBA000C2C0B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145ECBC32C044DBA000C2C0B /* ContentView.swift */; };
 		145ECBCA2C044DBE000C2C0B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 145ECBC92C044DBE000C2C0B /* Preview Assets.xcassets */; };
@@ -35,6 +38,9 @@
 		140D31962C09849200E8664D /* CoinImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageService.swift; sourceTree = "<group>"; };
 		140D31982C0986AD00E8664D /* CoinImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageViewModel.swift; sourceTree = "<group>"; };
 		140D319A2C0ACA8D00E8664D /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
+		140D319D2C0AD80B00E8664D /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		140D319F2C0ADF9D00E8664D /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
+		140D31A22C0AE40B00E8664D /* CurrencyPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerView.swift; sourceTree = "<group>"; };
 		145ECBBE2C044DBA000C2C0B /* CryptoTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		145ECBC12C044DBA000C2C0B /* CryptoTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTrackerApp.swift; sourceTree = "<group>"; };
 		145ECBC32C044DBA000C2C0B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +96,22 @@
 			path = CoinImage;
 			sourceTree = "<group>";
 		};
+		140D319C2C0AD7FF00E8664D /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				140D319D2C0AD80B00E8664D /* SearchBarView.swift */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		140D31A12C0AE3FA00E8664D /* CurrencyPicker */ = {
+			isa = PBXGroup;
+			children = (
+				140D31A22C0AE40B00E8664D /* CurrencyPickerView.swift */,
+			);
+			path = CurrencyPicker;
+			sourceTree = "<group>";
+		};
 		145ECBB52C044DB9000C2C0B = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +159,7 @@
 			children = (
 				145ECBD32C044ED8000C2C0B /* Color+Extensions.swift */,
 				145ECBEB2C083D0D000C2C0B /* Double+Extensions.swift */,
+				140D319F2C0ADF9D00E8664D /* UIApplication+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -179,6 +202,8 @@
 		145ECBDB2C045282000C2C0B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				140D31A12C0AE3FA00E8664D /* CurrencyPicker */,
+				140D319C2C0AD7FF00E8664D /* SearchBar */,
 				140D31932C09828F00E8664D /* CoinImage */,
 				145ECBDC2C04528A000C2C0B /* CircleButton */,
 			);
@@ -282,6 +307,7 @@
 			files = (
 				140D318F2C0970D600E8664D /* CoinDataService.swift in Sources */,
 				145ECBE52C07ED57000C2C0B /* CoinRowView.swift in Sources */,
+				140D31A02C0ADF9D00E8664D /* UIApplication+Extensions.swift in Sources */,
 				145ECBEF2C0951F3000C2C0B /* HomeViewModel.swift in Sources */,
 				140D31922C097BA900E8664D /* NetworkManager.swift in Sources */,
 				140D319B2C0ACA8D00E8664D /* LocalFileManager.swift in Sources */,
@@ -290,6 +316,7 @@
 				145ECBC22C044DBA000C2C0B /* CryptoTrackerApp.swift in Sources */,
 				145ECBEC2C083D0D000C2C0B /* Double+Extensions.swift in Sources */,
 				145ECBDE2C045294000C2C0B /* CircleButtonView.swift in Sources */,
+				140D319E2C0AD80B00E8664D /* SearchBarView.swift in Sources */,
 				145ECBE72C07EDB1000C2C0B /* DeveloperPreview.swift in Sources */,
 				140D31952C0982A300E8664D /* CoinImage.swift in Sources */,
 				140D31992C0986AD00E8664D /* CoinImageViewModel.swift in Sources */,
@@ -297,6 +324,7 @@
 				145ECBE02C058F45000C2C0B /* CircleButtonAnimationView.swift in Sources */,
 				140D31972C09849200E8664D /* CoinImageService.swift in Sources */,
 				145ECBE32C07B8CF000C2C0B /* Coin.swift in Sources */,
+				140D31A32C0AE40B00E8664D /* CurrencyPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

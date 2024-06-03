@@ -18,6 +18,17 @@ struct HomeView: View {
             
             VStack {
                 homeHeader
+                
+                SearchBarView(searchText: $viewModel.searchText)
+                    .padding()
+                
+//                Divider()
+//                CurrencyPickerView(currency: .BRL) { selectedCurrency in
+//                    currency = selectedCurrency.rawValue.lowercased()
+//                    viewModel.getCoins(from: currency)
+//                }
+//                Divider()
+                
                 columnTitles
                 
                 if !showPortfolio {
