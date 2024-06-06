@@ -85,7 +85,7 @@ class GameViewController: BaseViewController {
 
         self.viewModel.savedGames?.append(number)
         self.viewModel.savedGames?.removeDuplicates()
-        self.viewModel.savedGames = viewModel.savedGames?.sorted(by: { $0 < $1 })
+        self.viewModel.savedGames = viewModel.savedGames?.sorted(by: { $0 < $1 }).map({ $0 })
 
         GameManager.shared.saveGames(viewModel.savedGames ?? [])
         viewModel.isSavedButtonHidden()

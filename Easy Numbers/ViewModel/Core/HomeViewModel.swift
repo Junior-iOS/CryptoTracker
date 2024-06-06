@@ -29,7 +29,7 @@ final class HomeViewModel {
     weak var delegate: HomeViewModelDelegate?
     private let remoteConfig = RemoteConfig.remoteConfig()
 
-    var result: [Int]?
+    var result: [Int] = []
 
     var navTitle: String {
         Bundle.main.appName
@@ -98,7 +98,6 @@ final class HomeViewModel {
             break
         }
 
-        guard let result else { return [] }
         return result.sorted(by: { $0 < $1 })
     }
 
@@ -134,7 +133,6 @@ final class HomeViewModel {
 // MARK: - GENERATE NUMBERS PROTOCOL
 extension HomeViewModel: GenerateNumbers {
     func generateNumbers(total: Int, universe: Int) -> [Int] {
-        guard let result else { return [] }
         var myGame: [Int] = result
 
         while myGame.count < total {

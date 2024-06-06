@@ -60,9 +60,3 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
 }
-
-// public enum CoordinatorPresenter: CoordinatorPresenterProtocol {
-//    case push(UINavigationController)
-//    case present(UIViewController, UIModalPresentationStyle = .fullScreen)
-//    case custom(CoordinatorPresenterProtocol)
-// }
