@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class HomeViewModel: ObservableObject {
+class HomeViewModel: ObservableObject {
     @Published var allCoins: [Coin] = []
     @Published var portfolioCoins: [Coin] = []
     @Published var searchText: String = ""
