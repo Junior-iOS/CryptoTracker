@@ -1,16 +1,10 @@
-//
-//  PortfolioView.swift
-//  CryptoTracker
-//
-//  Created by NJ Development on 13/06/24.
-//
-
 import SwiftUI
 
 struct PortfolioView: View {
     @EnvironmentObject private var viewModel: HomeViewModel
     @State private var selectedCoin: Coin? = nil
     @State private var quantity: String = ""
+    @State private var showCheckmark: Bool = false
     
     var body: some View {
         NavigationView {
@@ -26,11 +20,20 @@ struct PortfolioView: View {
                 }
             }
             .navigationTitle("Edit Portfolio")
-            .toolbar(content: {
+            .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     XMarkButton()
                 }
-            })
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    trailingNavBarButton
+                }
+            }
+            .onChange(of: viewModel.searchText) { value in
+                if value == "" {
+                    removeSelectedCoin()
+                }
+            }
         }
     }
 }
@@ -42,9 +45,7 @@ struct PortfolioView: View {
 
 extension PortfolioView {
     private var coinLogoList: some View {
-        ScrollView(.horizontal,
-                   showsIndicators: false,
-                   content: {
+        ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 10) {
                 ForEach(viewModel.allCoins) { coin in
                     CoinLogoView(coin: coin)
@@ -66,8 +67,7 @@ extension PortfolioView {
             }
             .padding(.leading)
             .padding(.vertical, 4)
-//            .frame(height: 120)
-        })
+        }
     }
     
     func getCurrentValue() -> Double {
@@ -80,9 +80,9 @@ extension PortfolioView {
     private var portfolioInputStack: some View {
         VStack(spacing: 20) {
             HStack {
-                Text("Current price of \(String(describing: selectedCoin?.symbol.uppercased() ?? "")): ")
+                Text("Current price of \(selectedCoin?.symbol.uppercased() ?? ""): ")
                 Spacer()
-                Text("\(String(describing: selectedCoin?.currentPrice.asCurrencyWith2Decimals() ?? ""))")
+                Text("\(selectedCoin?.currentPrice.asCurrencyWith2Decimals() ?? "")")
             }
             
             Divider()
@@ -104,5 +104,49 @@ extension PortfolioView {
         .animation(.none)
         .padding()
         .font(.headline)
+    }
+    
+    private var trailingNavBarButton: some View {
+        HStack(spacing: 10) {
+            Image(systemName: "checkmark")
+                .opacity(showCheckmark ? 1 : 0)
+                .foregroundStyle(Color.theme.green)
+            
+            Button(action: {
+                saveButtonPressed()
+            }) {
+                Text("SAVE")
+            }
+            .opacity((selectedCoin != nil && selectedCoin?.currentHoldings != Double(quantity)) ? 1 : 0)
+        }
+        .font(.headline)
+    }
+    
+    private func saveButtonPressed() {
+        guard let coin = selectedCoin else { return }
+        
+        // Save Portfolio
+        
+        
+        // Show checkmark
+        withAnimation(.easeIn) {
+            showCheckmark = true
+            removeSelectedCoin()
+        }
+        
+        // Hide Keyboard
+        UIApplication.shared.endEditing()
+        
+        // Hide checkmark
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            withAnimation(.easeOut) {
+                showCheckmark = false
+            }
+        }
+    }
+    
+    private func removeSelectedCoin() {
+        selectedCoin = nil
+        viewModel.searchText = ""
     }
 }
