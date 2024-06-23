@@ -20,8 +20,22 @@ struct HomeView: View {
             VStack {
                 homeHeader
                 HomeStatsView(showPortfolio: $showPortfolio)
-                SearchBarView(searchText: $viewModel.searchText)
-                    .padding()
+                HStack {
+                    SearchBarView(searchText: $viewModel.searchText)
+                        .padding()
+                    
+                    Button(action: {
+                        withAnimation(.linear(duration: 2.0)) {
+                            viewModel.reloadData()
+                        }
+                    }, label: {
+                        Image(systemName: "goforward")
+                    })
+                    .rotationEffect(Angle(degrees: viewModel.isLoading ? 360 : 0), anchor: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .fontWeight(.bold)
+                    .padding(.leading, -8)
+                    .padding(.trailing, 16)
+                }
                 
 //                Divider()
 //                CurrencyPickerView(currency: .BRL) { selectedCurrency in
@@ -113,27 +127,51 @@ extension HomeView {
     
     private var columnTitles: some View {
         HStack {
-            Text("Coin")
+            HStack(spacing: 4) {
+                Text("Coin")
+                Image(systemName: "chevron.down")
+                    .opacity(setOpacity(for: .rank, or: .rankReversed))
+                    .rotationEffect(Angle(degrees: viewModel.sortOption == .rank ? 0 : 180))
+            }
+            .onTapGesture {
+                withAnimation(.default) {
+                    viewModel.sortOption = viewModel.sortOption == .rank ? .rankReversed : .rank
+                }
+            }
             Spacer()
             
             if showPortfolio {
-                Text("Holdings")
-            }
-            
-            Text("Price")
-                .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
-            
-            Button(action: {
-                withAnimation(.linear(duration: 2.0)) {
-                    viewModel.reloadData()
+                HStack(spacing: 4) {
+                    Text("Holdings")
+                    Image(systemName: "chevron.down")
+                        .opacity(setOpacity(for: .holdings, or: .holdingsReversed))
+                        .rotationEffect(Angle(degrees: viewModel.sortOption == .holdings ? 0 : 180))
                 }
-            }, label: {
-                Image(systemName: "goforward")
-            })
-            .rotationEffect(Angle(degrees: viewModel.isLoading ? 360 : 0), anchor: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .onTapGesture {
+                    withAnimation(.default) {
+                        viewModel.sortOption = viewModel.sortOption == .holdings ? .holdingsReversed : .holdings
+                    }
+                }
+            }
+            HStack(spacing: 4) {
+                Text("Price")
+                Image(systemName: "chevron.down")
+                    .opacity(setOpacity(for: .price, or: .priceReversed))
+                    .rotationEffect(Angle(degrees: viewModel.sortOption == .price ? 0 : 180))
+            }
+            .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+            .onTapGesture {
+                withAnimation(.default) {
+                    viewModel.sortOption = viewModel.sortOption == .price ? .priceReversed : .price
+                }
+            }
         }
         .font(.caption)
         .foregroundStyle(Color.theme.secondaryText)
         .padding(.horizontal)
+    }
+    
+    private func setOpacity(for option: HomeViewModel.SortOption, or sortedOption: HomeViewModel.SortOption) -> Double {
+        viewModel.sortOption == option || viewModel.sortOption == sortedOption ? 1 : 0
     }
 }
