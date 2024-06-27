@@ -35,6 +35,7 @@
 		145ECBEC2C083D0D000C2C0B /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145ECBEB2C083D0D000C2C0B /* Double+Extensions.swift */; };
 		145ECBEF2C0951F3000C2C0B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145ECBEE2C0951F3000C2C0B /* HomeViewModel.swift */; };
 		14D9D27F2C27A85F00A9D0FF /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D9D27E2C27A85F00A9D0FF /* HapticManager.swift */; };
+		14D9D2842C2D239800A9D0FF /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D9D2832C2D239800A9D0FF /* DetailView.swift */; };
 		14E517C82C214FD800AA96F9 /* PortfolioContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14E517C62C214FD800AA96F9 /* PortfolioContainer.xcdatamodeld */; };
 		14E517CA2C21507900AA96F9 /* PortfolioDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E517C92C21507900AA96F9 /* PortfolioDataService.swift */; };
 		14FA37EF2C1A9920008F4DA0 /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA37EE2C1A991F008F4DA0 /* PortfolioView.swift */; };
@@ -73,6 +74,7 @@
 		145ECBEB2C083D0D000C2C0B /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		145ECBEE2C0951F3000C2C0B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		14D9D27E2C27A85F00A9D0FF /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		14D9D2832C2D239800A9D0FF /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		14E517C72C214FD800AA96F9 /* PortfolioEntity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PortfolioEntity.xcdatamodel; sourceTree = "<group>"; };
 		14E517C92C21507900AA96F9 /* PortfolioDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDataService.swift; sourceTree = "<group>"; };
 		14FA37EE2C1A991F008F4DA0 /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			children = (
 				145ECBDB2C045282000C2C0B /* Components */,
 				145ECBD62C0450D6000C2C0B /* Home */,
+				14D9D2802C2D235B00A9D0FF /* Detail */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -266,6 +269,30 @@
 				145ECBE62C07EDB1000C2C0B /* DeveloperPreview.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		14D9D2802C2D235B00A9D0FF /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				14D9D2822C2D237F00A9D0FF /* Views */,
+				14D9D2812C2D237500A9D0FF /* ViewModels */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		14D9D2812C2D237500A9D0FF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		14D9D2822C2D237F00A9D0FF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				14D9D2832C2D239800A9D0FF /* DetailView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,6 +390,7 @@
 				14E517C82C214FD800AA96F9 /* PortfolioContainer.xcdatamodeld in Sources */,
 				140D31992C0986AD00E8664D /* CoinImageViewModel.swift in Sources */,
 				145ECBD42C044ED8000C2C0B /* Color+Extensions.swift in Sources */,
+				14D9D2842C2D239800A9D0FF /* DetailView.swift in Sources */,
 				145ECBE02C058F45000C2C0B /* CircleButtonAnimationView.swift in Sources */,
 				140D31972C09849200E8664D /* CoinImageService.swift in Sources */,
 				145ECBE32C07B8CF000C2C0B /* Coin.swift in Sources */,
