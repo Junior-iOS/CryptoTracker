@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct DetailView: View {
-    let coin: Coin
+    @Binding var coin: Coin?
+    
+    init(coin: Binding<Coin?>) {
+        self._coin = coin
+    }
     
     var body: some View {
-        Text(coin.name)
+        Text(coin?.name ?? "")
     }
 }
 
 #Preview {
-    DetailView(coin: DeveloperPreview.shared.coin)
+    DetailView(coin: .constant(DeveloperPreview.shared.coin))
 }
