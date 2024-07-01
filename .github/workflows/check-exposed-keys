@@ -1,0 +1,19 @@
+name: Check Exposed Keys
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-exposed-keys:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run Gitleaks to check for exposed keys
+        uses: zricethezav/gitleaks-action@v2
