@@ -34,7 +34,7 @@ struct HomeView: View {
                 columnTitles
                 
                 if !showPortfolio {
-                    allCoinsList
+                    coinsListView(coins: vm.allCoins, showHoldingsColumn: false)
                         .transition(.move(edge: .leading))
                 }
                 
@@ -43,7 +43,7 @@ struct HomeView: View {
                         if vm.portfolioCoins.isEmpty && vm.searchText.isEmpty {
                             portfolioEmptyText
                         } else {
-                            portfolioCoinsList
+                            coinsListView(coins: vm.portfolioCoins, showHoldingsColumn: true)
                         }
                     }
                     .transition(.move(edge: .trailing))
@@ -105,25 +105,11 @@ extension HomeView {
         }
         .padding(.horizontal)
     }
-        
-    private var allCoinsList: some View {
-        List {
-            ForEach(vm.allCoins) { coin in
-                CoinRowView(coin: coin, showHoldingsColumn: false)
-                    .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
-                    .onTapGesture {
-                        segue(coin: coin)
-                    }
-                    .listRowBackground(Color.theme.background)
-            }
-        }
-        .listStyle(PlainListStyle())
-    }
     
-    private var portfolioCoinsList: some View {
+    private func coinsListView(coins: [Coin], showHoldingsColumn: Bool) -> some View {
         List {
-            ForEach(vm.portfolioCoins) { coin in
-                CoinRowView(coin: coin, showHoldingsColumn: true)
+            ForEach(coins) { coin in
+                CoinRowView(coin: coin, showHoldingsColumn: showHoldingsColumn)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
                     .onTapGesture {
                         segue(coin: coin)
@@ -202,5 +188,4 @@ extension HomeView {
         .foregroundColor(Color.theme.secondaryText)
         .padding(.horizontal)
     }
-    
 }
