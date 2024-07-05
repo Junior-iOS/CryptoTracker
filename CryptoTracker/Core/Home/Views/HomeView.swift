@@ -29,8 +29,25 @@ struct HomeView: View {
             // content layer
             VStack {
                 homeHeader
+                
                 HomeStatsView(showPortfolio: $showPortfolio)
-                SearchBarView(searchText: $vm.searchText)
+                
+                HStack {
+                    SearchBarView(searchText: $vm.searchText)
+                    
+                    Button(action: {
+                        withAnimation(.linear(duration: 2.0)) {
+                            vm.reloadData()
+                        }
+                    }, label: {
+                        Image(systemName: "goforward")
+                    })
+                    .fontWeight(.black)
+                    .foregroundColor(Color.theme.green)
+                    .rotationEffect(Angle(degrees: vm.isLoading ? 360 : 0), anchor: .center)
+                }
+                .padding()
+                
                 columnTitles
                 
                 if !showPortfolio {
@@ -57,9 +74,10 @@ struct HomeView: View {
         }
         .background(
             NavigationLink(
-                destination: DetailView(coin: $selectedCoin),
+                destination: DetailLoadingView(coin: $selectedCoin),
                 isActive: $showDetailView,
-                label: { EmptyView() })
+                label: { EmptyView() }
+            )
         )
     }
 }
@@ -174,15 +192,6 @@ extension HomeView {
                     vm.sortOption = vm.sortOption == .price ? .priceReversed : .price
                 }
             }
-            
-            Button(action: {
-                withAnimation(.linear(duration: 2.0)) {
-                    vm.reloadData()
-                }
-            }, label: {
-                Image(systemName: "goforward")
-            })
-            .rotationEffect(Angle(degrees: vm.isLoading ? 360 : 0), anchor: .center)
         }
         .font(.caption)
         .foregroundColor(Color.theme.secondaryText)

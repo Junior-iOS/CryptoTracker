@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DetailView: View {
+struct DetailLoadingView: View {
     @Binding var coin: Coin?
     
     init(coin: Binding<Coin?>) {
@@ -15,10 +15,26 @@ struct DetailView: View {
     }
     
     var body: some View {
-        Text(coin?.name ?? "")
+        ZStack {
+            if let coin = coin {
+                DetailView(coin: coin)
+            }
+        }
+    }
+}
+
+struct DetailView: View {
+    let coin: Coin
+    
+    init(coin: Coin) {
+        self.coin = coin
+    }
+    
+    var body: some View {
+        Text(coin.name)
     }
 }
 
 #Preview {
-    DetailView(coin: .constant(DeveloperPreview.shared.coin))
+    DetailView(coin: DeveloperPreview.shared.coin)
 }
