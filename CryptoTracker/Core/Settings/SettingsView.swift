@@ -1,10 +1,3 @@
-//
-//  SettingsView.swift
-//  CryptoTracker
-//
-//  Created by NJ Development on 13/07/24.
-//
-
 import SwiftUI
 
 struct SettingsView: View {
@@ -38,45 +31,23 @@ struct SettingsView: View {
 
 extension SettingsView {
     private var developerSection: some View {
-        Section {
-            VStack(alignment: .leading) {
-                Image("developer")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 100)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                
-                Text("This app was developed in SwiftUI. The project benefits from multi-threading, publisher/subscribers, and data persistance")
-                    .font(.callout)
-                    .fontWeight(.medium)
-                    .foregroundStyle(Color.theme.accent)
-            }
-            .padding(.vertical)
-            Link("Visit GitHub Page", destination: viewModel.githubURL)
-        } header: {
-            Text("Developer")
-        }
+        SectionView(
+            imageName: "developer",
+            description: "This app was developed in SwiftUI. The project benefits from multi-threading, publisher/subscribers, and data persistance",
+            linkText: "Visit GitHub Page",
+            linkDestination: viewModel.githubURL,
+            header: "Developer"
+        )
     }
     
     private var linkedinSection: some View {
-        Section {
-            VStack(alignment: .leading) {
-                Image("linked-in")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 100)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                
-                Text("This app was developed in SwiftUI. The project benefits from multi-threading, publisher/subscribers, and data persistance")
-                    .font(.callout)
-                    .fontWeight(.medium)
-                    .foregroundStyle(Color.theme.accent)
-            }
-            .padding(.vertical)
-            Link("Visit LinkedIn Page", destination: viewModel.linkedinURL)
-        } header: {
-            Text("LinkedIn")
-        }
+        SectionView(
+            imageName: "linked-in",
+            description: "This app was developed in SwiftUI. The project benefits from multi-threading, publisher/subscribers, and data persistance",
+            linkText: "Visit LinkedIn Page",
+            linkDestination: viewModel.linkedinURL,
+            header: "LinkedIn"
+        )
     }
     
     private var coinGeckoSection: some View {
@@ -86,7 +57,6 @@ extension SettingsView {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 100)
-//                            .clipShape(RoundedRectangle(cornerRadius: 25))
                 
                 Text("The crypto currency data that is used in this app comes from a free API from CoinGecko! Prices may be slightly delayed.")
                     .font(.callout)
@@ -97,6 +67,35 @@ extension SettingsView {
             Link("Visit CoinGecko", destination: viewModel.coingeckoURL)
         } header: {
             Text("CoinGecko")
+        }
+    }
+}
+
+struct SectionView: View {
+    let imageName: String
+    let description: String
+    let linkText: String
+    let linkDestination: URL
+    let header: String
+    
+    var body: some View {
+        Section {
+            VStack(alignment: .leading) {
+                Image(imageName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                
+                Text(description)
+                    .font(.callout)
+                    .fontWeight(.medium)
+                    .foregroundStyle(Color.theme.accent)
+            }
+            .padding(.vertical)
+            Link(linkText, destination: linkDestination)
+        } header: {
+            Text(header)
         }
     }
 }
