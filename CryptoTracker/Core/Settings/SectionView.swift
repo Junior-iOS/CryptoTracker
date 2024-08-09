@@ -1,5 +1,5 @@
 //
-//  Sectionview.swift
+//  SectionView.swift
 //  CryptoTracker
 //
 //  Created by NJ Development on 13/07/24.
@@ -7,12 +7,31 @@
 
 import SwiftUI
 
-struct Sectionview: View {
+struct SectionView: View {
+    let imageName: String
+    let description: String
+    let linkText: String
+    let linkDestination: URL
+    let header: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Section {
+            VStack(alignment: .leading) {
+                Image(imageName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                
+                Text(description)
+                    .font(.callout)
+                    .fontWeight(.medium)
+                    .foregroundStyle(Color.theme.accent)
+            }
+            .padding(.vertical)
+            Link(linkText, destination: linkDestination)
+        } header: {
+            Text(header)
+        }
     }
-}
-
-#Preview {
-    Sectionview()
 }
