@@ -2,11 +2,11 @@ import SwiftUI
 
 struct SettingsView: View {
     private let viewModel: SettingsViewModel
-    
+
     init(viewModel: SettingsViewModel = SettingsViewModel()) {
         self.viewModel = viewModel
     }
-    
+
     var body: some View {
         NavigationStack {
             List {
@@ -39,7 +39,7 @@ extension SettingsView {
             header: "Developer"
         )
     }
-    
+
     private var linkedinSection: some View {
         SectionView(
             imageName: "linked-in",
@@ -49,7 +49,7 @@ extension SettingsView {
             header: "LinkedIn"
         )
     }
-    
+
     private var coinGeckoSection: some View {
         Section {
             VStack(alignment: .leading) {
@@ -57,7 +57,7 @@ extension SettingsView {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 100)
-                
+
                 Text("The crypto currency data that is used in this app comes from a free API from CoinGecko! Prices may be slightly delayed.")
                     .font(.callout)
                     .fontWeight(.medium)

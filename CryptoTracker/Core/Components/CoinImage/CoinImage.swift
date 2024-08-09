@@ -13,7 +13,7 @@ struct CoinImage: View {
     init(coin: Coin) {
         _viewModel = StateObject(wrappedValue: CoinImageViewModel(coin: coin))
     }
-    
+
     var body: some View {
         ZStack {
             if let image = viewModel.image {

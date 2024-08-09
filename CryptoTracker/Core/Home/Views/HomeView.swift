@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct HomeView: View {
-    
     @EnvironmentObject private var vm: HomeViewModel
-    @State private var showPortfolio: Bool = false // animate right
-    @State private var showPortfolioView: Bool = false // new sheet
-    @State private var showSettingsView: Bool = false // new sheet
-    @State private var selectedCoin: Coin? = nil
-    @State private var showDetailView: Bool = false
-    
+    @State private var showPortfolio = false // animate right
+    @State private var showPortfolioView = false // new sheet
+    @State private var showSettingsView = false // new sheet
+    @State private var selectedCoin: Coin?
+    @State private var showDetailView = false
+
     var body: some View {
         ZStack {
             // background layer
@@ -25,16 +24,16 @@ struct HomeView: View {
                     PortfolioView()
                         .environmentObject(vm)
                 })
-            
+
             // content layer
             VStack {
                 homeHeader
-                
+
                 HomeStatsView(showPortfolio: $showPortfolio)
-                
+
                 HStack {
                     SearchBarView(searchText: $vm.searchText)
-                    
+
                     Button(action: {
                         withAnimation(.linear(duration: 2.0)) {
                             vm.reloadData()
@@ -47,14 +46,14 @@ struct HomeView: View {
                     .rotationEffect(Angle(degrees: vm.isLoading ? 360 : 0), anchor: .center)
                 }
                 .padding()
-                
+
                 columnTitles
-                
+
                 if !showPortfolio {
                     coinsListView(coins: vm.allCoins, showHoldingsColumn: false)
                         .transition(.move(edge: .leading))
                 }
-                
+
                 if showPortfolio {
                     ZStack(alignment: .top) {
                         if vm.portfolioCoins.isEmpty && vm.searchText.isEmpty {
@@ -65,7 +64,7 @@ struct HomeView: View {
                     }
                     .transition(.move(edge: .trailing))
                 }
-                
+
                 Spacer(minLength: 0)
             }
             .sheet(isPresented: $showSettingsView, content: {
@@ -91,7 +90,6 @@ struct HomeView: View {
 }
 
 extension HomeView {
-    
     private var homeHeader: some View {
         HStack {
             CircleButtonView(iconName: showPortfolio ? "plus" : "info")
@@ -106,14 +104,14 @@ extension HomeView {
                 .background(
                     CircleButtonAnimationView(isAnimating: $showPortfolio)
                 )
-            
+
             Spacer()
             Text(showPortfolio ? "Portfolio" : "Live Prices")
                 .font(.headline)
                 .fontWeight(.heavy)
                 .foregroundColor(Color.theme.accent)
                 .animation(.none)
-            
+
             Spacer()
             CircleButtonView(iconName: "chevron.right")
                 .rotationEffect(Angle(degrees: showPortfolio ? 180 : 0))
@@ -125,7 +123,7 @@ extension HomeView {
         }
         .padding(.horizontal)
     }
-    
+
     private func coinsListView(coins: [Coin], showHoldingsColumn: Bool) -> some View {
         List {
             ForEach(coins) { coin in
@@ -139,7 +137,7 @@ extension HomeView {
         }
         .listStyle(PlainListStyle())
     }
-    
+
     private var portfolioEmptyText: some View {
         Text("You haven't added any coins to your portfolio yet. Click the + button to get started! 🧐")
             .font(.callout)
@@ -148,7 +146,7 @@ extension HomeView {
             .multilineTextAlignment(.center)
             .padding(50)
     }
-    
+
     private func segue(coin: Coin) {
         selectedCoin = coin
         showDetailView.toggle()
@@ -167,7 +165,7 @@ extension HomeView {
                     vm.sortOption = vm.sortOption == .rank ? .rankReversed : .rank
                 }
             }
-            
+
             Spacer()
             if showPortfolio {
                 HStack(spacing: 4) {

@@ -9,14 +9,14 @@ import SwiftUI
 
 struct DetailLoadingView: View {
     @Binding var coin: Coin?
-    
+
     init(coin: Binding<Coin?>) {
         self._coin = coin
     }
-    
+
     var body: some View {
         ZStack {
-            if let coin = coin {
+            if let coin {
                 DetailView(coin: coin)
             }
         }
@@ -25,36 +25,36 @@ struct DetailLoadingView: View {
 
 struct DetailView: View {
     @StateObject private var viewModel: DetailViewModel
-    @State private var showFullDescription: Bool = false
-    
+    @State private var showFullDescription = false
+
     private let columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-    
+
     private let spacing: CGFloat = 30
-    
+
     init(coin: Coin) {
         _viewModel = StateObject(wrappedValue: DetailViewModel(coin: coin))
     }
-    
+
     var body: some View {
         ScrollView {
             VStack {
                 ChartView(coin: viewModel.coin)
                     .padding(.vertical)
-                
+
                 VStack(spacing: 20) {
                     overviewTitle
                     Divider()
-                    
+
                     descriptionSection
                     overviewGrid
                     additionalTitle
-                    
+
                     Divider()
                     additionalGrid
-                    
+
                     Divider()
                     websiteSection
                 }
@@ -82,12 +82,12 @@ extension DetailView {
             Text(viewModel.coin.symbol.uppercased())
                 .font(.headline)
             .foregroundStyle(Color.theme.secondaryText)
-            
+
             CoinImage(coin: viewModel.coin)
                 .frame(width: 25, height: 25)
         }
     }
-    
+
     private var overviewTitle: some View {
         Text("Overview")
             .font(.title)
@@ -95,7 +95,7 @@ extension DetailView {
             .foregroundStyle(Color.theme.accent)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
-    
+
     private var descriptionSection: some View {
         ZStack {
             if let description = viewModel.coinDescription, !description.isEmpty {
@@ -104,7 +104,7 @@ extension DetailView {
                         .lineLimit(showFullDescription ? nil : 3)
                         .font(.callout)
                         .foregroundStyle(Color.theme.secondaryText)
-                    
+
                     Button(action: {
                         withAnimation(.easeInOut) {
                             showFullDescription.toggle()
@@ -120,7 +120,7 @@ extension DetailView {
             }
         }
     }
-    
+
     private var overviewGrid: some View {
         LazyVGrid(
             columns: columns,
@@ -134,7 +134,7 @@ extension DetailView {
             }
         )
     }
-    
+
     private var additionalTitle: some View {
         Text("Additional Details")
             .font(.title)
@@ -142,7 +142,7 @@ extension DetailView {
             .foregroundStyle(Color.theme.accent)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
-    
+
     private var additionalGrid: some View {
         LazyVGrid(
             columns: columns,
@@ -156,7 +156,7 @@ extension DetailView {
             }
         )
     }
-    
+
     private var websiteSection: some View {
         HStack {
             if let websiteString = viewModel.websiteURL,
@@ -165,9 +165,9 @@ extension DetailView {
                     Text("Website")
                 })
             }
-            
+
             Spacer()
-            
+
             if let redditString = viewModel.redditURL,
                let url = URL(string: redditString) {
                 Link(destination: url, label: {

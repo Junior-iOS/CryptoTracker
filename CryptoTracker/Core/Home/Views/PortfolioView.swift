@@ -2,10 +2,10 @@ import SwiftUI
 
 struct PortfolioView: View {
     @EnvironmentObject private var viewModel: HomeViewModel
-    @State private var selectedCoin: Coin? = nil
+    @State private var selectedCoin: Coin?
     @State private var quantity: String = ""
-    @State private var showCheckmark: Bool = false
-    
+    @State private var showCheckmark = false
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -13,7 +13,7 @@ struct PortfolioView: View {
                     SearchBarView(searchText: $viewModel.searchText)
                         .padding()
                     coinLogoList
-                    
+
                     if selectedCoin != nil {
                         portfolioInputStack
                     }
@@ -24,7 +24,7 @@ struct PortfolioView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     XMarkButton()
                 }
-                
+
                 ToolbarItem(placement: .navigationBarTrailing) {
                     trailingNavBarButton
                 }
@@ -69,25 +69,25 @@ extension PortfolioView {
             .padding(.vertical, 4)
         }
     }
-    
+
     private func updateSelectedCoin(_ coin: Coin) {
         selectedCoin = coin
-        
-        if let portfolioCoin = viewModel.portfolioCoins.first(where:  { $0.id == coin.id }),
+
+        if let portfolioCoin = viewModel.portfolioCoins.first(where: { $0.id == coin.id }),
            let amount = portfolioCoin.currentHoldings {
             quantity = "\(amount)"
         } else {
             quantity = ""
         }
     }
-    
+
     private func getCurrentValue() -> Double {
         if let quantity = Double(quantity) {
             return quantity * (selectedCoin?.currentPrice ?? 0)
         }
         return 0
     }
-    
+
     private var portfolioInputStack: some View {
         VStack(spacing: 20) {
             HStack {
@@ -95,7 +95,7 @@ extension PortfolioView {
                 Spacer()
                 Text("\(selectedCoin?.currentPrice.asCurrencyWith2Decimals() ?? "")")
             }
-            
+
             Divider()
             HStack {
                 Text("Amount holding: ")
@@ -104,7 +104,7 @@ extension PortfolioView {
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.decimalPad)
             }
-            
+
             Divider()
             HStack {
                 Text("Current value: ")
@@ -116,13 +116,13 @@ extension PortfolioView {
         .padding()
         .font(.headline)
     }
-    
+
     private var trailingNavBarButton: some View {
         HStack(spacing: 10) {
             Image(systemName: "checkmark")
                 .opacity(showCheckmark ? 1 : 0)
                 .foregroundStyle(Color.theme.green)
-            
+
             Button(action: {
                 saveButtonPressed()
             }) {
@@ -132,24 +132,24 @@ extension PortfolioView {
         }
         .font(.headline)
     }
-    
+
     private func saveButtonPressed() {
         guard let coin = selectedCoin,
               let amount = Double(quantity)
         else { return }
-        
+
         // Save Portfolio
         viewModel.updatePortfolio(coin: coin, amount: amount)
-        
+
         // Show checkmark
         withAnimation(.easeIn) {
             showCheckmark = true
             removeSelectedCoin()
         }
-        
+
         // Hide Keyboard
         UIApplication.shared.endEditing()
-        
+
         // Hide checkmark
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             withAnimation(.easeOut) {
@@ -157,7 +157,7 @@ extension PortfolioView {
             }
         }
     }
-    
+
     private func removeSelectedCoin() {
         selectedCoin = nil
         viewModel.searchText = ""

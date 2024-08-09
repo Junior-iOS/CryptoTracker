@@ -13,7 +13,7 @@ struct SectionView: View {
     let linkText: String
     let linkDestination: URL
     let header: String
-    
+
     var body: some View {
         Section {
             VStack(alignment: .leading) {
@@ -22,7 +22,7 @@ struct SectionView: View {
                     .scaledToFit()
                     .frame(height: 100)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
-                
+
                 Text(description)
                     .font(.callout)
                     .fontWeight(.medium)

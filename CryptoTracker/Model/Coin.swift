@@ -28,7 +28,7 @@ struct Coin: Identifiable, Codable {
     let sparklineIn7D: SparklineIn7D?
     let priceChangePercentage24HInCurrency: Double?
     let currentHoldings: Double?
-    
+
     enum CodingKeys: String, CodingKey {
         case id, symbol, name, image
         case currentPrice = "current_price"
@@ -56,21 +56,21 @@ struct Coin: Identifiable, Codable {
         case priceChangePercentage24HInCurrency = "price_change_percentage_24h_in_currency"
         case currentHoldings
     }
-    
+
     struct SparklineIn7D: Codable {
         let price: [Double]?
     }
-    
+
     var currentHoldingsValue: Double {
-        return (currentHoldings ?? 0) * currentPrice
+        (currentHoldings ?? 0) * currentPrice
     }
-    
+
     var rank: Int {
-        return Int(marketCapRank ?? 0)
+        Int(marketCapRank ?? 0)
     }
-    
-    func updateHoldings(amount: Double) -> Coin {
-        return Coin(
+
+    func updateHoldings(amount: Double) -> Self {
+        Self(
             id: id,
             symbol: symbol,
             name: name,

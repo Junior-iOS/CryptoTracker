@@ -14,15 +14,15 @@ public enum CurrencyPicker: String, CaseIterable {
 struct CurrencyPickerView: View {
     @State var currency: CurrencyPicker = .BRL
     var action: (CurrencyPicker) -> Void
-    
+
     var body: some View {
         HStack {
             Spacer()
-            
+
             Text("Currency")
                 .font(.headline)
                 .foregroundStyle(Color.theme.accent)
-            
+
             Picker("CurrencyPickerView", selection: $currency) {
                 ForEach(CurrencyPicker.allCases, id: \.self) { currency in
                     Text(currency.rawValue)
@@ -38,6 +38,6 @@ struct CurrencyPickerView: View {
 }
 
 #Preview {
-    CurrencyPickerView(action: { currency in })
+    CurrencyPickerView(action: { _ in })
         .padding(/*@START_MENU_TOKEN@*/EdgeInsets()/*@END_MENU_TOKEN@*/)
 }
