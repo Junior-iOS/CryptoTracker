@@ -5,153 +5,106 @@
 //  Created by NJ Development on 12/05/23.
 //
 
-import FirebaseRemoteConfig
 import Foundation
-import OnboardingKit
 import UIKit
+import FirebaseRemoteConfig
 
-// MARK: - Protocol
+// MARK: - Protocols
+
 protocol HomeViewModelDelegate: AnyObject {
-    func handlePresentOnboarding()
-    func didTapNextButton()
-    func didTapGetStarted()
-    func handleRemoteConfig(with value: Bool)
+    func handleRemoteConfigUpdate(with value: Bool)
 }
 
 protocol GenerateNumbers: AnyObject {
     func generateNumbers(total: Int, universe: Int) -> [Int]
 }
 
+/// ViewModel responsible for managing home screen business logic and game generation
 final class HomeViewModel {
+    
+    // MARK: - Types
+    
+    private enum Constants {
+        static let fetchExpirationDuration: TimeInterval = 0
+    }
+    
     // MARK: - Properties
-
-    var onboardingKit: OnboardingKit?
+    
     weak var delegate: HomeViewModelDelegate?
-    private let remoteConfig = RemoteConfig.remoteConfig()
-
-    var result: [Int] = []
-
-    var navTitle: String {
-        Bundle.main.appName
-    }
-
-    var myGamesButtonTitle: String {
-        LocalizableStrings.homeSavedGames.localized
-    }
-
-    // MARK: - Methods
-    func presentOnboardingKit() {
-        DispatchQueue.main.async {
-            self.onboardingKit = OnboardingKit(
-                slides: [
-                    Slide(image: UIImage(named: "copy_game") ?? UIImage(), title: LocalizableStrings.onboardingCopyGame.localized),
-                    Slide(image: UIImage(named: "save_game") ?? UIImage(), title: LocalizableStrings.onboardingSaveGame.localized),
-                    Slide(image: UIImage(named: "share_delete_games") ?? UIImage(), title: LocalizableStrings.onboardingShareDeleteGames.localized),
-                    Slide(image: UIImage(named: "share_delete_individual_games") ?? UIImage(), title: LocalizableStrings.onboardingShareDeleteSingleGame.localized)
-                ],
-                tintColor: UIColor(red: 220 / 255, green: 20 / 255, blue: 60 / 255, alpha: 1),
-                font: UIFont(name: "Kohinoor Bangla", size: 28) ?? .systemFont(ofSize: 28, weight: .bold)
-            )
-
-            self.onboardingKit?.delegate = self
-            self.delegate?.handlePresentOnboarding()
-        }
-    }
-
-    private func createWindowScene(with viewController: UIViewController) {
-        let foregroundScenes = UIApplication.shared.connectedScenes.filter({
-            $0.activationState == .foregroundActive
-        })
-
-        let window = foregroundScenes
-            .map({ $0 as? UIWindowScene })
-            .compactMap({ $0 })
-            .first?
-            .windows
-            .filter({ $0.isKeyWindow })
-            .first
-
-        guard let uiWindow = window else { return }
-        uiWindow.rootViewController = viewController
-
-        UIView.transition(with: uiWindow, duration: 0.3, options: [.transitionCrossDissolve], animations: nil)
-    }
-
+    
+    let navTitle = Bundle.main.appName
+    let myGamesButtonTitle = LocalizableStrings.homeSavedGames.localized
+    
+    // MARK: - Private Properties
+    
+    private let remoteConfig: RemoteConfig = {
+        let config = RemoteConfig.remoteConfig()
+        let settings = RemoteConfigSettings()
+        settings.minimumFetchInterval = Constants.fetchExpirationDuration
+        config.configSettings = settings
+        return config
+    }()
+    
+    // MARK: - Public Methods
+    
+    /// Generates random numbers based on the selected game type
+    /// - Parameter gameType: The type of lottery game
+    /// - Returns: Array of randomly generated numbers according to game rules
     func generate(_ gameType: GameType) -> [Int] {
-        result = []
-
-        switch gameType {
-        case .megasena:
-            result = generateNumbers(total: 6, universe: 60)
-
-        case .lotofacil:
-            result = generateNumbers(total: 15, universe: 25)
-
-        case .quina:
-            result = generateNumbers(total: 5, universe: 80)
-
-        case .lotomania:
-            result = generateNumbers(total: 50, universe: 100)
-
-        default:
-            result = generateNumbers(total: 10, universe: 80)
-            break
-        }
-
-        return result.sorted(by: { $0 < $1 })
+        let gameRules = GameRules(for: gameType)
+        return generateNumbers(total: gameRules.totalNumbers,
+                             universe: gameRules.universeRange)
     }
-
+    
+    /// Fetches and applies remote configuration settings
     func checkRemoteConfig() {
+        setupDefaultRemoteConfig()
+        fetchRemoteConfig()
+    }
+    
+    // MARK: - Private Methods
+    
+    private func setupDefaultRemoteConfig() {
         let defaults: [String: NSObject] = [
             RemoteConfigValue.newUI.rawValue: false as NSObject
         ]
         remoteConfig.setDefaults(defaults)
-
-        let settings = RemoteConfigSettings()
-        settings.minimumFetchInterval = 0
-        remoteConfig.configSettings = settings
-
-        self.remoteConfig.fetch(withExpirationDuration: 0) { status, error in
-            if status == .success, error == nil {
-                self.remoteConfig.activate { [weak self] _, error in
-                    guard let self, error == nil else { return }
-
-                    let value = remoteConfig.configValue(forKey: RemoteConfigValue.newUI.rawValue).boolValue
-                    DispatchQueue.main.async {
-                        self.updateUI(value)
-                    }
-                }
-            }
+    }
+    
+    private func fetchRemoteConfig() {
+        remoteConfig.fetch(withExpirationDuration: Constants.fetchExpirationDuration) { [weak self] status, error in
+            guard let self, status == .success, error == nil else { return }
+            activateRemoteConfig()
         }
     }
-
+    
+    private func activateRemoteConfig() {
+        remoteConfig.activate { [weak self] _, error in
+            guard let self, error == nil else { return }
+            
+            let value = remoteConfig.configValue(forKey: RemoteConfigValue.newUI.rawValue).boolValue
+            updateUI(value)
+        }
+    }
+    
     private func updateUI(_ value: Bool) {
-        delegate?.handleRemoteConfig(with: value)
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            delegate?.handleRemoteConfigUpdate(with: value)
+        }
     }
 }
 
-// MARK: - GENERATE NUMBERS PROTOCOL
+// MARK: - Generate Numbers Protocol
+
 extension HomeViewModel: GenerateNumbers {
     func generateNumbers(total: Int, universe: Int) -> [Int] {
-        var myGame: [Int] = result
-
-        while myGame.count < total {
-            let randomNumber = Int.random(in: 1...universe)
-            if !myGame.contains(randomNumber) {
-                myGame.append(randomNumber)
-            }
+        var numbers = Set<Int>()
+        
+        while numbers.count < total {
+            numbers.insert(Int.random(in: 1...universe))
         }
-        return myGame.sorted()
-    }
-}
-
-// MARK: - ONBOARDINGKIT DELEGATE
-extension HomeViewModel: OnboardingKitDelegate {
-    func didTapNextButton(at index: Int) {
-        delegate?.didTapNextButton()
-    }
-
-    func didTapGetStarted() {
-        delegate?.didTapGetStarted()
+        
+        return Array(numbers).sorted()
     }
 }

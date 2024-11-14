@@ -8,8 +8,12 @@
 import Foundation
 import UIKit
 
-class MainCoordinator: Coordinator {
-    var navigationController = UINavigationController()
+final class MainCoordinator: Coordinator {
+    var navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController = UINavigationController()) {
+        self.navigationController = navigationController
+    }
 
     func start() {
         let viewModel = HomeViewModel()
@@ -17,7 +21,9 @@ class MainCoordinator: Coordinator {
         homeViewController.coordinator = self
         navigationController.pushViewController(homeViewController, animated: true)
     }
-
+    
+    // MARK: - Navigation Methods
+    
     func routeToInfoVC() {
         let viewModel = InfoViewModel()
         let infoVC = InfoViewController(viewModel: viewModel)
@@ -34,7 +40,7 @@ class MainCoordinator: Coordinator {
         let viewModel = GameViewModel()
         viewModel.game = game
         viewModel.gameTitle = title
-
+        
         let gameVC = GameViewController(viewModel: viewModel)
         gameVC.coordinator = self
         navigationController.pushViewController(gameVC, animated: true)
@@ -43,20 +49,19 @@ class MainCoordinator: Coordinator {
     func routeToSavedGames(with savedGames: [String]) {
         let viewModel = SavedGamesViewModel()
         viewModel.savedGames = savedGames
-
-        let vc = SavedGamesViewController(viewModel: viewModel)
-        navigationController.pushViewController(vc, animated: true)
+        
+        let savedGamesVC = SavedGamesViewController(viewModel: viewModel)
+        navigationController.pushViewController(savedGamesVC, animated: true)
     }
 
     func routeToOutOfOrderView() {
-        let vc = OutOfOrderViewController()
-        navigationController.interactivePopGestureRecognizer?.isEnabled = false
-        navigationController.pushViewController(vc, animated: true)
+        let outOfOrderVC = OutOfOrderViewController()
+        navigationController.pushViewController(outOfOrderVC, animated: true)
     }
 
     func routeCheckFaceID() {
-        let vc = CheckFaceIDViewController(self)
+        let faceIDVC = CheckFaceIDViewController(self)
         navigationController.interactivePopGestureRecognizer?.isEnabled = false
-        navigationController.pushViewController(vc, animated: true)
+        navigationController.pushViewController(faceIDVC, animated: true)
     }
 }

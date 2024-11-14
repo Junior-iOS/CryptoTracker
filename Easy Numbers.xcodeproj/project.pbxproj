@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0609BC5213545BAF176606AF /* Pods_Easy_Numbers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EAA989DFED7BBA41A683AE5 /* Pods_Easy_Numbers.framework */; };
+		141EC43D2CE6A85A005AC7ED /* GameRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141EC43C2CE6A85A005AC7ED /* GameRules.swift */; };
 		14388FBD2A4E9E38003F619D /* NJColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14388FBC2A4E9E38003F619D /* NJColor.swift */; };
 		14460B2A2A0C949900C4DA54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B292A0C949900C4DA54 /* AppDelegate.swift */; };
 		14460B2C2A0C949900C4DA54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14460B2B2A0C949900C4DA54 /* SceneDelegate.swift */; };
@@ -70,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		141EC43C2CE6A85A005AC7ED /* GameRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRules.swift; sourceTree = "<group>"; };
 		14388FBC2A4E9E38003F619D /* NJColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NJColor.swift; sourceTree = "<group>"; };
 		14460B262A0C949800C4DA54 /* Easy Numbers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Easy Numbers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14460B292A0C949900C4DA54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		14460B412A0C954F00C4DA54 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				141EC43C2CE6A85A005AC7ED /* GameRules.swift */,
 				14888E782A1B339500359431 /* Game.swift */,
 			);
 			path = Model;
@@ -672,6 +675,7 @@
 				14460B492A0C95EB00C4DA54 /* UIView+Extensions.swift in Sources */,
 				14460B2C2A0C949900C4DA54 /* SceneDelegate.swift in Sources */,
 				14460B4F2A0D38AA00C4DA54 /* HomeView.swift in Sources */,
+				141EC43D2CE6A85A005AC7ED /* GameRules.swift in Sources */,
 				14EC8CFD2A79F9F700598631 /* CheckFaceIDViewController.swift in Sources */,
 				14531BBC2A1DD35400E0BA6D /* SavedGamesViewModel.swift in Sources */,
 				14888E792A1B339600359431 /* Game.swift in Sources */,

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 // MARK: - Coordinator
-protocol Coordinator {
+protocol Coordinator: AnyObject {
     var navigationController: UINavigationController { get }
     func start()
 }

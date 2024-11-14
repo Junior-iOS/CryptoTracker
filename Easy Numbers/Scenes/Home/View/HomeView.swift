@@ -7,143 +7,140 @@
 
 import UIKit
 
-// MARK: - Protocols
+// MARK: - HomeView Delegate
+
 protocol HomeViewDelegate: AnyObject {
     func didPressGenerateButton(_ sender: UIButton)
 }
 
-// MARK: - Enum
-enum GameType: String {
-    case megasena = "Megasena"
-    case lotofacil = "LotoFácil"
-    case quina = "Quina"
-    case lotomania = "LotoMania"
-    case timemania = "Timemania"
-    case unknown = ""
-}
-
-class HomeView: UIView {
+/// Main view for the home screen that displays lottery game type options
+final class HomeView: UIView {
+    
     // MARK: - Properties
+    
+    weak var delegate: HomeViewDelegate?
+    
+    // MARK: - UI Components
+    
     private lazy var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.clipsToBounds = true
+        view.backgroundColor = .clear
         return view
     }()
-
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20, weight: .semibold)
-        label.text = "Escolha seu jogo"
-        return label
-    }()
-
-    private lazy var btnMegaSena: UIButton = {
-        createButton(title: GameType.megasena.rawValue,
-                     backgroundColor: NJColor.megasena,
-                     tag: 0)
-    }()
-
-    private lazy var btnLotoFacil: UIButton = {
-        createButton(title: GameType.lotofacil.rawValue,
-                     backgroundColor: NJColor.lotofacil,
-                     tag: 1)
-    }()
-
-    private lazy var btnQuina: UIButton = {
-        createButton(title: GameType.quina.rawValue,
-                     backgroundColor: NJColor.quina,
-                     tag: 2)
-    }()
-
-    private lazy var btnLotoMania: UIButton = {
-        createButton(title: GameType.lotomania.rawValue,
-                     backgroundColor: NJColor.lotomania,
-                     tag: 3)
-    }()
-
-    private lazy var btnTimeMania: UIButton = {
-        createButton(title: GameType.timemania.rawValue,
-                     titleColor: NJColor.megasena,
-                     backgroundColor: NJColor.timemania,
-                     tag: 4)
-    }()
-
-    private lazy var games = [btnMegaSena, btnLotoFacil, btnQuina, btnLotoMania, btnTimeMania]
-
+    
     private lazy var stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: games)
+        let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.distribution = .fillEqually
         stack.axis = .vertical
-        stack.spacing = 8
+        stack.spacing = LayoutMetrics.stackSpacing
+        stack.distribution = .fillEqually
         return stack
     }()
-
-    weak var delegate: HomeViewDelegate?
-
-    // MARK: - Init
+    
+    // MARK: - Layout Constants
+    
+    private enum LayoutMetrics {
+        static let stackSpacing: CGFloat = 12
+        static let buttonHeight: CGFloat = 50
+        static let contentPadding: CGFloat = 16
+        static let cornerRadius: CGFloat = 12
+    }
+    
+    // MARK: - Initialization
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addComponents()
+        setupView()
     }
-
-    @available(*, unavailable)
+    
     required init?(coder: NSCoder) {
-        nil
+        super.init(coder: coder)
+        setupView()
     }
-
-    // MARK: - Methods
-    private func setViewsRoundCorners() {
-        games.forEach({
-            $0.layer.cornerRadius = 25
-            $0.clipsToBounds = true
-        })
-    }
-
-    private func createButton(title: String,
-                              titleColor: UIColor = .white,
-                              backgroundColor: UIColor,
-                              tag: Int) -> UIButton {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(generatePressed), for: .primaryActionTriggered)
-        button.backgroundColor = backgroundColor
-        button.setTitle(title, for: .normal)
-        button.setTitleColor(titleColor, for: .normal)
-        button.tag = tag
-        return button
-    }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         setViewsRoundCorners()
     }
-}
-
-// MARK: - PRIVATE METHODS
-private extension HomeView {
-    @objc func generatePressed(_ sender: UIButton) {
-        delegate?.didPressGenerateButton(sender)
+    
+    // MARK: - Setup Methods
+    
+    private func setupView() {
+        backgroundColor = .clear
+        addComponents()
+        setupConstraints()
+        createGameButtons()
     }
-
-    func addComponents() {
+    
+    private func addComponents() {
         addSubview(contentView)
         contentView.addSubview(stackView)
-
+    }
+    
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-
-            btnMegaSena.heightAnchor.constraint(equalToConstant: 50)
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: LayoutMetrics.contentPadding),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: LayoutMetrics.contentPadding),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -LayoutMetrics.contentPadding),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -LayoutMetrics.contentPadding)
         ])
+    }
+    
+    private func createGameButtons() {
+        let games: [(type: GameType, title: String, color: UIColor)] = [
+            (.quina, GameType.quina.title, GameType.quina.color),
+            (.megasena, GameType.megasena.title, GameType.megasena.color),
+            (.timemania, GameType.timemania.title, GameType.timemania.color),
+            (.lotofacil, GameType.lotofacil.title, GameType.lotofacil.color),
+            (.lotomania, GameType.lotomania.title, GameType.lotomania.color)
+        ]
+        
+        games.forEach { game in
+            let button = createButton(
+                title: game.title,
+                backgroundColor: game.color,
+                tag: game.type.rawValue
+            )
+            stackView.addArrangedSubview(button)
+        }
+    }
+    
+    private func createButton(title: String,
+                            titleColor: UIColor = .white,
+                            backgroundColor: UIColor,
+                            tag: Int) -> UIButton {
+        var configuration = UIButton.Configuration.filled()
+        configuration.title = title
+        configuration.baseForegroundColor = titleColor
+        configuration.baseBackgroundColor = backgroundColor
+        configuration.cornerStyle = .large
+        
+        let button = UIButton(configuration: configuration)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(generatePressed), for: .primaryActionTriggered)
+        button.tag = tag
+        
+        button.heightAnchor.constraint(equalToConstant: LayoutMetrics.buttonHeight).isActive = true
+        
+        return button
+    }
+    
+    private func setViewsRoundCorners() {
+        stackView.arrangedSubviews.forEach { button in
+            button.layer.cornerRadius = LayoutMetrics.cornerRadius
+            button.clipsToBounds = true
+        }
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func generatePressed(_ sender: UIButton) {
+        delegate?.didPressGenerateButton(sender)
     }
 }
